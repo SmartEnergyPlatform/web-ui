@@ -1,0 +1,113 @@
+sepl-process-deployments .preview {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+}
+
+sepl-process-deployments md-grid-list {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 100px;
+}
+
+sepl-process-deployments .image-wrapper{
+    height: 100%;
+}
+
+sepl-process-deployments md-grid-tile {
+    background: whitesmoke;
+}
+
+sepl-process-deployments md-grid-tile-footer {
+    background: white!important;
+    height: 68px!important;
+    color: black!important;
+}
+
+sepl-process-deployments md-grid-tile-footer figcaption {
+    width: 100%;
+}
+
+sepl-process-deployments md-grid-tile-footer .first-line {
+    font-size: 16px;
+}
+
+sepl-process-deployments md-grid-tile-footer .second-line {
+    font-size: 14px;
+}
+
+sepl-process-deployments md-grid-tile-footer .caption {
+    padding-left: 16px;
+}
+
+.deployment-link-container {
+    font-size: 12px;
+}
+
+.deployment-incidents-container {
+    font-size: 12px;
+}
+
+.deployment-incidents-container input {
+    width: 300px;
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.deployment-incidents-container md-icon {
+    cursor: pointer;
+}
+
+.deployment-link-container textarea {
+    width: 80%;
+    height: 70px;
+    margin: 5px;
+    resize: none;
+    outline: none;
+    border-color: rgba(158, 158, 158, 0.2);
+}
+
+.deployment-link-container .copy-button{
+    display:flex;
+    align-items:center;
+}
+
+.SelectedTask g *{
+    stroke: red !important;
+}
+
+.SelectedTask text {
+    stroke-width: 0;
+}
+
+.djs-outline {
+    stroke-width: 0 !important;
+}
+
+/*
+.SecondarySelectedTask g * {
+    stroke: yellow;
+}
+*/
+
+
+.abstract-process-config md-button{
+    display: inline-block;
+}
+
+.step-counter{
+    text-align: center;
+}
+/*
+.process_offline md-card-title-text div {
+    color: red;
+}
+*/
+
+.warning {
+    color: red;
+}
+.step-counter{
+    text-align: center;
+}

@@ -1,0 +1,142 @@
+<sepl-navbar></sepl-navbar>
+
+<div layout-margin ng-if="$ctrl.order !='search'">
+    <sepl-searchbar search-text="$ctrl.searchText" on-input-change="$ctrl.searchText = searchText"
+                    layout-fill></sepl-searchbar>
+    <md-grid-list md-cols-xs="2" md-cols-sm="3" md-cols-md="3" md-cols-lg="6" md-cols-xl="6"
+                  md-row-height="4:6"
+                  md-gutter="16px">
+        <md-grid-tile ng-repeat="item in $ctrl.dataexport | filter: $ctrl.searchText | orderBy: $ctrl.order : true">
+            <sepl-marketplace-dataexport-widget item="item"
+                                                layout-fill></sepl-marketplace-dataexport-widget>
+        </md-grid-tile>
+    </md-grid-list>
+</div>
+
+<div layout-margin ng-if="$ctrl.order == 'search'">
+    <div layout="row">
+        <div flex="80">
+            <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="2" md-cols-lg="4" md-cols-xl="4"
+                          md-row-height="4:6"
+                          md-gutter="16px">
+                <md-grid-tile
+                        ng-repeat="item in $ctrl.dataexport | filter: $ctrl.locationFilter | filter:$ctrl.priceFilter | filter:$ctrl.timeintervalFilter">
+                    <sepl-marketplace-dataexport-widget item="item" layout-fill></sepl-marketplace-dataexport-widget>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div flex="20" class="search-widget">
+            <div md-whiteframe="1">
+                <div class="search-widget-header">{{ 'DATA_EXPORT.MD_TAB_BODY_CONTENT_TEXT_LABEL_OPTIONS' | translate
+                    }}
+                </div>
+                <md-divider></md-divider>
+                <div class="search-widget-bottom-frame">
+                    <!-- Zeitraum -->
+                    <div layout="row" layout-align="start center" class="search-widget-subheader ">
+                        <div>
+                            <md-icon ng-bind="'timeline'"></md-icon>
+                        </div>
+                        <div class="search-widget-subheader-text">{{
+                            'DATA_EXPORT.MD_TAB_BODY_CONTENT_TEXT_LABEL_TIME_FRAME' | translate }}
+                        </div>
+                    </div>
+                    <div layout="column" class="search-widget-choice grey">
+                        <md-checkbox aria-label="timelineCheckboxAll" class="md-primary"
+                                     ng-checked="$ctrl.timelineCheckboxAll" ng-click="$ctrl.resetTimeline()">
+                            {{ 'DATA_EXPORT.MD_TAB_BODY_CONTENT_TEXT_LABEL_TIME_FRAME_OPTION_SELECT_ALL' | translate }}
+                        </md-checkbox>
+                        <div ng-repeat="item in $ctrl.timelineCheckboxItems">
+                            <md-checkbox aria-label="timelineCheckbox" class="md-primary"
+                                         ng-checked="item.ck" ng-click="item.ck=!item.ck">
+                                {{item.text | translate}}
+                            </md-checkbox>
+                        </div>
+                    </div>
+                    <!-- Zeitinterval -->
+                    <div layout="row" layout-align="start center" class="search-widget-subheader ">
+                        <div>
+                            <md-icon ng-bind="'timer'"></md-icon>
+                        </div>
+                        <div class="search-widget-subheader-text">{{
+                            'DATA_EXPORT.MD_TAB_BODY_CONTENT_TEXT_LABEL_TIME_INTERVAL' | translate }}
+                        </div>
+                    </div>
+                    <div layout="column" class="search-widget-choice grey">
+                        <md-checkbox ng-model="timeinterval1" aria-label="days-15">{{
+                            'DATA_EXPORT.MD_TAB_BODY_CONTENT_TEXT_LABEL_TIME_INTERVAL_OPTION_15_SEC' | translate }}
+                        </md-checkbox>
+                        <md-checkbox ng-model="timeinterval2" aria-label="days-30">{{
+                            'DATA_EXPORT.MD_TAB_BODY_CONTENT_TEXT_LABEL_TIME_INTERVAL_OPTION_30_MIN' | translate }}
+                        </md-checkbox>
+                    </div>
+                    <!-- Standort -->
+                    <div layout="row" layout-align="start center" class="search-widget-subheader ">
+                        <div>
+                            <md-icon ng-bind="'location_on'"></md-icon>
+                        </div>
+                        <div class="search-widget-subheader-text">{{
+                            'DATA_EXPORT.MD_TAB_BODY_CONTENT_TEXT_LABEL_LOCATION' | translate }}
+                        </div>
+                    </div>
+                    <div layout="column" class="search-widget-input">
+                        <md-input-container class="md-block">
+                            <input ng-model="$ctrl.searchLocation"
+                                   placeholder="{{ 'DATA_EXPORT.MD_TAB_BODY_CONTENT_INPUT_CONTAINER_PLACEHOLDER_FOR_LOCATION' | translate }}">
+                        </md-input-container>
+                    </div>
+                    <!-- Preis -->
+                    <div layout="row" layout-align="start center" class="search-widget-subheader ">
+                        <div>
+                            <md-icon ng-bind="'account_balance'"></md-icon>
+                        </div>
+                        <div class="search-widget-subheader-text">{{ 'DATA_EXPORT.MD_TAB_BODY_CONTENT_TEXT_LABEL_PRICE'
+                            | translate }}
+                        </div>
+                    </div>
+                    <div layout="column" class="search-widget-input">
+                        <div layout="row">
+                            <md-input-container class="md-block">
+                                <input ng-model="$ctrl.searchPriceMin" type="number"
+                                       placeholder="{{ 'DATA_EXPORT.MD_TAB_BODY_CONTENT_INPUT_CONTAINER_PLACEHOLDER_FOR_MIN_VALUE' | translate }}"
+                                       step="0.01"
+                                       min="{{$ctrl.priceMinimum}}"
+                                       max="{{$ctrl.searchPriceMax > 0 ? $ctrl.searchPriceMax : $ctrl.priceMaximum}}">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <input ng-model="$ctrl.searchPriceMax" type="number"
+                                       placeholder="{{ 'DATA_EXPORT.MD_TAB_BODY_CONTENT_INPUT_CONTAINER_PLACEHOLDER_FOR_MAX_VALUE' | translate }}"
+                                       step="0.01"
+                                       min="{{$ctrl.searchPriceMin > 0 ? $ctrl.searchPriceMin : $ctrl.priceMinimum}}"
+                                       max="{{$ctrl.priceMaximum}}">
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <!-- Personen -->
+                    <div layout="row" layout-align="start center" class="search-widget-subheader">
+                        <div>
+                            <md-icon ng-bind="'persons'"></md-icon>
+                        </div>
+                        <div class="search-widget-subheader-text">{{
+                            'DATA_EXPORT.MD_TAB_BODY_CONTENT_TEXT_LABEL_PERSONS' | translate }}
+                        </div>
+                    </div>
+                    <div layout="column" class="search-widget-input">
+                        <div layout="row">
+                            <md-input-container class="md-block">
+                                <input ng-model="search.persons.min"
+                                       placeholder="{{ 'DATA_EXPORT.MD_TAB_BODY_CONTENT_INPUT_CONTAINER_PLACEHOLDER_FOR_MIN_PERSONS' | translate }}">
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <input ng-model="search.persons.max"
+                                       placeholder="{{ 'DATA_EXPORT.MD_TAB_BODY_CONTENT_INPUT_CONTAINER_PLACEHOLDER_FOR_MAX_PERSONS' | translate }}">
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

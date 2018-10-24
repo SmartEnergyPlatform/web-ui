@@ -1,0 +1,12 @@
+<md-input-container md-is-error="error">
+    <label>{{ 'RIGHTS.MD_INPUT_CONTAINER_LABEL_SUBJECT' | translate }}</label>
+    <input ng-model="subject" ng-change="error=''">
+    <ng-messages for="error" role="alert">
+        <ng-message when-exp="err">{{error}}</ng-message>
+    </ng-messages>
+</md-input-container>
+
+<md-input-container>
+    <md-button class="md-icon-button" ng-click="$ctrl.add()" aria-label="add"><md-icon>add</md-icon></md-button>
+    <div class="md-errors-spacer"></div>
+</md-input-container>

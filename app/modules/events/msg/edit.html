@@ -1,0 +1,119 @@
+<!--
+<md-input-container class="md-block" flex-gt-xs>
+    <label>Topic</label>
+    <input ng-model="$ctrl.event.filter.topic" disabled>
+</md-input-container>
+
+<md-input-container class="md-block" flex-gt-xs>
+    <label>Device</label>
+    <input ng-model="$ctrl.event.filter.device_id" disabled>
+</md-input-container>
+
+<md-input-container class="md-block" flex-gt-xs>
+    <label>Service</label>
+    <input ng-model="$ctrl.event.filter.service_id" disabled>
+</md-input-container>
+<!-->
+
+<sepl-device-instances-search device="device" permission="execute"></sepl-device-instances-search>
+
+<md-input-container class="md-block">
+    <label>{{'MSG.MD_INPUT_CONTAINER_LABEL_SERVICE' | translate}}</label>
+    <md-select md-selected-text="service.name || service.id || ('MSG.MD_INPUT_CONTAINER_LABEL_SERVICE' | translate)" ng-model="service">
+        <md-optgroup label="entities">
+            <md-option ng-value="e"  ng-repeat="e in deviceType.services">
+                {{e.name}} {{e.id}}
+            </md-option>
+        </md-optgroup>
+    </md-select>
+</md-input-container>
+
+<md-input-container class="md-block">
+    <label>{{'MSG.MD_INPUT_CONTAINER_LABEL_ANALYTICS' | translate}}</label>
+    <md-select md-selected-text="analyticsOperator && analyticsOperator.name || ('MSG.MD_SELECT_OPTION_ANALYTICS' | translate)" ng-model="analyticsOperator">
+        <md-optgroup label="entities">
+            <md-option ng-value="null">
+                {{'MSG.MD_SELECT_OPTION_GROUP_OPTION_EQUAL_NULL' | translate}}
+            </md-option>
+            <md-option ng-value="e"  ng-repeat="e in analyticsOperators">
+                {{e.name}}
+            </md-option>
+        </md-optgroup>
+    </md-select>
+</md-input-container>
+
+<div>
+    <md-input-container flex-gt-xs>
+        <label>{{'MSG.MD_INPUT_CONTAINER_LABEL_SCOPE_SELECT' | translate}}</label>
+        <md-select ng-model="$ctrl.temp">
+            <md-optgroup>
+                <md-option ng-click="$ctrl.event.filter.scope = 'any'">any</md-option>
+                <md-option ng-click="$ctrl.event.filter.scope = 'all'">all</md-option>
+                <md-option ng-click="$ctrl.event.filter.scope = 'none'">none</md-option>
+                <md-option ng-click="$ctrl.event.filter.scope = '0'">&lt;number&gt;</md-option>
+                <md-option ng-click="$ctrl.event.filter.scope = 'min 0'">min &lt;number&gt;</md-option>
+                <md-option ng-click="$ctrl.event.filter.scope = 'max 0'">max &lt;number&gt;</md-option>
+            </md-optgroup>
+        </md-select>
+        <div class="md-errors-spacer"></div>
+    </md-input-container>
+    <md-input-container ng-if="$ctrl.event.filter.scope == 'any' || $ctrl.event.filter.scope == 'all' || $ctrl.event.filter.scope == 'none' || $ctrl.event.filter.scope == '' || !$ctrl.event.filter.scope" flex-gt-xs>
+        <label>{{'MSG.MD_INPUT_CONTAINER_LABEL_SCOPE' | translate}}</label>
+        <input ng-model="$ctrl.event.filter.scope" disabled>
+    </md-input-container>
+    <md-input-container ng-if="$ctrl.event.filter.scope != 'any' && $ctrl.event.filter.scope != 'all' && $ctrl.event.filter.scope != 'none' && $ctrl.event.filter.scope != '' && $ctrl.event.filter.scope" flex-gt-xs>
+        <label>{{'MSG.MD_INPUT_CONTAINER_LABEL_SCOPE' | translate}}</label>
+        <input ng-model="$ctrl.event.filter.scope">
+    </md-input-container>
+</div>
+
+<md-button class="md-primary md-raised" ng-click="$ctrl.addRule()">{{'MSG.MD_BUTTON_ADD_RULE' | translate}}</md-button>
+<div ng-repeat="rule in $ctrl.event.filter.rules">
+    <md-input-container flex-gt-xs>
+        <label>{{'MSG.MD_INPUT_CONTAINER_LABEL_SCOPE_SELECT' | translate}}</label>
+        <md-select ng-model="$ctrl.temp">
+            <md-optgroup>
+                <md-option ng-click="rule.scope = 'any'">any</md-option>
+                <md-option ng-click="rule.scope = 'all'">all</md-option>
+                <md-option ng-click="rule.scope = 'none'">none</md-option>
+                <md-option ng-click="rule.scope = '0'">&lt;number&gt;</md-option>
+                <md-option ng-click="rule.scope = 'min 0'">min &lt;number></md-option>
+                <md-option ng-click="rule.scope = 'max 0'">max &lt;number&gt;</md-option>
+            </md-optgroup>
+        </md-select>
+        <div class="md-errors-spacer"></div>
+    </md-input-container>
+    <md-input-container ng-if="rule.scope == 'any' || rule.scope == 'all' || rule.scope == 'none' || rule.scope == '' || !rule.scope">
+        <label>{{'MSG.MD_INPUT_CONTAINER_LABEL_SCOPE' | translate}}</label>
+        <input ng-model="rule.scope" disabled>
+    </md-input-container>
+    <md-input-container ng-if="rule.scope != 'any' && rule.scope != 'all' && rule.scope != 'none' && rule.scope != '' && rule.scope">
+        <label>{{'MSG.MD_INPUT_CONTAINER_LABEL_SCOPE' | translate}}</label>
+        <input ng-model="rule.scope">
+    </md-input-container>
+    <md-input-container class="events-path-try" ng-click="$ctrl.tryPath(rule)" flex-gt-xs>
+        <label class="events-path-try">{{'MSG.MD_INPUT_CONTAINER_LABEL_PATH' | translate}}</label>
+        <input class="events-path-try" ng-model="rule.path" disabled>
+    </md-input-container>
+    <md-input-container flex-gt-xs>
+        <md-select md-selected-text="rule.operator || ('MSG.MD_SELECT_OPTION_OPERATOR' | translate)" ng-model="rule.operator">
+            <md-optgroup label="Operator">
+                <md-option ng-value="'=='">{{'=='}}</md-option>
+                <md-option ng-value="'!='">{{'!='}}</md-option>
+                <md-option ng-value="'>='">{{'>='}}</md-option>
+                <md-option ng-value="'<='">{{'<='}}</md-option>
+                <md-option ng-value="'<'">{{'<'}}</md-option>
+                <md-option ng-value="'>'">{{'>'}}</md-option>
+                <md-option ng-value="'regex'">{{'regex'}}</md-option>
+            </md-optgroup>
+        </md-select>
+        <div class="md-errors-spacer"></div>
+    </md-input-container>
+    <md-input-container flex-gt-xs>
+        <label>{{'MSG.MD_INPUT_CONTAINER_LABEL_VALUE' | translate}}</label>
+        <input ng-model="rule.value">
+    </md-input-container>
+    <md-input-container class="inline-button" flex-gt-xs>
+        <md-button ng-click="$ctrl.removeRule(rule)"><md-icon>delete</md-icon></md-button>
+    </md-input-container>
+</div>

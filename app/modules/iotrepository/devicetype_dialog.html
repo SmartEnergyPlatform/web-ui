@@ -1,0 +1,56 @@
+<md-dialog aria-label="IoT-DeviceType" class="iot-wizard-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'DEVICETYPE_DIALOG.MD_DIALOG_FORM_TOOLBAR_HEADLINE_CONF_TASK' | translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon>close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+            <md-input-container class="md-block">
+                <label>{{'DEVICETYPE_DIALOG.MD_DIALOG_FORM_CONTENT_INPUT_CONTAINER_LABEL_DEVICE_TYPE' | translate}}</label>
+                <md-select md-selected-text="device.name || device.id || ('DEVICETYPE_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_DEVICE_TYPE' | translate)" ng-model="device" data-md-container-class="selectdemoSelectHeader" md-on-close="" md-on-open="search()">
+                    <md-select-header class="demo-select-header">
+                        <input ng-model="searchInfo.searchText"
+                               ng-change="search()"
+                               type="search"
+                               placeholder="{{'DEVICETYPE_DIALOG.MD_DIALOG_CONTENT_SELECT_HEADER_INPUT_PLACEHOLDER_SEARCH_FOR' | translate }}"
+                               class="demo-header-searchbox md-text"
+                               ng-keydown="$event.stopPropagation()"
+                        />
+                    </md-select-header>
+                    <md-optgroup>
+                        <md-option ng-value="e"  ng-repeat="e in searchInfo.searchResult">
+                            {{e.name}} {{e.id}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>{{'DEVICETYPE_DIALOG.MD_DIALOG_FORM_CONTENT_INPUT_CONTAINER_LABEL_SERVICE_TYPE' | translate}}</label>
+                <md-select md-selected-text="service.name || service.id || ('DEVICETYPE_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_SERVICE_TYPE' | translate)" ng-model="service">
+                    <md-optgroup>
+                        <md-option ng-value="e"  ng-repeat="e in fullDeviceType.services">
+                            {{e.name}} {{e.id}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="ok()">
+                {{'DEVICETYPE_DIALOG.MD_DIALOG_ACTIONS_BUTTON_OK' | translate}}
+            </md-button>
+            <md-button ng-click="cancel()">
+                {{'DEVICETYPE_DIALOG.MD_DIALOG_ACTIONS_BUTTON_CANCEL' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

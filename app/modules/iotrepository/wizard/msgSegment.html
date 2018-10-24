@@ -1,0 +1,89 @@
+<md-dialog aria-label="{{dialogHeader}}" class="iot-wizard-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{dialogHeader}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <bold>X</bold>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+            <div layout="row" layout-xs="column">
+                <div flex="nogrow">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>{{'WIZARD.MSG_SEGMENT.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_NAME' | translate}}</label>
+                        <input ng-model="dialogElement.name">
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>{{'WIZARD.MSG_SEGMENT.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_MSG_SEGMENT' | translate}}</label>
+                        <md-select md-selected-text="dialogElement.msg_segment.name || dialogElement.msg_segment.id || ('WIZARD.MSG_SEGMENT.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_MSG_SEGMENT' | translate)" ng-model="dialogElement.msg_segment" data-md-container-class="selectdemoSelectHeader">
+                            <md-optgroup label="entities">
+                                <md-option ng-value="msgSegment" ng-repeat="msgSegment in $parent.$parent.currentService.protocol.msg_structure">
+                                    {{msgSegment.name}} {{msgSegment.id}}
+                                </md-option>
+                            </md-optgroup>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>{{'WIZARD.MSG_SEGMENT.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_FORMAT' | translate}}</label>
+                        <md-select ng-model="dialogElement.format" data-md-container-class="selectdemoSelectHeader">
+                            <md-optgroup label="entities">
+                                <md-option ng-value="element.id" ng-repeat="element in $parent.$parent.allowedValues.formats">
+                                    {{element.name}}
+                                </md-option>
+                            </md-optgroup>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>{{'WIZARD.MSG_SEGMENT.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_VALUE_TYPE' | translate}}</label>
+                        <md-select md-selected-text="dialogElement.type.name || dialogElement.type.id || ('WIZARD.MSG_SEGMENT.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_VALUE_TYPE' | translate)" ng-model="dialogElement.type" data-md-container-class="selectdemoSelectHeader" md-on-close="clearSearch()" md-on-open="search('valueTypes')">
+                            <md-select-header class="demo-select-header">
+                                <input ng-model="searchInfo.searchText"
+                                       ng-change="search('valueTypes')"
+                                       type="search"
+                                       placeholder="{{'WIZARD.MSG_SEGMENT.MD_DIALOG_CONTENT_SELECT_HEADER_INPUT_PLACEHOLDER_SEARCH_FOR' | translate }}"
+                                       class="demo-header-searchbox md-text"
+                                       ng-keydown="$event.stopPropagation()"
+                                />
+                            </md-select-header>
+                            <md-optgroup label="entities">
+                                <md-option ng-value="e" ng-click="selectValueType(dialogElement, e)" ng-repeat="e in searchInfo.searchResult">
+                                    {{e.name}} {{e.id}}
+                                </md-option>
+                            </md-optgroup>
+                        </md-select>
+                    </md-input-container>
+
+                    <label>{{'WIZARD.MSG_SEGMENT.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_FORMAT_INFO' | translate}}</label>
+                    <md-input-container class="md-block" ng-repeat="element in dialogElement.additional_formatinfo">
+                        <label>{{element.field.name}} {{element.field.type.name}}</label>
+                        <input ng-model="element.format_flag">
+                    </md-input-container>
+
+                </div>
+                <div ng-if="preview" class="wizard-preview" flex>
+                    <pre>{{preview}}</pre>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button ng-click="refreshPreview(dialogElement)">
+                {{'WIZARD.MSG_SEGMENT.MD_DIALOG_ACTIONS_BUTTON_PREVIEW' | translate}}
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="ok()">
+                {{'WIZARD.MSG_SEGMENT.MD_DIALOG_ACTIONS_BUTTON_OK' | translate}}
+            </md-button>
+            <md-button ng-click="cancel()">
+                {{'WIZARD.MSG_SEGMENT.MD_DIALOG_ACTIONS_BUTTON_CANCEL' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

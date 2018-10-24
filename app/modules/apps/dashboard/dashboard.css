@@ -1,0 +1,26 @@
+sepl-apps-dashboard [ng-drop].drag-enter {
+    border: dashed 3px darkgrey;
+}
+
+sepl-apps-dashboard [ng-drag].dragging {
+    opacity: 0.5;
+    cursor: move;
+}
+
+sepl-apps-dashboard .addWidget {
+    border: dashed 3px darkgrey;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+sepl-apps-dashboard .addWidget md-icon {
+    font-size: 36px;
+}
+
+.nv-x text {
+    font-size: 10px;
+}
+
+.nv-y text {
+    font-size: 10px;
+}

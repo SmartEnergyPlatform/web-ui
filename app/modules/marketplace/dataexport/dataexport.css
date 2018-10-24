@@ -1,0 +1,57 @@
+sepl-marketplace-dataexport .search-widget {
+    margin-left: 16px;
+    min-width: 150px;
+    background: white;
+}
+
+sepl-marketplace-dataexport .search-widget-subheader {
+    background-color: white;
+}
+
+sepl-marketplace-dataexport .search-widget-header {
+    padding: 16px;
+}
+
+sepl-marketplace-dataexport .search-widget-choice {
+    padding-top: 16px;
+    padding-left: 8px;
+}
+
+sepl-marketplace-dataexport .search-widget-input {
+    padding-top: 2px;
+    padding-left: 8px;
+}
+
+sepl-marketplace-dataexport fieldset {
+    border-style: solid;
+    border-width: 1px;
+    height: 100%; }
+
+sepl-marketplace-dataexport md-input-container{
+    margin-top: 12px;
+    margin-bottom: 0px;
+}
+
+sepl-marketplace-dataexport .md-subheader .md-subheader-inner {
+    padding-top: 16px;
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-bottom: 0px;
+}
+
+sepl-marketplace-dataexport .search-widget-bottom-frame {
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+sepl-marketplace-dataexport .grey{
+    color: rgba(0,0,0,0.54);
+}
+
+sepl-marketplace-dataexport .search-widget-subheader-text{
+    padding-left: 4px;
+}
+
+sepl-marketplace-dataexport md-grid-tile {
+    background: white;
+}

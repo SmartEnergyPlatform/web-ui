@@ -1,0 +1,29 @@
+<md-dialog aria-label="IoT-Device" class="iot-wizard-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'DESIGNER.IOT_OUTPUTS.HEADLINE_TOOLBAR_TOOLS' | translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="close()">
+                    <md-icon>close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+
+            <md-input-container class="md-block" ng-repeat="output in outputs" flex-gt-xs>
+                <label>{{output.value | shortSeplOutputVarName}}</label>
+                <input ng-model="output.name">
+            </md-input-container>
+
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="close()">
+                {{'DESIGNER.MD_BUTTON_CLOSE' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

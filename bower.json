@@ -1,0 +1,66 @@
+{
+  "name": "sepl-platform",
+  "description": "Web UI of the Smart Energy Platform (SEPL)",
+  "version": "0.0.1",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.6.6",
+    "angular-material": "^1.1.9",
+    "angular-ui-router": "^0.3.1",
+    "angular-animate": "~1.6.0",
+    "angular-cookies": "~1.6.0",
+    "angular-xml": "^2.2.1",
+    "angular-file-saver": "^1.1.2",
+    "ng-file-upload": "^12.2.13",
+    "angular-translate": "^2.13.0",
+    "angular-translate-loader-partial": "^2.13.0",
+    "angular-translate-storage-cookie": "^2.13.0",
+    "angular-translate-storage-local": "^2.13.0",
+    "angular-clipboard": "^1.5.0",
+    "ngFlowchart": "^0.5.1",
+    "lodash": "^4.17.4",
+    "ng-jsonpath": "^0.1.3",
+    "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
+    "angular-nvd3": "^1.0.9",
+    "ngDraggable": "^0.1.11",
+    "socket.io-client": "^2.0.1",
+    "angular-sanitize": "1.6.5",
+    "angular-cron-gen": "^0.0.26",
+    "angular-timeago": "^0.4.6",
+    "cronstrue": "^0.8.0",
+    "moment-duration-format": "^2.1.1",
+    "keycloak": "^3.4.3",
+    "bpmn-js": "^0.26.4",
+    "mustache.js": "mustache#^2.3.0",
+    "ngInfiniteScroll": "~1.3.0"
+  },
+  "resolutions": {
+    "angular": "^1.6.6",
+    "angular-animate": "^1.4.8"
+  },
+  "overrides": {
+    "moment": {
+      "main": [
+        "min/moment-with-locales.js"
+      ]
+    },
+    "cronstrue": {
+      "main": [
+        "dist/cronstrue-i18n.js"
+      ]
+    },
+    "socket.io-client": {
+      "main": [
+        "dist/socket.io.js"
+      ]
+    },
+    "angular-cron-gen": {
+      "main": [
+        "build/cron-gen.min.js"
+      ]
+    }
+  }
+}

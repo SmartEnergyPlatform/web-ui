@@ -1,0 +1,16 @@
+md-tabs md-tabs-wrapper {
+    background: rgb(46, 125, 50);
+}
+
+md-tabs .md-ink-ripple {
+    color: white !important;
+}
+
+md-tabs md-ink-bar {
+    background: white !important;
+}
+
+md-tabs {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}

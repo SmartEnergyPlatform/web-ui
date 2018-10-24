@@ -1,0 +1,132 @@
+<md-card>
+    <md-card-header>
+        {{ 'EXPORT.CREATE_EXPORT_DIALOG.MD_CARD_HEADER_CONTENT_CREATE_EXPORT' | translate }}
+    </md-card-header>
+    <md-card-content ng-form="frm">
+        <md-input-container class="md-block" flex-gt-xs>
+            <md-radio-group ng-model="$ctrl.selector">
+                <md-radio-button value="device" class="md-primary">{{ 'EXPORT.CREATE_EXPORT_DIALOG.MD_CARD_CONTENT_INPUT_CONTAINER_RADIO_GROUP_OPTION_DEVICE' | translate }}</md-radio-button>
+                <md-radio-button value="pipe">{{ 'EXPORT.CREATE_EXPORT_DIALOG.MD_CARD_CONTENT_INPUT_CONTAINER_RADIO_GROUP_OPTION_ANALYTICS' | translate }}</md-radio-button>
+            </md-radio-group>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{ 'EXPORT.CREATE_EXPORT_DIALOG.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_NAME' | translate }}</label>
+            <input name="name" ng-model="$ctrl.name" required>
+            <div ng-messages="frm.name.$error">
+                <div ng-message="required">{{ 'EXPORT.CREATE_EXPORT_DIALOG.MD_CARD_CONTENT_INPUT_CONTAINER_EXCEPTION_NAME_REQUIRED' | translate }}</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{ 'EXPORT.CREATE_EXPORT_DIALOG.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_DESCRIPTION' | translate }}</label>
+            <input ng-model="$ctrl.description">
+        </md-input-container>
+        <!-- Stopped here -->
+
+        <md-input-container class="md-block" flex-gt-xs ng-if="$ctrl.selector == 'device'">
+            <label>{{ 'EXPORT.CREATE_EXPORT_DIALOG.IF_DEVICE.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_IOT_DEVICE' | translate }}</label>
+            <md-select
+                    md-selected-text="$ctrl.device.name || $ctrl.device.id|| ('EXPORT.CREATE_EXPORT_DIALOG.IF_DEVICE.MD_CARD_CONTENT_INPUT_CONTAINER_SELECT_LABEL_IOT_DEVICE' | translate)"
+                    ng-model="$ctrl.device"
+                    data-md-container-class="selectdemoSelectHeader" md-on-close="$ctrl.clearSearch()"
+                    md-on-open="$ctrl.loadDevices()">
+                <md-select-header class="demo-select-header">
+                    <input ng-model="$ctrl.searchInfo.term"
+                           ng-change="$ctrl.searchDevices()"
+                           type="search"
+                           placeholder="{{'EXPORT.CREATE_EXPORT_DIALOG.IF_DEVICE.MD_CARD_CONTENT_INPUT_CONTAINER_SELECT_HEADER_PLACEHOLDER_LABEL_SEARCH_FOR' | translate }}"
+                           class="demo-header-searchbox md-text"
+                           ng-keydown="$event.stopPropagation()"
+                    />
+                </md-select-header>
+                <md-optgroup label="entities">
+                    <md-option ng-value="e" ng-repeat="e in $ctrl.deviceList">
+                        {{e.name}} {{e.id}}
+                    </md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs ng-if="$ctrl.selector == 'device'">
+            <label>{{ 'EXPORT.CREATE_EXPORT_DIALOG.IF_DEVICE.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_SERVICE' | translate }}</label>
+            <md-select md-selected-text="$ctrl.service.name || $ctrl.service.id || ('EXPORT.CREATE_EXPORT_DIALOG.IF_DEVICE.MD_CARD_CONTENT_INPUT_CONTAINER_SELECT_LABEL_SERVICE' | translate)"
+                       ng-model="$ctrl.service">
+                <md-optgroup label="entities">
+                    <md-option ng-value="e" ng-repeat="e in $ctrl.deviceTypes.services">
+                        {{e.name}} {{e.id}}
+                    </md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
+
+
+        <md-input-container class="md-block" flex-gt-xs ng-if="$ctrl.selector == 'pipe'">
+            <label>{{ 'EXPORT.CREATE_EXPORT_DIALOG.IF_ANALYTICS.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_PIPE' | translate }}</label>
+            <md-select
+                    md-selected-text="$ctrl.pipe.id || $ctrl.pipe.id|| ('EXPORT.CREATE_EXPORT_DIALOG.IF_ANALYTICS.MD_CARD_CONTENT_INPUT_CONTAINER_SELECT_LABEL_PIPE' | translate)"
+                    ng-model="$ctrl.pipe"
+                    data-md-container-class="selectdemoSelectHeader"
+                    md-on-open="$ctrl.loadPipes()">
+                <md-optgroup label="entities">
+                    <md-option ng-value="e" ng-repeat="e in $ctrl.pipeList">
+                        {{e.id}}
+                    </md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs ng-if="$ctrl.selector == 'pipe'">
+            <label>{{ 'EXPORT.CREATE_EXPORT_DIALOG.IF_ANALYTICS.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_OPERATOR' | translate }}</label>
+            <md-select md-selected-text="$ctrl.operator.Name || $ctrl.operator.Id || ('EXPORT.CREATE_EXPORT_DIALOG.IF_ANALYTICS.MD_CARD_CONTENT_INPUT_CONTAINER_SELECT_LABEL_OPERATOR' | translate)"
+                       ng-model="$ctrl.operator">
+                <md-optgroup label="entities">
+                    <md-option ng-value="e" ng-repeat="e in $ctrl.pipe.operators">
+                        {{e.Name}} {{e.Id}}
+                    </md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{ 'EXPORT.CREATE_EXPORT_DIALOG.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_PIPE' | translate }}</label>
+            <input ng-model="$ctrl.timePath">
+        </md-input-container>
+        <div layout="row">
+            <md-button ng-click="$ctrl.addValue()" type="submit" class="md-primary md-raised">
+                {{ 'EXPORT.CREATE_EXPORT_DIALOG.MD_CARD_CONTENT_BUTTON_LABEL_ADD_VALUE' | translate }}
+            </md-button>
+        </div>
+        <div ng-repeat="value in $ctrl.values">
+            <div layout="row">
+                <md-input-container flex-gt-xs>
+                    <label>{{ 'EXPORT.CREATE_EXPORT_DIALOG.ADD_VALUE.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_NAME' | translate }}</label>
+                    <input ng-model="value.name">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>{{ 'EXPORT.CREATE_EXPORT_DIALOG.ADD_VALUE.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_PATH' | translate }}</label>
+                    <input ng-model="value.path">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>{{ 'EXPORT.CREATE_EXPORT_DIALOG.ADD_VALUE.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_TYPE' | translate }}</label>
+                    <md-select
+                            md-selected-text="value.type || ('EXPORT.CREATE_EXPORT_DIALOG.ADD_VALUE.MD_CARD_CONTENT_INPUT_CONATINER_SELECT_LABEL_TYPE' | translate)"
+                            ng-model="value.type" data-md-container-class="selectdemoSelectHeader" flex-gt-s>
+                        <md-optgroup label="types">
+                            <md-option ng-value="e" ng-repeat="e in $ctrl.dropdown">
+                                {{e}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <md-button ng-click="$ctrl.delValue(value)" class="md-icon-button">
+                        <md-icon>delete</md-icon>
+                    </md-button>
+                </md-input-container>
+            </div>
+        </div>
+        <div layout="row">
+            <md-button ng-click="$ctrl.startExport(frm.$valid)" type="submit" class="md-primary md-raised"
+                       ng-disabled="frm.$invalid">
+                {{ 'EXPORT.CREATE_EXPORT_DIALOG.MD_CARD_CONTENT_BUTTON_LABEL_START' | translate }}
+            </md-button>
+        </div>
+    </md-card-content>
+</md-card>

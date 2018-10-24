@@ -1,0 +1,37 @@
+<md-dialog aria-label="IoT-Device" class="iot-wizard-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'SERVICES.EVENT_DIALOG.MD_DIALOG_TOOLBAR_HEADLINE' | translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <bold>{{'SERVICES.EVENT_DIALOG.MD_DIALOG_TOOLBAR_BUTTON_X' | translate}}</bold>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+
+            <md-input-container class="md-block">
+                <label>{{'SERVICES.EVENT_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL' | translate}}</label>
+                <md-select md-selected-text="event.name || event.id || ('SERVICES.EVENT_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_OPTION_EVENT' | translate)" ng-model="event">
+                    <md-optgroup label="entities">
+                        <md-option ng-value="e"  ng-repeat="e in events">
+                            {{e.name}} {{e.id}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="ok()">
+                {{'SERVICES.EVENT_DIALOG.MD_DIALOG_ACTIONS_BUTTON_OK' | translate}}
+            </md-button>
+            <md-button ng-click="cancel()">
+                {{'SERVICES.EVENT_DIALOG.MD_DIALOG_ACTIONS_BUTTON_CANCEL' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

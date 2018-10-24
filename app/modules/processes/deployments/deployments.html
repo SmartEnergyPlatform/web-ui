@@ -1,0 +1,95 @@
+<sepl-searchbar search-text="$ctrl.searchText" on-input-change="$ctrl.searchText = searchText"></sepl-searchbar>
+<sepl-sort attributes="$ctrl.sortAttributes" on-click-event="$ctrl.sortItem = sortItem"
+           current-sort-item="$ctrl.sortItem"></sepl-sort>
+<div layout-margin>
+    <div ng-if="!$ctrl.deploymentItems.length && $ctrl.requestComplete">
+        {{'DEPLOYMENTS.NO_PROCESS_ELEMENT.TEXT_NO_DEPLOYMENTS' | translate}}
+    </div>
+</div>
+<div infinite-scroll="$ctrl.next()" infinite-scroll-distance='1'
+     infinite-scroll-container="'#content'"
+     infinite-scroll-disabled="$ctrl.scrollDisabled">
+    <div layout="column" flex>
+        <md-grid-list
+                md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-cols-xl="6" md-row-height="250px"
+                md-gutter="16px">
+            <md-grid-tile class="card" ng-class="{process_offline: !item.dependencies.online}"
+                          ng-repeat="item in $ctrl.deploymentItems"
+                          ng-show="$ctrl.requestComplete"
+                          md-whiteframe="1" ng-cloak>
+                <div class="image-wrapper" layout-align="center start">
+                    <img class="preview" ng-src="{{item.svgLink}}" ng-click="$ctrl.displayDiagram(item)"/>
+                </div>
+                <md-grid-tile-footer>
+                    <div layout="row" class="caption">
+                        <div layout="row" flex="50" layout-align="left center">
+                            <div layout="column"><span class="md-truncate first-line">{{item.name}} <md-tooltip>{{item.name}}</md-tooltip></span>
+                                <span class="second-line">{{item.formattedDeploymentTime}}</span>
+                            </div>
+                        </div>
+                        <div layout="row" layout-align="end center" flex="50">
+                            <md-button ng-if="item.hasIncidents" ng-click="$ctrl.showIncidents(item)"
+                                       class="md-icon-button ng-cloak">
+                                <md-tooltip md-direction="top">{{'DEPLOYMENTS.PROCESS_ELEMENT.MD_TOOLTIP_INCIDENTS' |
+                                    translate}}
+                                </md-tooltip>
+                                <md-icon class="warning">warning</md-icon>
+                            </md-button>
+                            <md-button ng-if="item.dependencies && !item.dependencies.online"
+                                       ng-click="$ctrl.showDependenciesExecution($event, item)"
+                                       class="md-icon-button ng-cloak">
+                                <md-tooltip md-direction="top">{{'DEPLOYMENTS.PROCESS_ELEMENT.MD_TOOLTIP_NOT_EXECUTABLE'
+                                    | translate}}
+                                </md-tooltip>
+                                <md-icon class="warning">warning</md-icon>
+                            </md-button>
+                            <md-menu md-offset="-10 40">
+                                <md-button class="md-icon-button" ng-click="$mdMenu.open()">
+                                    <md-icon>more_vert</md-icon>
+                                </md-button>
+                                <md-menu-content>
+                                    <md-menu-item>
+                                        <md-button ng-disabled="!item.dependencies.online"
+                                                   ng-click="$ctrl.showConfirmExecution($event, item)">
+                                            <md-icon>play_arrow</md-icon>
+                                            {{'DEPLOYMENTS.PROCESS_ELEMENT.MD_BUTTON_EXECUTE' | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.copyLink(item.link)">
+                                            <md-icon>link</md-icon>
+                                            {{'DEPLOYMENTS.PROCESS_ELEMENT.MD_BUTTON_LINK' | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-divider></md-divider>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.showHistory(item)">
+                                            <md-icon>history</md-icon>
+                                            {{'DEPLOYMENTS.PROCESS_ELEMENT.MD_BUTTON_HISTORY' | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-divider></md-divider>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.clone($event, item)">
+                                            <md-icon>content_copy</md-icon>
+                                            {{'DEPLOYMENTS.PROCESS_ELEMENT.MD_BUTTON_CLONE' | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.showConfirmDelete($event, item.id)">
+                                            <md-icon>delete</md-icon>
+                                            {{'DEPLOYMENTS.PROCESS_ELEMENT.MD_BUTTON_DELETE' | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+                    </div>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+    </div>
+</div>
+<md-progress-circular ng-class="{'md-progress-circular-next' : !$ctrl.initialLoading}"
+                      md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-hue-2"
+                      md-diameter="50"></md-progress-circular>

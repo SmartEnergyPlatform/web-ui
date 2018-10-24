@@ -1,0 +1,65 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{ctrl.deviceinstance.name}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DEVICE_INSTANCES.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_ID' | translate}}</label>
+                <input ng-model="ctrl.deviceinstance.id" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DEVICE_INSTANCES.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_DEVICE_TYPE' | translate}}</label>
+                <input ng-model="ctrl.deviceinstance.device_type" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DEVICE_INSTANCES.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_NAME' | translate}}</label>
+                <input ng-model="ctrl.deviceinstance.name">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DEVICE_INSTANCES.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_IMAGE' | translate}}</label>
+                <input ng-model="ctrl.deviceinstance.img" ng-pattern="/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DEVICE_INSTANCES.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_URI' | translate}}</label>
+                <input ng-model="ctrl.deviceinstance.uri">
+            </md-input-container>
+            <md-chips ng-model="ctrl.deviceinstance.user_tags"
+                      readonly="false"
+                      md-removable="true"
+                      md-enable-chip-edit="true"
+                      placeholder="{{'DEVICE_INSTANCES.MD_DIALOG_CONTENT_CHIPS_PLACEHOLDER_ENTER_A_TAG' | translate}}"
+                      delete-button-label="{{'DEVICE_INSTANCES.MD_DIALOG_CONTENT_CHIPS_DELETE_BUTTON_LABEL_REMOVE_TAG' | translate}}"
+                      delete-hint="{{'DEVICE_INSTANCES.MD_DIALOG_CONTENT_CHIPS_DELETE_BUTTON_LABEL_PRESS_DELETE' | translate}}"
+                      secondary-placeholder="+Tag"
+            >
+                <button class="md-chip-remove" md-chip-remove>
+                    <md-icon>cancel</md-icon>
+                </button>
+            </md-chips>
+
+
+            <div ng-repeat="field in ctrl.deviceinstance.config">
+                <md-input-container class="md-block" flex-gt-xs>
+                    <label>{{field.name}}</label>
+                    <input ng-model="field.value">
+                </md-input-container>
+            </div>
+
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-primary md-raised" ng-click="ctrl.saveDeviceinstance()">{{'DEVICE_INSTANCES.MD_DIALOG_ACTIONS_BUTTON_SAVE' | translate}}
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

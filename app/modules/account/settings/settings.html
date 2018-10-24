@@ -1,0 +1,71 @@
+<div layout-margin>
+    <md-subheader class="md-no-sticky" layout-fill>{{ 'ACCOUNT.SETTINGS.MD_TOOLBAR_LABEL_LANGUAGE' | translate }}</md-subheader>
+    <md-select ng-model="$ctrl.language">
+        <md-option value="de">
+            {{ 'ACCOUNT.SETTINGS.MD_SELECT_OPTION_LABEL_GERMAN' | translate }}
+        </md-option>
+        <md-option value="en">
+            {{ 'ACCOUNT.SETTINGS.MD_SELECT_OPTION_LABEL_ENGLISH' | translate }}
+        </md-option>
+    </md-select>
+    <md-button ng-click="$ctrl.save()" class="md-primary md-raised">
+            {{ 'ACCOUNT.SETTINGS.MD_BUTTON_LABEL_SAVE' | translate }}
+    </md-button>
+
+    <md-subheader class="md-no-sticky" layout-fill>{{ 'ACCOUNT.SETTINGS.MD_TOOLBAR_LABEL_ACCOUNT' | translate }}</md-subheader>
+    <div layout="column">
+        <form name="account"></form>
+            <md-input-container>
+                <label>{{ 'ACCOUNT.SETTINGS.MD_FORM_INPUT_CONTAINER_LABEL_E_MAIL' | translate }}</label>
+                <input type="email" name="email" required ng-model="$ctrl.user.email" placeholder="{{$ctrl.userProperties.email}}">
+                <span ng-show="account.email.$touched && account.email.$invalid">
+                    {{ 'ACCOUNT.SETTINGS.MD_FORM_INPUT_CONTAINER_WARNING_E_MAIL_REQUIRED' | translate }}
+                </span>
+            </md-input-container>
+            <md-input-container>
+                <label>{{ 'ACCOUNT.SETTINGS.MD_FORM_INPUT_CONTAINER_LABEL_FIRST_NAME' | translate }}</label>
+                <input required name="firstName" ng-model="$ctrl.user.firstName" placeholder="{{$ctrl.userProperties.given_name}}">
+                <span ng-show="account.firstName.$touched && account.firstName.$invalid">
+                    {{ 'ACCOUNT.SETTINGS.MD_FORM_INPUT_CONTAINER_WARNING_FIRST_NAME_REQUIRED' | translate }}
+                </span>
+            </md-input-container>
+            <md-input-container>
+                <label>{{ 'ACCOUNT.SETTINGS.MD_FORM_INPUT_CONTAINER_LABEL_SURNAME' | translate }}</label>
+                <input required name="lastName" ng-model="$ctrl.user.lastName" placeholder="{{$ctrl.userProperties.family_name}}">
+                <span ng-show="account.lastName.$touched && account.lastName.$invalid">
+                    {{ 'ACCOUNT.SETTINGS.MD_FORM_INPUT_CONTAINER_WARNING_SURNAME_REQUIRED' | translate }}
+                </span>
+            </md-input-container>
+            <div>
+                <!--ng-disabled="account.lastName.$dirty && account.lastName.$invalid ||
+                    account.email.$dirty && account.email.$invalid || account.firstName.$dirty && account.firstName.$invalid" -->
+                    <md-button disabled ng-click="$ctrl.updateProfile(user)" type="submit" class="md-primary md-raised">
+                        {{ 'ACCOUNT.SETTINGS.MD_FORM_BUTTON_LABEL_UPDATE' | translate }}
+                    </md-button>
+            </div>
+        </form>
+    </div>
+
+    <md-subheader class="md-no-sticky" layout-fill>{{ 'ACCOUNT.SETTINGS.MD_TOOLBAR_LABEL_PASSWORD' | translate }}</md-subheader>
+    <div layout="column">
+        <md-input-container>
+            <label>{{ 'ACCOUNT.SETTINGS.MD_INPUT_CONTAINER_LABEL_NEW_PASSWORD' | translate }}</label>
+            <input type="password" ng-model="$ctrl.user.email" placeholder="{{$ctrl.userProperties.email}}">
+        </md-input-container>
+        <md-input-container>
+            <label>{{ 'ACCOUNT.SETTINGS.MD_INPUT_CONTAINER_LABEL_CONFIRM_PASSWORD' | translate }}</label>
+            <input type="password" ng-model="$ctrl.user.first_name" placeholder="{{$ctrl.userProperties.given_name}}">
+        </md-input-container>
+    </div>
+    <div>
+        <md-button disabled ng-click="$ctrl.updateProfile(user)" type="submit" class="md-primary md-raised">
+            {{ 'ACCOUNT.SETTINGS.MD_BUTTON_LABEL_UPDATE' | translate }}
+        </md-button>
+    </div>
+
+    <md-subheader class="md-no-sticky" layout-fill>{{ 'ACCOUNT.SETTINGS.MD_TOOLBAR_LABEL_SESSIONS' | translate }}</md-subheader>
+    <md-content flex>
+        <span us-spinner spinner-on="!$ctrl.requestComplete"></span>
+        <sepl-data-table data="$ctrl.sessions" keys="$ctrl.keys" columns="$ctrl.tableColumns" delete-active="true"></sepl-data-table>
+    </md-content>
+</div>

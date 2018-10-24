@@ -1,0 +1,16 @@
+{
+  "DIALOG": {
+    "MD_DIALOG_TOOLBAR_HEADLINE_PERMISSIONS": "Berechtigungen für ",
+    "MD_DIALOG_ACTIONS_BUTTON_SAVE": "Speichern",
+    "MD_DIALOG_ACTIONS_BUTTON_CANCEL": "Abbrechen"
+
+  },
+  "RIGHTS": {
+    "MD_INPUT_CONTAINER_LABEL_SUBJECT": "Subjekt",
+    "MD_INPUT_CONTAINER_LABEL_USER": "Nutzer",
+    "MD_CHECKBOX_CONTENT_READ": "Lesen",
+    "MD_CHECKBOX_CONTENT_WRITE": "Schreiben",
+    "MD_CHECKBOX_CONTENT_EXECUTE": "Ausführen",
+    "MD_CHECKBOX_CONTENT_ADMINISTRATE": "Administrieren"
+  }
+}

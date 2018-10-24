@@ -1,0 +1,110 @@
+{
+    "GLOBAL": {
+        "SERVICE": "Service",
+        "ANALYTICS": "Analytics",
+        "IOT_DEVICE": "IoT Device",
+        "EVERY": "Every",
+        "OK": "Ok",
+        "CANCEL": "Cancel",
+        "HOURS": "Hours",
+        "MINUTES": "Minutes",
+        "PATH": "Path",
+        "X": "X",
+        "SEARCH_FOR": "Search for...",
+        "EVENT": "Event",
+        "IOT_DEV_TYPE": "IoT Device Type"
+    },
+    "MSG": {
+        "MD_INPUT_CONTAINER_LABEL_SERVICE": "@:GLOBAL.SERVICE",
+        "MD_INPUT_CONTAINER_LABEL_ANALYTICS": "@:GLOBAL.ANALYTICS",
+        "MD_SELECT_OPTION_GROUP_OPTION_EQUAL_NULL": "None",
+        "MD_INPUT_CONTAINER_LABEL_SCOPE_SELECT": "Select scope",
+        "MD_SELECT_OPTION_ANALYTICS": "@:GLOBAL.ANALYTICS",
+        "MD_INPUT_CONTAINER_LABEL_SCOPE": "Scope",
+        "MD_BUTTON_ADD_RULE": "Add rule",
+        "MD_INPUT_CONTAINER_LABEL_PATH": "@:GLOBAL.PATH",
+        "MD_SELECT_OPTION_OPERATOR": "Operator",
+        "MD_INPUT_CONTAINER_LABEL_VALUE": "Value"
+    },
+    "DIALOG": {
+        "MD_DIALOG_TOOLBAR_HEADLINE": "JSON Path",
+        "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_PATH_EX": "@:GLOBAL.PATH",
+        "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_PATH_EX_RESULT": "Example result",
+        "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_EXAMPLE_VALUE": "Example value",
+        "MD_DIALOG_ACTIONS_BUTTON_OK": "@:GLOBAL.OK",
+        "MD_DIALOG_ACTIONS_BUTTON_CANCEL": "@:GLOBAL.CANCEL"
+    },
+    "SERVICES": {
+        "EVENT_DIALOG": {
+            "MD_DIALOG_TOOLBAR_HEADLINE": "@:GLOBAL.IOT_DEVICE",
+            "MD_DIALOG_TOOLBAR_BUTTON_X": "@:GLOBAL.X",
+            "MD_DIALOG_CONTENT_INPUT_CONTAINER_OPTION_EVENT": "@:GLOBAL.EVENT",
+            "MD_DIALOG_ACTIONS_BUTTON_OK": "@:GLOBAL.OK",
+            "MD_DIALOG_ACTIONS_BUTTON_CANCEL": "@:GLOBAL.CANCEL"
+        },
+        "EVENT_DT_SERVICE_DIALOG": {
+            "MD_DIALOG_TOOLBAR_HEADLINE": "Select event",
+            "MD_DIALOG_TOOLBAR_BUTTON_X": "@:GLOBAL.X",
+            "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_IOT_DEVICE_TYPE": "@:GLOBAL.IOT_DEV_TYPE",
+            "MD_DIALOG_CONTENT_INPUT_CONTAINER_OPTION_IOT_DEVICE_TYPE": "@:GLOBAL.IOT_DEV_TYPE",
+            "MD_DIALOG_CONTENT_SELECT_HEADER_PLACEHOLDER_TEXT": "@:GLOBAL.SEARCH_FOR",
+            "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_EVENT": "@:GLOBAL.EVENT",
+            "MD_DIALOG_CONTENT_INPUT_CONTAINER_OPTION_EVENT": "@:GLOBAL.EVENT",
+            "MD_DIALOG_ACTIONS_BUTTON_OK": "@:GLOBAL.OK",
+            "MD_DIALOG_ACTIONS_BUTTON_CANCEL": "@:GLOBAL.CANCEL"
+        },
+        "EVENT_SERVICE_DIALOG": {
+            "MD_DIALOG_TOOLBAR_HEADLINE": "@:GLOBAL.IOT_DEVICE",
+            "MD_DIALOG_TOOLBAR_BUTTON_X": "@:GLOBAL.X",
+            "MD_DIALOG_CONTENT_INPUT_CONTAINER_OPTION_IOT_DEVICE": "@:GLOBAL.IOT_DEVICE",
+            "MD_DIALOG_CONTENT_SELECT_HEADER_PLACEHOLDER_TEXT": "@:GLOBAL.SEARCH_FOR",
+            "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_SERVICE": "@:GLOBAL.SERVICE",
+            "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_EVENT": "@:GLOBAL.EVENT",
+            "MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_OPTION_SERVICE": "@:GLOBAL.SERVICE",
+            "MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_OPTION_EVENT": "@:GLOBAL.EVENT",
+            "MD_DIALOG_ACTIONS_BUTTON_OK": "@:GLOBAL.OK",
+            "MD_DIALOG_ACTIONS_BUTTON_CANCEL": "@:GLOBAL.CANCEL"
+        }
+    },
+    "TIME": {
+        "CRON": {
+            "MD_TAB_CONTENT_TAB_CONTENT_EVERY": "Every",
+            "MD_TAB_CONTENT_TAB_CONTENT_MINUTE": "minute(s)",
+            "MD_TAB_CONTENT_TAB_CONTENT_H_ON_MIN": "hour(s) on minute",
+            "MD_TAB_CONTENT_TAB_CONTENT_AND_SEC": "and second(s)",
+            "MD_TAB_CONTENT_TAB_CONTENT_DAYS_AT": "day(s) at",
+            "MD_TAB_CONTENT_TAB_CONTENT_MON_TO_FRI": "Every week day (Monday through Friday) at",
+            "WEEK": {
+                "MONDAY": "Monday",
+                "TUESDAY": "Tuesday",
+                "WEDNESDAY": "Wednesday",
+                "THURSDAY": "Thursday",
+                "FRIDAY": "Friday",
+                "SATURDAY": "Saturday",
+                "SUNDAY": "Sunday"
+            },
+            "MD_TAB_CONTENT_TAB_CONTENT_START_TIME": "Start time",
+            "MD_TAB_CONTENT_TAB_CONTENT_ON_THE": "On the",
+            "MD_TAB_CONTENT_TAB_CONTENT_OF_EVERY": "of every",
+            "MD_TAB_CONTENT_TAB_CONTENT_MONTHS_AT": "month(s) at",
+            "MD_TAB_CONTENT_TAB_CONTENT_ON_THE_L": "on the",
+            "MD_TAB_CONTENT_TAB_CONTENT_AT": "at",
+            "MD_TAB_CONTENT_TAB_CONTENT_OF": "of",
+            "MD_TAB_CONTENT_TAB_CONTENT_CRON_EXPR": "Cron Expression",
+            "MD_TAB_CONTENT_TAB_CONTENT_MORE_DETAILS": "More details about how to create these expressions can be found ",
+            "MD_TAB_CONTENT_TAB_CONTENT_HERE": "here"
+        },
+        "DATETIME": {
+            "MD_INPUT_CONTAINER_LABEL_HOURS": "@:GLOBAL.HOURS",
+            "MD_INPUT_CONTAINER_LABEL_MINUTES": "@:GLOBAL.MINUTES"
+        },
+        "DURATION": {
+            "MD_INPUT_CONTAINER_LABEL_YEARS": "Years",
+            "MD_INPUT_CONTAINER_LABEL_MONTHS": "Months",
+            "MD_INPUT_CONTAINER_LABEL_DAYS": "Days",
+            "MD_INPUT_CONTAINER_LABEL_HOURS": "@:GLOBAL.HOURS",
+            "MD_INPUT_CONTAINER_LABEL_MINUTES": "@:GLOBAL.MINUTES",
+            "MD_INPUT_CONTAINER_LABEL_SECONDS": "Seconds"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+sepl-data-operator-repository md-grid-list {
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 100px;
+}
+
+sepl-data-operator-repository .image-wrapper{
+    height: 100%;
+}
+
+sepl-data-operator-repository md-grid-tile {
+    background: white;
+}
+
+sepl-data-operator-repository md-grid-tile h3 {
+    margin-left:16px;
+}
+
+sepl-data-operator-repository md-list-item {
+    min-height: 36px;
+}
+
+
+sepl-data-operator-repository md-list-item::before {
+    min-height: 24px;
+}
+
+
+sepl-data-operator-repository md-grid-tile md-content {
+    padding-top: 12px;
+    padding-left: 16px;
+}
+
+sepl-data-operator-repository md-grid-tile-footer {
+    background: white!important;
+    height: 68px!important;
+    color: black!important;
+}
+
+sepl-data-operator-repository md-grid-tile-footer figcaption {
+    width: 100%;
+}
+
+sepl-data-operator-repository md-grid-tile-footer .first-line {
+    font-size: 16px;
+}
+
+sepl-data-operator-repository md-grid-tile-footer .second-line {
+    font-size: 14px;
+}
+
+sepl-data-operator-repository md-grid-tile-footer .caption {
+    padding-left: 16px;
+}

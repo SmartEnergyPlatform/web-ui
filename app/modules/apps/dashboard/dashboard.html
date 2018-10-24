@@ -1,0 +1,79 @@
+<div layout="column" layout-fill>
+    <md-tabs md-selected="$ctrl.selectedIndex" class="tab" layout="column" flex>
+        <md-tab ng-repeat="(tabNo, tab) in $ctrl.tabs" layout="column" flex>
+            <md-tab-label>{{tab.title}}
+            </md-tab-label>
+            <md-tab-body>
+                <div layout="row" layout-align="end center" layout-margin>
+
+                    <md-menu>
+                        <md-button class="md-icon-button" ng-click="$ctrl.openMenu($mdMenu, $event)">
+                            <md-tooltip>{{'DASHBOARD.AUTO_RENEW_TOOLTIP' | translate}}</md-tooltip>
+                            <md-icon>autorenew</md-icon>
+                        </md-button>
+                        <md-menu-content width="4">
+                            <md-menu-item>
+                                <md-button ng-click="$ctrl.setRefresh(5)">
+                                    5 Sekunden
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="$ctrl.setRefresh(15)">
+                                    15 Sekunden
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="$ctrl.setRefresh(30)">
+                                    30 Sekunden
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="$ctrl.setRefresh(60)">
+                                    1 Minute
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-divider></md-menu-divider>
+                            <md-menu-item>
+                                <md-button ng-click="$ctrl.setRefresh(0)">
+                                    Kein Refresh
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                    <div ng-if="$ctrl.refresh > 0">
+                        {{ $ctrl.refresh }} Sekunden
+                    </div>
+                    <md-button class="md-icon-button" ng-click="$ctrl.showNewViewDialog($event, $ctrl)">
+                        <md-tooltip>{{'DASHBOARD.MD_TAB_BODY_TOOLTIP_ADD' | translate}}</md-tooltip>
+                        <md-icon>add</md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" ng-disabled="$ctrl.tabs.length === 1"
+                               ng-click="$ctrl.showConfirmDelete()">
+                        <md-tooltip>{{'DASHBOARD.MD_TAB_BODY_TOOLTIP_DELETE' | translate}}</md-tooltip>
+                        <md-icon>delete</md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" ng-click="$ctrl.showChangeViewDialog($event, $ctrl)">
+                        <md-tooltip>{{'DASHBOARD.MD_TAB_BODY_TOOLTIP_SETTINGS' | translate}}</md-tooltip>
+                        <md-icon>settings</md-icon>
+                    </md-button>
+                </div>
+                <div layout-margin>
+                    <md-grid-list md-cols-gt-md="2" md-cols="1" md-cols-md="1"
+                                  md-cols-gt-lg="3" md-row-height="4:3"
+                                  md-gutter="16px" flex>
+                        <md-grid-tile ng-repeat="item in $ctrl.items" ng-drop="true" ng-if="$ctrl.selectedIndex == tabNo"
+                                      ng-drop-success="$ctrl.onDropComplete($index, $data, $event)">
+                            <sepl-apps-dashboard-chart on-delete="$ctrl.deleteIndex(index, id)" refresh="$ctrl.refresh"
+                                                       chart="item" layout-fill></sepl-apps-dashboard-chart>
+                        </md-grid-tile>
+                        <md-grid-tile class="addWidget">
+                            <a ng-click="$ctrl.newWidget()" layout-fill>
+                                <md-icon>add</md-icon>
+                            </a>
+                        </md-grid-tile>
+                    </md-grid-list>
+                </div>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</div>

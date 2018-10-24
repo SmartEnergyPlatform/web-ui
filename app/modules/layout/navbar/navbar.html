@@ -1,0 +1,5 @@
+<md-nav-bar md-selected-nav-item="$ctrl.currentNavItem" aria-label="Subnavigation">
+    <md-nav-item ng-repeat="item in $ctrl.navItems" sref-opts="item.sref_opt || null" md-nav-sref="{{item.name}}" name="{{item.name}}">
+        {{item.label | translate}}
+    </md-nav-item>
+</md-nav-bar>

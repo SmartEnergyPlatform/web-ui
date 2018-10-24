@@ -1,0 +1,66 @@
+.monitor-details {
+    border: 1px solid lightgrey;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: inherit;
+    font-variant: inherit;
+    font-family: inherit;
+    color: dimgrey;
+    background-color: rgba(155, 155, 155);
+}
+
+.monitor-details .details-button-icon.toggled {
+    display: block;
+    margin-left: auto;
+    vertical-align: middle;
+    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transition: transform 0.3s ease-in-out;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+}
+
+.monitor-details .details-button-icon{
+    display: inline-block;
+    margin: auto 0 auto auto;
+    transition: transform .3s linear;
+    -webkit-transition: -webkit-transform .3s linear;
+}
+
+.monitor-details .details-button {
+    display: block;
+    padding: 0 16px 0 16px;
+    text-transform: none;
+    border-radius: 0;
+    cursor: pointer;
+    line-height: 20px;
+    vertical-align: middle;
+    margin: auto 0 auto auto;
+    max-height: 20px;
+    overflow: hidden;
+    text-align: left;
+    text-decoration: none;
+    white-space: normal;
+    width: 100%;
+}
+
+.monitor-details .details-button.toggled {
+    background-color: rgba(158, 158, 158, 0.2);
+}
+
+.monitor-details .details-toggle-list.toggled {
+    height: 300px;
+}
+
+.monitor-details .details-toggle-list {
+    padding: 0px 16px 0 16px;
+    overflow: hidden;
+    position: relative;
+    height: 0px;
+    z-index: 1;
+    -webkit-transition: 0.4s cubic-bezier(0.35, 0, 0.25, 1);
+    -webkit-transition-property: height;
+    -moz-transition: 0.4s cubic-bezier(0.35, 0, 0.25, 1);
+    -moz-transition-property: height;
+    transition: 0.4s cubic-bezier(0.35, 0, 0.25, 1);
+    transition-property: height
+}

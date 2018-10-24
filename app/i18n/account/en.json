@@ -1,0 +1,32 @@
+{
+  "ACCOUNT": {
+    "SETTINGS": {
+      "MD_TOOLBAR_LABEL_LANGUAGE": "Language",
+      "MD_TOOLBAR_LABEL_ACCOUNT": "Account",
+      "MD_TOOLBAR_LABEL_PASSWORD": "Password",
+      "MD_TOOLBAR_LABEL_SESSIONS": "Sessions",
+      "MD_SELECT_OPTION_LABEL_GERMAN": "German",
+      "MD_SELECT_OPTION_LABEL_ENGLISH": "English",
+      "MD_BUTTON_LABEL_SAVE": "Save",
+      "MD_BUTTON_LABEL_UPDATE": "Update",
+      "MD_FORM_INPUT_CONTAINER_LABEL_E_MAIL": "Email address",
+      "MD_FORM_INPUT_CONTAINER_WARNING_E_MAIL_REQUIRED": "Email address required",
+      "MD_FORM_INPUT_CONTAINER_LABEL_FIRST_NAME": "First name",
+      "MD_FORM_INPUT_CONTAINER_WARNING_FIRST_NAME_REQUIRED": "First name required",
+      "MD_FORM_INPUT_CONTAINER_LABEL_SURNAME": "Surname",
+      "MD_FORM_INPUT_CONTAINER_WARNING_SURNAME_REQUIRED": "Surname required",
+      "MD_FORM_BUTTON_LABEL_UPDATE": "Update",
+      "MD_INPUT_CONTAINER_LABEL_NEW_PASSWORD": "New password",
+      "MD_INPUT_CONTAINER_LABEL_CONFIRM_PASSWORD": "Confirm new password"
+    },
+    "FUNCTIONS": {
+      "CREATE_TABLE_COLUMNS": {
+        "IP": "IP",
+        "STARTED": "Started",
+        "LAST_ACCESS": "Last Access",
+        "EXPIRES": "Expires",
+        "CLIENTS": "Clients"
+      }
+    }
+  }
+}

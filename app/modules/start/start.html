@@ -1,0 +1,185 @@
+<md-progress-circular md-mode="indeterminate"
+                      ng-show="!($ctrl.quickAccessLoaded && $ctrl.deviceChartsLoaded && $ctrl.gatewayChartsLoaded
+                      && $ctrl.processChartExecutionLoaded && $ctrl.processChartHistoryLoaded && $ctrl.processChartStatusHistoryLoaded)"
+                      class="md-progress-circular md-hue-2"
+                      md-diameter="50"></md-progress-circular>
+<div layout-margin
+     ng-if="($ctrl.quickAccessLoaded && $ctrl.deviceChartsLoaded && $ctrl.gatewayChartsLoaded
+     && $ctrl.processChartExecutionLoaded && $ctrl.processChartHistoryLoaded && $ctrl.processChartStatusHistoryLoaded)">
+    <md-subheader class="md-no-sticky">{{'START.STARTPAGE.MD_SUBHEADER_PROCESSES' | translate}}</md-subheader>
+    <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="4" md-cols-xl="4" md-row-height="130px"
+                  md-gutter="16px">
+
+        <md-grid-tile ng-repeat="chart in $ctrl.processCharts"
+                      md-whiteframe="1" md-rowspan="2">
+
+            <div layout="column" layout-fill>
+                <div class="list-header">{{chart.title}}</div>
+                <md-divider></md-divider>
+                <div flex>
+                    <sepl-start-chart chart="chart" layout-fill></sepl-start-chart>
+                </div>
+            </div>
+
+        </md-grid-tile>
+
+        <md-grid-tile md-whiteframe="1" md-rowspan="1">
+            <div layout="row" flex="30" class="widget-icon-blue" layout-fill layout-align="center center">
+                <md-icon class="white md-48" ng-bind="'storage'"></md-icon>
+            </div>
+            <div layout="column" flex="70" layout-fill>
+                <div class="kpi-header">{{'START.STARTPAGE.MD_GRID_TILE_LIST_TILE_AVAILABLE' | translate}}</div>
+                <div class="kpi"> {{$ctrl.processesAvailable}}</div>
+            </div>
+        </md-grid-tile>
+
+        <md-grid-tile md-whiteframe="1" md-rowspan="2">
+            <div layout="column" layout-fill>
+                <div class="list-header">{{'START.STARTPAGE.MD_GRID_TILE_LIST_TILE_LATEST_PROCESS_MODELS' | translate}}</div>
+                <md-divider></md-divider>
+                <div ng-if="$ctrl.repoItems.length == 0" layout="row" layout-align="center center" flex>
+                    {{'START.STARTPAGE.MD_GRID_TILE_EXCEPTION_IF_REPO_ITEMS_EQUAL_ZERO' | translate}}
+                </div>
+                <md-content ng-if="$ctrl.repoItems.length > 0" flex>
+                    <md-list>
+                        <md-list-item class="md-2-line" ng-repeat="item in $ctrl.repoItems | orderBy:'date':true | limitTo:10">
+
+                            <div class="md-list-item-text" layout="column">
+                                <h3>{{item.name}}</h3>
+                                <p>{{item.formattedDate}}</p>
+                            </div>
+                            <a ui-sref="processes.designer.process({ id: item.id })" class="md-secondary">
+                                <md-icon class="green md-30" ng-bind="'mode_edit'"></md-icon>
+                            </a>
+                            <md-divider ng-if="!$last"></md-divider>
+                        </md-list-item>
+
+                    </md-list>
+                </md-content>
+
+            </div>
+        </md-grid-tile>
+
+        <md-grid-tile md-whiteframe="1" md-rowspan="1">
+            <div layout="row" flex="30" class="widget-icon-orange" layout-fill layout-align="center center">
+                <md-icon class="white md-48" ng-bind="'publish'"></md-icon>
+            </div>
+            <div layout="column" flex="70" layout-fill>
+                <div class="kpi-header">{{'START.STARTPAGE.MD_GRID_TILE_LIST_TILE_EXECUTABLE' | translate}}</div>
+                <div class="kpi"> {{$ctrl.processesExecutable}}</div>
+            </div>
+        </md-grid-tile>
+
+    </md-grid-list>
+
+    <md-divider class="divider-margin"></md-divider>
+
+    <md-subheader class="md-no-sticky">{{'START.STARTPAGE.MD_SUBHEADER_DEVICES' | translate}}</md-subheader>
+
+    <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="2" md-cols-lg="4" md-cols-xl="4" md-row-height="8:2"
+                  md-gutter="16px">
+
+        <md-grid-tile ng-repeat="chart in $ctrl.deviceCharts"
+                      md-whiteframe="1" md-colspan="{{chart.colspan}}" md-rowspan="3">
+            <div layout="column" layout-fill>
+                <div class="list-header">{{chart.title}}</div>
+                <md-divider></md-divider>
+                <div flex>
+                    <sepl-start-chart chart="chart" layout-fill></sepl-start-chart>
+                </div>
+            </div>
+        </md-grid-tile>
+
+        <md-grid-tile md-whiteframe="1" md-rowspan="1">
+            <div layout="row" flex="30" class="widget-icon-green" layout-fill layout-align="center center">
+                <md-icon class="md-40" md-svg-src="img/connect_white.svg"></md-icon>
+            </div>
+            <div layout="column" flex="70" layout-fill>
+                <div class="kpi-header-1-3">{{'START.STARTPAGE.MD_GRID_TILE_LIST_TILE_ONLINE' | translate}}</div>
+                <div layout="row">
+                    <div class="kpi-1-3">{{$ctrl.deviceChartStatusCountData.connected}}</div>
+                    <div class="kpi-text-1-3"> / {{$ctrl.deviceChartStatusCountData.disconnected +
+                        $ctrl.deviceChartStatusCountData.connected +
+                        $ctrl.deviceChartStatusCountData.unknown}}
+                    </div>
+                </div>
+            </div>
+        </md-grid-tile>
+
+        <md-grid-tile md-whiteframe="1" md-rowspan="3">
+            <div layout="column" layout-fill>
+                <div class="list-header">{{'START.STARTPAGE.MD_GRID_TILE_LIST_TITLE_FAILURES_LAST_SEVEN_DAYS' | translate}}</div>
+                <md-divider></md-divider>
+                <div ng-if="$ctrl.deviceFailureRate.length == 0" layout="row" layout-align="center center" flex>
+                    {{'START.STARTPAGE.MD_GRID_TILE_EXCEPTION_IF_FAILURE_RATE_EQUAL_ZERO' | translate}}
+                </div>
+                <md-content ng-if="$ctrl.deviceFailureRate.length > 0" flex>
+                    <md-list>
+                        <md-list-item class="md-2-line"
+                                      ng-repeat="item in $ctrl.deviceFailureRate | limitTo:50">
+                            <div class="rank"><h3>{{$index + 1}}. </h3></div>
+                            <div class="md-list-item-text" layout="column">
+                                <h3>{{item.name}}</h3>
+                                <p>{{item.timeDisconnected}} {{'START.STARTPAGE.MD_GRID_TILE_CONTENT_FAILURE_RATE_IN_MINUTES' | translate}} / {{item.failureRate}} {{'START.STARTPAGE.MD_GRID_TILE_CONTENT_TIME_DISCONNECTED_TIMES' | translate}} </p>
+                            </div>
+                            <div class="md-secondary">
+                                <md-icon ng-if="item.timeDisconnected >= 2880" class="md-48 red"
+                                         ng-bind="'sentiment_very_dissatisfied'"></md-icon>
+                                <md-icon ng-if="item.timeDisconnected >= 60 && item.timeDisconnected < 2880"
+                                         class="md-48 yellow"
+                                         ng-bind="'sentiment_neutral'"></md-icon>
+                                <md-icon ng-if="item.timeDisconnected < 60" class="md-48 green"
+                                         ng-bind="'sentiment_very_satisfied'"></md-icon>
+                            </div>
+                            <md-divider ng-if="!$last"></md-divider>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
+            </div>
+        </md-grid-tile>
+
+        <md-grid-tile md-whiteframe="1" md-rowspan="1">
+            <div layout="row" flex="30" class="widget-icon-red" layout-fill layout-align="center center">
+                <md-icon class="md-40" md-svg-src="img/disconnect_white.svg"></md-icon>
+            </div>
+            <div layout="column" flex="70" layout-fill>
+                <div class="kpi-header-1-3">{{'START.STARTPAGE.MD_GRID_TILE_LIST_TITLE_OFFLINE' | translate}}</div>
+                <div layout="row">
+                    <div class="kpi-1-3">{{$ctrl.deviceChartStatusCountData.disconnected}}</div>
+                    <div class="kpi-text-1-3"> / {{$ctrl.deviceChartStatusCountData.disconnected +
+                        $ctrl.deviceChartStatusCountData.connected +
+                        $ctrl.deviceChartStatusCountData.unknown}}
+                    </div>
+                </div>
+            </div>
+        </md-grid-tile>
+
+        <md-grid-tile md-whiteframe="1" md-rowspan="1">
+            <div layout="row" flex="30" class="widget-icon-orange" layout-fill layout-align="center center">
+                <md-icon class="white md-40" ng-bind="'help outline'"></md-icon>
+            </div>
+            <div layout="column" flex="70" layout-fill>
+                <div class="kpi-header-1-3">{{'START.STARTPAGE.MD_GRID_TILE_LIST_TITLE_UNKNOWN' | translate}}</div>
+                <div layout="row">
+                    <div class="kpi-1-3">{{$ctrl.deviceChartStatusCountData.unknown}}</div>
+                    <div class="kpi-text-1-3"> / {{$ctrl.deviceChartStatusCountData.disconnected +
+                        $ctrl.deviceChartStatusCountData.connected +
+                        $ctrl.deviceChartStatusCountData.unknown}}
+                    </div>
+                </div>
+            </div>
+        </md-grid-tile>
+
+    </md-grid-list>
+</div>
+
+
+
+
+
+
+
+
+
+
+

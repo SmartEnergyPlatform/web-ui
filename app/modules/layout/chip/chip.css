@@ -1,0 +1,13 @@
+.md-chips.md-removable md-chip .md-chip-content {
+    padding-right: 8px;
+}
+
+md-chips-wrap:focus {
+    outline: none;
+    border: 0;
+}
+
+md-chips {
+    margin-left: 16px;
+    margin-bottom: 16px;
+}

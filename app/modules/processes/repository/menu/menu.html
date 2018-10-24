@@ -1,0 +1,90 @@
+<md-menu md-offset="{{$ctrl.menuOffset}}">
+    <md-button class="md-icon-button" ng-click="$mdMenu.open()">
+        <md-icon>more_vert</md-icon>
+    </md-button>
+    <md-menu-content>
+        <md-menu-item>
+            <md-button
+                    ui-sref="processes.designer.process({ id: $ctrl.item.id })">
+                <md-icon>open_in_new</md-icon>
+                {{'REPOSITORY.PROCESS_ELEMENT.MD_BUTTON_OPEN' |
+                translate}}
+            </md-button>
+        </md-menu-item>
+        <md-divider></md-divider>
+        <md-menu-item>
+            <md-button ng-click="$ctrl.permission($ctrl.item.id)"
+                       md-menu-align-target>
+                <md-icon>folder_shared</md-icon>
+                {{'REPOSITORY.PROCESS_ELEMENT.MD_BUTTON_SHARE' |
+                translate}}
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ng-click="$ctrl.downloadBPMN($ctrl.item.id, $ctrl.item.name)"
+                       md-menu-align-target>
+                <md-icon>code</md-icon>
+                {{'REPOSITORY.PROCESS_ELEMENT.MD_BUTTON_DOWNLOAD_DIAGRAM'
+                | translate}}
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button
+                    ng-click="$ctrl.downloadSVG($ctrl.item.svg, $ctrl.item.name)">
+                <md-icon>image</md-icon>
+                {{'REPOSITORY.PROCESS_ELEMENT.MD_BUTTON_DOWNLOAD_IMAGE'
+                | translate}}
+            </md-button>
+        </md-menu-item>
+        <md-divider></md-divider>
+        <md-menu-item ng-if="$ctrl.item.publish">
+            <md-button
+                    ng-click="$ctrl.hideProcessFromMarketplace($event, $ctrl.item)">
+                <md-icon>public</md-icon>
+                {{'REPOSITORY.PROCESS_ELEMENT.MD_BUTTON_PUBLISH_HIDE' |
+                translate}}
+            </md-button>
+        </md-menu-item>
+        <md-menu-item ng-if="$ctrl.item.publish != true">
+            <md-button
+                    ng-click="$ctrl.addProcessToMarketplace($event, $ctrl.item)">
+                <md-icon>public</md-icon>
+                {{'REPOSITORY.PROCESS_ELEMENT.MD_BUTTON_PUBLISH_SHARE' |
+                translate}}
+            </md-button>
+        </md-menu-item>
+        <div ng-if="$ctrl.item.publish">
+            <md-menu-item>
+                <md-button
+                        ng-click="$ctrl.changeMarketplaceDescription($event, $ctrl.item)">
+                    <md-icon>title</md-icon>
+                    {{'REPOSITORY.PROCESS_ELEMENT.MD_BUTTON_PUBLISH_DESCRIPTION' |
+                    translate}}
+                </md-button>
+            </md-menu-item>
+            <md-divider></md-divider>
+        </div>
+        <md-menu-item>
+            <md-button ng-click="$ctrl.showConfirmClone($event, $ctrl.item)">
+                <md-icon>content_copy</md-icon>
+                {{'REPOSITORY.PROCESS_ELEMENT.MD_BUTTON_COPY' |
+                translate}}
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ng-click="$ctrl.showConfirmDeploy($event, $ctrl.item)">
+                <md-icon>publish</md-icon>
+                {{'REPOSITORY.PROCESS_ELEMENT.MD_BUTTON_DEPLOY' |
+                translate}}
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button
+                    ng-click="$ctrl.showConfirmDelete($event, $ctrl.item.id)">
+                <md-icon>delete</md-icon>
+                {{'REPOSITORY.PROCESS_ELEMENT.MD_BUTTON_DELETE' |
+                translate}}
+            </md-button>
+        </md-menu-item>
+    </md-menu-content>
+</md-menu>

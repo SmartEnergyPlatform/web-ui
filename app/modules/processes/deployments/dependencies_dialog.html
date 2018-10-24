@@ -1,0 +1,35 @@
+<md-dialog aria-label="{{ 'DEPLOYMENTS.DEPENDENCIES_DIALOG.MD_DIALOG_ARIA_LABEL_DEPENDENCIES' | translate }}" class="iot-wizard-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{ 'DEPLOYMENTS.DEPENDENCIES_DIALOG.MD_DIALOG_FORM_TOOLBAR_HEADLINE_DEPENDENCIES' | translate }}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon>close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+            <h3 ng-if="dependencies.abstract.abstract_tasks.length > 0">{{ 'DEPLOYMENTS.DEPENDENCIES_DIALOG.MD_DIALOG_CONTENT_HEADLINE_DEVICES' | translate }}</h3>
+            <div ng-repeat="param in dependencies.abstract.abstract_tasks">
+                {{param.selected.name}}, state: {{param.state || 'DEPLOYMENTS.DEPENDENCIES_DIALOG.MD_DIALOG_CONTENT_DEPENDENCIES_PARAMETER_EXECEPTION_IF_UNKNOWN' | translate}}
+            </div>
+            <h3 ng-if="dependencies.abstract.msg_events.length > 0">{{ 'DEPLOYMENTS.DEPENDENCIES_DIALOG.MD_DIALOG_CONTENT_HEADLINE_EVENTS' | translate }}</h3>
+            <div ng-repeat="event in dependencies.abstract.msg_events">
+                Filter {{event.filter_id}} for {{event.shape_id}}, state: {{param.state || 'DEPLOYMENTS.DEPENDENCIES_DIALOG.MD_DIALOG_CONTENT_DEPENDENCIES_PARAMETER_EXECEPTION_IF_UNKNOWN' | translate}}
+            </div>
+            <h3 ng-if="dependencies.abstract.receive_tasks.length > 0">{{ 'DEPLOYMENTS.DEPENDENCIES_DIALOG.MD_DIALOG_CONTENT_HEADLINE_EVENTS' | translate }}</h3>
+            <div ng-repeat="event in dependencies.abstract.receive_tasks">
+                Filter {{event.filter_id}} for {{event.shape_id}}, state: {{param.state || 'DEPLOYMENTS.DEPENDENCIES_DIALOG.MD_DIALOG_CONTENT_DEPENDENCIES_PARAMETER_EXECEPTION_IF_UNKNOWN' | translate}}
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="ok()" >
+                {{ 'DEPLOYMENTS.DEPENDENCIES_DIALOG.MD_DIALOG_ACTIONS_BUTTON_LABEL_OK' | translate }}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

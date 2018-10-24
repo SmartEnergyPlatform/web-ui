@@ -1,0 +1,28 @@
+<md-dialog aria-label="Invalid Lanes" class="iot-wizard-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'DESIGNER.INVALID_LANES.HEADLINE_TOOLBAR_TOOLS' | translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="close()">
+                    <md-icon>close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+            {{'DESIGNER.INVALID_LANES.MD_DIALOG_CONTENT' | translate}}
+            <div class="md-block" ng-repeat="lanes in msg">
+                {{lanes.id}} {{lanes.name ? '('+lanes.name+')' : ''}}
+            </div>
+
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="close()">
+                {{'DESIGNER.MD_BUTTON_CLOSE' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,32 @@
+{
+  "ACCOUNT": {
+    "SETTINGS": {
+      "MD_TOOLBAR_LABEL_LANGUAGE": "Sprache",
+      "MD_TOOLBAR_LABEL_ACCOUNT": "Account",
+      "MD_TOOLBAR_LABEL_PASSWORD": "Passwort",
+      "MD_TOOLBAR_LABEL_SESSIONS": "Sitzungen",
+      "MD_SELECT_OPTION_LABEL_GERMAN": "Deutsch",
+      "MD_SELECT_OPTION_LABEL_ENGLISH": "Englisch",
+      "MD_BUTTON_LABEL_SAVE": "Speichern",
+      "MD_BUTTON_LABEL_UPDATE": "Aktualisieren",
+      "MD_FORM_INPUT_CONTAINER_LABEL_E_MAIL": "E-Mail-Adresse",
+      "MD_FORM_INPUT_CONTAINER_WARNING_E_MAIL_REQUIRED": "Bitte geben Sie eine E-Mail-Adresse an",
+      "MD_FORM_INPUT_CONTAINER_LABEL_FIRST_NAME": "Vorname",
+      "MD_FORM_INPUT_CONTAINER_WARNING_FIRST_NAME_REQUIRED": "Bitte geben Sie einen Vornamen an",
+      "MD_FORM_INPUT_CONTAINER_LABEL_SURNAME": "Nachname",
+      "MD_FORM_INPUT_CONTAINER_WARNING_SURNAME_REQUIRED": "Bitte geben Sie einen Nachnamen an",
+      "MD_FORM_BUTTON_LABEL_UPDATE": "Aktualisieren",
+      "MD_INPUT_CONTAINER_LABEL_NEW_PASSWORD": "Neues Passwort",
+      "MD_INPUT_CONTAINER_LABEL_CONFIRM_PASSWORD": "Neues Passwort bestätigen"
+    },
+    "FUNCTIONS": {
+      "CREATE_TABLE_COLUMNS": {
+        "IP": "IP",
+        "STARTED": "Gestartet",
+        "LAST_ACCESS": "Letzter Zugriff",
+        "EXPIRES": "Läuft ab",
+        "CLIENTS": "Clienten"
+      }
+    }
+  }
+}

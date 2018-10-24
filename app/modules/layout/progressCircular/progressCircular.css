@@ -1,0 +1,16 @@
+.md-progress-circular-next {
+    position: relative!important;
+    height: 125px!important; /* prevent progress circular from bumping at the bottom of the page */
+    margin: 0 auto!important;
+}
+
+md-progress-circular {
+    position: absolute;
+    width: 0;
+    z-index: 2000000000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}

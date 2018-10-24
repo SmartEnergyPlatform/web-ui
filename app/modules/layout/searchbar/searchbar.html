@@ -1,0 +1,7 @@
+<div layout-margin>
+    <div class="searchWrapper">
+        <span class="icon"><md-icon ng-if="searchText === '' || searchText === undefined">search</md-icon></span><span class="icon-button"><md-button
+            ng-click="$ctrl.reset()" ng-if="searchText !== '' && searchText !== undefined" class="md-icon-button"><md-icon>close</md-icon></md-button></span>
+        <input type="search" ng-model="searchText" id="search" placeholder="{{'SEARCHBAR.PLACEHOLDER' | translate}}">
+    </div>
+</div>

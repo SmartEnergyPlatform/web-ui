@@ -1,0 +1,53 @@
+<md-card ng-repeat="(input_no, input) in $ctrl.inputs">
+    <md-card-header>
+        {{ input.name }}
+    </md-card-header>
+    <md-card-content>
+        <div ng-repeat="(connector_no, connector) in input.connectors">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'FLOWREPOSITORY.DEPLOY.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_IOT' | translate}}</label>
+                <md-select md-selected-text="$ctrl.inputs[input_no].connectors[connector_no].device.name || $ctrl.inputs[input_no].connectors[connector_no].device.id|| ('FLOWREPOSITORY.DEPLOY.MD_CARD_CONTENT_SELECT_TEXT_IOT' | translate)"
+                           ng-model="connector.device"
+                           ng-change="$ctrl.getServiceList(connector.id, input_no, connector_no)"
+                           data-md-container-class="selectdemoSelectHeader" md-on-close="$ctrl.clearSearch(connector.id)"
+                           md-on-open="$ctrl.load()">
+                    <md-select-header class="demo-select-header">
+                        <input ng-model="$ctrl.searchInfo.term"
+                               ng-change="$ctrl.search()"
+                               type="search"
+                               placeholder="{{'FLOWREPOSITORY.DEPLOY.MD_CARD_CONTENT_INPUT_CONTAINER_PLACEHOLDER' | translate }}"
+                               class="demo-header-searchbox md-text"
+                               ng-keydown="$event.stopPropagation()"
+                        />
+                    </md-select-header>
+                    <md-optgroup label="entities">
+                        <md-option ng-value="e" ng-repeat="e in $ctrl.deviceList">
+                            {{e.name}} {{e.id}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+            <br/>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'FLOWREPOSITORY.DEPLOY.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_SERVICE' | translate}}</label>
+                <md-select md-selected-text="$ctrl.inputs[input_no].connectors[connector_no].service.name || $ctrl.inputs[input_no].connectors[connector_no].service.id || ('FLOWREPOSITORY.DEPLOY.MD_CARD_CONTENT_SELECT_TEXT_SERVICE' | translate)"
+                           ng-model="connector.service">
+                    <md-optgroup label="entities">
+                        <md-option ng-value="e" ng-repeat="e in $ctrl.deviceTypes[connector.id].services">
+                            {{e.name}} {{e.id}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{connector.value.name}}</label>
+                <input ng-model="connector.path">
+            </md-input-container>
+        </div>
+    </md-card-content>
+</md-card>
+<div layout="row">
+    <md-button ng-click="$ctrl.startPipeline()" type="submit" class="md-primary md-raised">
+        {{'FLOWREPOSITORY.DEPLOY.MD_CARD_CONTENT_BUTTON_START_FLOW' | translate}}
+    </md-button>
+</div>

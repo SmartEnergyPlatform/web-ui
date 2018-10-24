@@ -1,0 +1,93 @@
+sepl-marketplace-processes-widget .shortenText {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+sepl-marketplace-processes-widget .widget-bottom-text {
+     padding-top: 16px;
+     padding-bottom: 16px;
+     padding-right: 16px;
+     padding-left: 16px;
+ }
+
+sepl-marketplace-processes-widget .star {
+    margin-left: -2px;
+    margin-right: -2px;
+    color: #2e7d32;
+}
+
+sepl-marketplace-processes-widget .image-background-color {
+    background: whitesmoke;
+}
+
+.details-dialog .rating-big {
+    font-weight: 200;
+    font-size: 48px;
+}
+
+.details-dialog .stars-small {
+    margin-right: -6px;
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+}
+
+.details-dialog .stars-big {
+    margin-left: -1px;
+    margin-right: -1px;
+    cursor: pointer
+}
+
+.details-dialog .star-color {
+    color: #2e7d32;
+}
+
+.details-dialog .rating-people {
+    padding-left: 4px;
+}
+
+.details-dialog .rating-widget-left, .details-dialog .rating-widget-right {
+    padding-top: 4px;
+
+}
+
+.details-dialog .rating-widget-mid {
+    padding: 4px 16px;
+}
+
+.details-dialog .rating-widget-mid-padding {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.details-dialog .rating-picture {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.details-dialog .rating-header {
+    font-size: 30px;
+    font-weight: 300;
+    padding-bottom: 8px;
+}
+
+.details-dialog .rating-bottom-widget {
+    padding-top: 4px;
+    padding-left: 4px;
+}
+
+.details-dialog .rating-bottom-widget-header {
+    font-weight: 600;
+}
+
+.details-dialog .rating-min-dialog-size {
+    min-width: 50vw;
+}
+
+.details-dialog .subheader {
+    font-weight: 500;
+}
+
+
+

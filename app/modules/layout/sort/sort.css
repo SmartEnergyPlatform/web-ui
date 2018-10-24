@@ -1,0 +1,18 @@
+sepl-sort .md-button {
+    text-transform: none;
+    min-width: 0;
+    font-size: 14px;
+    color: dimgrey;
+    margin: 0;
+    padding: 0;
+}
+
+sepl-sort .md-button.md-icon-button {
+    min-width: 0;
+    margin:0;
+    padding: 0;
+}
+
+sepl-sort .material-icons {
+    font-size: 21px;
+}

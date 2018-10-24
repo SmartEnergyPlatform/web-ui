@@ -1,0 +1,161 @@
+<md-dialog>
+    <md-dialog-content>
+        <div class="md-dialog-content details-dialog">
+            <div layout="row">
+
+                <div flex layout="row" layout-align="start center" class="rating-header rating-min-dialog-size">
+                    {{items.name}}
+                </div>
+                <div>
+                    <md-button class="md-icon-button" ng-click="close()">
+                        <md-icon>close</md-icon>
+                    </md-button>
+                </div>
+            </div>
+            <div class="subheader">
+                {{items.description}}
+            </div>
+            <div layout="row" layout-align="center center">
+                <img class="rating-picture" ng-src="{{items.image}}">
+            </div>
+
+            <md-divider></md-divider>
+
+            <div layout="row">
+                <div flex="75" layout-fill class="rating-widget-left" ng-if="!starsProcess">
+                    <div>
+                        {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_EXCEPTION_NO_RATINGS_AVAIABLE' | translate }}
+                    </div>
+                </div>
+                <div flex="25" layout-fill class="rating-widget-left" ng-if="starsProcess">
+                    <div layout="column" layout-align="center center" layout-fill>
+                        <div class="rating-big">{{starsProcess}}</div>
+                        <div layout="row">
+                            <div ng-repeat="i in [1,2,3,4,5]">
+                                <md-icon ng-if="starsProcess  == 0" class="stars-small star-color"
+                                         ng-bind="'star_border'"></md-icon>
+                                <md-icon ng-if="i <= starsProcess && starsProcess != 0"
+                                         class="stars-small star-color" ng-bind="'star'"></md-icon>
+                                <md-icon ng-if="i  > starsProcess && starsProcess != 0 && i - starsProcess < 0.5"
+                                         class="stars-small star-color" ng-bind="'star_half'"></md-icon>
+                                <md-icon ng-if="i  > starsProcess && starsProcess != 0 && i - starsProcess >= 0.5"
+                                         class="stars-small star-color" ng-bind="'star_border'"></md-icon>
+
+                            </div>
+                        </div>
+                        <div layout="row" layout-align="center center">
+                            <div>{{rating}}</div>
+                            <md-icon class="rating-people" ng-bind="'people'"></md-icon>
+                        </div>
+                    </div>
+                </div>
+                <div flex="50" layout-fill class="rating-widget-mid" ng-if="starsProcess">
+                    <div layout="row">
+                        <div flex layout="column" layout-align="center start" class="rating-widget-mid-padding">
+                            {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_RATING_WIDGET_LABEL_RATING' | translate }}
+                        </div>
+                        <div flex layout="column" layout-align="center end" class="rating-widget-mid-padding">
+                            {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_RATING_WIDGET_LABEL_COUNTS' | translate }}
+                        </div>
+                    </div>
+                    <div layout="column">
+                        <div ng-repeat="item in starRatings">
+                            <div layout="row" layout-align="center center">
+                                <div class="rating-widget-mid-padding">{{item.star}}</div>
+                                <md-progress-linear md-mode="determinate"
+                                                    value="{{item.starRatio}}">
+                                </md-progress-linear>
+                                <div class="rating-widget-mid-padding">{{item.rating}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div flex="25" class="rating-widget-right">
+                    <div layout="column" layout-align="start center" layout-fill>
+                        <div>
+                            {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_SELF_RATING_WIDGET_LABEL_OWN_RATING' | translate }}
+                        </div>
+                        <div layout="row">
+                            <div ng-repeat="i in [1,2,3,4,5]">
+                                <div ng-switch="status">
+                                    <div ng-switch-when="init">
+                                        <md-icon ng-if="i > starsMarked" class="stars-big"
+                                                 ng-bind="'star'" ng-mouseenter="setStatusMouseOver(i)"></md-icon>
+                                        <md-icon ng-if="i <= starsMarked" class="stars-big star-color"
+                                                 ng-bind="'star'" ng-mouseenter="setStatusMouseOver(i)"></md-icon>
+                                    </div>
+                                    <div ng-switch-when="mouseOver">
+                                        <md-icon ng-if="i > starsMarked" class="stars-big"
+                                                 ng-bind="'star'" ng-mouseleave="setStatusInit()"></md-icon>
+                                        <md-icon ng-if="i <= starsMarked" class="stars-big star-color"
+                                                 ng-bind="'star'" ng-mouseleave="setStatusInit()"
+                                                 ng-click="saveUserRating(i)"></md-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div ng-switch="starsMarked">
+                            <div ng-switch-when="1">
+                                <div>
+                                    {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_SELF_RATING_WIDGET_OPTIONS_AWFUL' | translate }}
+                                </div>
+                            </div>
+                            <div ng-switch-when="2">
+                                <div>
+                                    {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_SELF_RATING_WIDGET_OPTIONS_BAD' | translate }}
+                                </div>
+                            </div>
+                            <div ng-switch-when="3">
+                                <div>
+                                    {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_SELF_RATING_WIDGET_OPTIONS_MEDIOCRE' | translate }}
+                                </div>
+                            </div>
+                            <div ng-switch-when="4">
+                                <div>
+                                    {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_SELF_RATING_WIDGET_OPTIONS_GOOD' | translate }}
+                                </div>
+                            </div>
+                            <div ng-switch-when="5">
+                                <div>
+                                    {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_SELF_RATING_WIDGET_OPTIONS_AWESOME' | translate }}
+                                </div>
+                            </div>
+                            <div ng-switch-default>
+                                <div>&nbsp</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <md-divider></md-divider>
+
+            <div layout="row">
+                <div flex="30" layout="column" class="rating-bottom-widget">
+                    <div class="rating-bottom-widget-header">
+                        {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_META_INFORMATION_LABEL_PUBLISHED' | translate }}
+                    </div>
+                    <div>{{items.formattedPublishDate}}</div>
+                </div>
+                <div flex="30" layout="column" class="rating-bottom-widget">
+                    <div class="rating-bottom-widget-header">
+                        {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_META_INFORMATION_LABEL_LAST_UPDATE' | translate }}
+                    </div>
+                    <div>{{items.formattedDate}}</div>
+                </div>
+                <div flex="30" layout="column" class="rating-bottom-widget">
+                    <div class="rating-bottom-widget-header">
+                        {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_META_INFORMATION_LABEL_CREATOR' | translate }}
+                    </div>
+                    <div>{{owner}}</div>
+                </div>
+                <div flex="10" layout="column" layout-align="center end">
+                    <md-button ng-disabled="takeClicked" class="md-primary md-raised" ng-click="copyProcess()">
+                        {{ 'PROCESSES.DETAILS.MD_DIALOG_CONTENT_BUTTON_LABEL_ADD_RATING' | translate }}
+                    </md-button>
+                </div>
+            </div>
+    </md-dialog-content>
+</md-dialog>
+

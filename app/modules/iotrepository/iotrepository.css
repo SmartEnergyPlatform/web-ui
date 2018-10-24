@@ -1,0 +1,22 @@
+sepl-iot-repository md-card-title .md-subhead p{
+    padding-top: 5px !important;
+    margin: 0px;
+    line-height: 24px !important;
+}
+
+sepl-iot-repository md-card-title .md-headline {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    max-width: 100%;
+    min-height: 32px;
+    white-space: nowrap;
+}
+
+sepl-iot-repository md-card-title .md-subhead {
+    overflow-y: auto;
+    max-height: 140px; /* firefox compatible */
+}
+
+sepl-iot-repository md-card-title-text{
+    max-width: 100%;
+}

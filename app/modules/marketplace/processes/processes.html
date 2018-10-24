@@ -1,0 +1,18 @@
+<md-progress-circular md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-hue-2"
+                      md-diameter="50"></md-progress-circular>
+
+<sepl-navbar></sepl-navbar>
+
+<sepl-searchbar search-text="$ctrl.searchText" on-input-change="$ctrl.searchText = searchText"
+                layout-fill></sepl-searchbar>
+
+<div layout-margin ng-show="$ctrl.requestComplete">
+    <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-cols-xl="6"
+                  md-row-height="250px"
+                  md-gutter="16px">
+
+        <md-grid-tile ng-repeat="process in $ctrl.publishedProcesses | filter: $ctrl.searchText">
+            <sepl-marketplace-processes-widget item="process" layout-fill></sepl-marketplace-processes-widget>
+        </md-grid-tile>
+    </md-grid-list>
+</div>

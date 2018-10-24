@@ -1,0 +1,65 @@
+<div ui-view>
+    <sepl-navbar></sepl-navbar>
+    <sepl-searchbar search-text="$ctrl.searchText" on-input-change="$ctrl.searchText = searchText"></sepl-searchbar>
+    <sepl-sort attributes="$ctrl.sortAttributes" on-click-event="$ctrl.sortItem = sortItem"
+               current-sort-item="$ctrl.sortItem"></sepl-sort>
+    <div layout-margin>
+        <div ng-if="!$ctrl.repoItems.length && $ctrl.requestComplete == true">
+            {{'FLOWREPOSITORY.NO_ELEMENT_TEXT' | translate}}
+        </div>
+    </div>
+    <md-progress-circular md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-progress-circular md-hue-2"
+                          md-diameter="50"></md-progress-circular>
+    <div infinite-scroll="$ctrl.next()" infinite-scroll-distance='1'
+         infinite-scroll-container="'#content'"
+         infinite-scroll-disabled="$ctrl.scrollDisabled">
+        <md-grid-list
+                md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-cols-xl="6" md-row-height="4:3"
+                md-gutter="16px">
+            <md-grid-tile
+                    ng-repeat="item in $ctrl.repoItems"
+                    ng-show="$ctrl.requestComplete" md-whiteframe="1">
+                <md-grid-tile-footer>
+                    <div layout="row" class="caption">
+                        <div layout="row" flex="70" layout-align="left center">
+                            <div layout="column"><span class="md-truncate first-line">{{item.name}} <md-tooltip>{{item.name}}</md-tooltip></span>
+                            </div>
+                        </div>
+                        <div layout="row" layout-align="end center" flex="30">
+                            <md-menu md-offset="-10 40">
+                                <md-button class="md-icon-button" ng-click="$mdMenu.open()">
+                                    <md-icon>more_vert</md-icon>
+                                </md-button>
+                                <md-menu-content>
+                                    <md-menu-item>
+                                        <md-button ui-sref="data.flowrepo.deploy({ id: item.id })">
+                                            <md-icon>play_arrow</md-icon>
+                                            {{'FLOWREPOSITORY.FLOWS.MD_GRID_TILE_FOOTER_MENU_CONTENT_BUTTON_OPEN' |
+                                            translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-divider></md-divider>
+                                    <md-menu-item>
+                                        <md-button ui-sref="data.designer.flow({ id: item.id })">
+                                            <md-icon>open_in_new</md-icon>
+                                            {{'FLOWREPOSITORY.FLOWS.MD_GRID_TILE_FOOTER_MENU_CONTENT_BUTTON_OPEN_IN_NEW'
+                                            |
+                                            translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.showConfirmDelete($event, item.id)">
+                                            <md-icon>delete</md-icon>
+                                            {{'FLOWREPOSITORY.FLOWS.MD_GRID_TILE_FOOTER_MENU_CONTENT_BUTTON_DELETE' |
+                                            translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+                    </div>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+    </div>
+</div>

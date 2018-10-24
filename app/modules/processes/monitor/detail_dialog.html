@@ -1,0 +1,24 @@
+<md-dialog aria-label="Details">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{ 'MONITOR.DETAILS.HEADLINE_DETAILS' | translate}} ({{ 'MONITOR.DETAILS.HEADLINE_INSTANCE_ID' | translate}}: {{info.item.id}})</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="ok()">
+                    <md-icon>close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+                <sepl-monitor-details row="info.item"></sepl-monitor-details>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="ok()">
+                {{ 'MONITOR.MD_BUTTON_OK' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

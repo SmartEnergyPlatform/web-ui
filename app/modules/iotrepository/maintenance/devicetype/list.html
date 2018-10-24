@@ -1,0 +1,96 @@
+<sepl-navbar></sepl-navbar>
+<div layout="row" flex>
+    <sepl-sort attributes="$ctrl.sortAttributes" on-click-event="$ctrl.sortItem = sortItem"
+               current-sort-item="$ctrl.sortItem" flex="100"></sepl-sort>
+</div>
+<md-progress-circular md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-progress-circular md-hue-2"
+                      md-diameter="50"></md-progress-circular>
+<div layout-margin>
+    <div ng-if="!$ctrl.deviceTypes.length && $ctrl.requestComplete">
+        {{'MAINTENANCE.DEVICE_TYPE.NO_ELEMENT_TEXT' | translate}}
+    </div>
+</div>
+<div infinite-scroll="$ctrl.next()" infinite-scroll-distance='1' infinite-scroll-container="'#content'"
+     infinite-scroll-disabled="$ctrl.scrollDisabled">
+    <div layout="column" flex>
+        <md-grid-list
+                md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-cols-xl="6" md-row-height="250px"
+                md-gutter="16px">
+            <md-grid-tile
+                    ng-repeat="devicetype in $ctrl.deviceTypes"
+                    md-whiteframe="1"
+                    ng-cloak>
+                <div class="image-wrapper" layout-align="center start">
+                    <img class="preview" src="img/pexels-photo-825262.jpeg"/>
+                </div>
+                <md-grid-tile-footer>
+                    <div layout="row" class="caption">
+                        <div layout="row" flex="80" layout-align="left center">
+                            <div layout="column"><span class="md-truncate first-line">{{devicetype.name}}
+                        <md-tooltip md-direction="top">{{devicetype.name}}</md-tooltip></span>
+                                <!-- <span class="second-line">{{deviceinstance.intern.device_type.name}}</span> -->
+                            </div>
+                        </div>
+                        <div layout="row" layout-align="end center" flex="20">
+                    <span class="device-{{deviceinstance.intern.state.state}}-state"
+                          ng-if="deviceinstance.intern.state.state">
+                        <md-icon ng-if="deviceinstance.intern.state.state == 'connected'"
+                                 class="connected-icon"
+                                 md-svg-src="img/connect.svg"></md-icon>
+                        <md-icon ng-if="deviceinstance.intern.state.state == 'disconnected'"
+                                 class="disconnected-icon"
+                                 md-svg-src="img/disconnect.svg"></md-icon>
+                        <md-tooltip>
+                            {{deviceinstance.intern.state.state}} since {{deviceinstance.intern.state.timestamp | timeAgo}}
+                        </md-tooltip>
+                    </span>
+                            <md-menu md-offset="-10 40">
+                                <md-button class="md-icon-button" ng-click="$mdMenu.open()">
+                                    <md-icon>more_vert</md-icon>
+                                </md-button>
+                                <md-menu-content>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.showDetail(devicetype)" aria-label="toggle">
+                                            <md-icon>info</md-icon>
+                                            {{'MAINTENANCE.DEVICE_TYPE.MD_GRID_LIST_TILE_FOOTER_MENU_CONTENT_ITEM_BUTTON_LABEL_SERVICES'
+                                            | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ui-sref="iotrepository.wizard.update({ id: devicetype.id })">
+                                            <md-icon>edit</md-icon>
+                                            {{'MAINTENANCE.DEVICE_TYPE.MD_GRID_LIST_TILE_FOOTER_MENU_CONTENT_ITEM_BUTTON_LABEL_EDIT'
+                                            | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+                    </div>
+                </md-grid-tile-footer>
+                <!--
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{devicetype.name || "UNKNOWN_NAME"}}
+                                <md-tooltip>
+                                    {{devicetype.name}}
+                                </md-tooltip>
+                            </span>
+                            <span class="md-subhead">{{devicetype.description}}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button ui-sref="iotrepository.wizard.update({ id: devicetype.id })" class="md-icon-button">
+                            <md-icon>edit</md-icon>
+                            <md-tooltip>{{'EDIT' | translate}}</md-tooltip>
+                        </md-button>
+                        <md-button ng-click="$ctrl.showDetail(devicetype)" class="md-icon-button" aria-label="toggle">
+                            <md-icon>info</md-icon>
+                        </md-button>
+                    </md-card-actions>
+                </md-card> -->
+            </md-grid-tile>
+        </md-grid-list>
+    </div>
+</div>

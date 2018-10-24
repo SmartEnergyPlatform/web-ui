@@ -1,0 +1,33 @@
+<form ng-submit="$ctrl.search()">
+    <sepl-searchbar search-text="$ctrl.query" on-input-change="$ctrl.query = searchText"></sepl-searchbar>
+</form>
+
+<md-card md-theme="default" class="iot-list-card" ng-repeat="protocol in $ctrl.protocols">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{protocol.name || 'PROTOCOL.LIST.MD_CARD_TITLE_TEXT_HEADLINE_EXCEPTION_IF_UNKNOWN_NAME' | translate}}</span>
+            <span class="md-subhead">{{'PROTOCOL.LIST.MD_CARD_TITLE_TEXT_SUBHEAD_ID' | translate}}: {{protocol.id}}</span>
+            <md-tooltip md-direction="left" class="tt-multiline">
+                <div>{{protocol.description}}</div>
+            </md-tooltip>
+        </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+        <md-chips ng-model="protocol.msg_structure" name="MsgSegment" readonly="true" md-removable="false">
+            <button class="md-chip-remove" md-chip-remove>
+                <md-icon>cancel</md-icon>
+            </button>
+            <md-chip-template>
+                <span>{{$chip.name}}</span>
+            </md-chip-template>
+        </md-chips>
+        </div>
+    </md-card-content>
+</md-card>
+
+<div layout="row" layout-align="space-around center">
+    <md-button class="md-raised" ng-disabled="!$ctrl.backButton" ng-click="$ctrl.back()">{{'PROTOCOL.LIST.MD_BUTTON_LABEL_BACK' | translate}}</md-button>
+    <md-button class="md-raised" ui-sref="iotrepository.protocol.edit">{{'PROTOCOL.LIST.MD_BUTTON_LABEL_CREATE_NEW_ELEMENT' | translate}}</md-button>
+    <md-button class="md-raised" ng-disabled="!$ctrl.nextButton" ng-click="$ctrl.next()">{{'PROTOCOL.LIST.MD_BUTTON_LABEL_NEXT' | translate}}</md-button>
+</div>

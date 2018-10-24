@@ -1,0 +1,9 @@
+<md-input-container>
+    <label>{{ 'RIGHTS.MD_INPUT_CONTAINER_LABEL_USER' | translate }}</label>
+    <input type="text" ng-model="username" disabled>
+</md-input-container>
+<md-checkbox ng-model="right.read" aria-label="Read" ng-click="$ctrl.change()" ng-disabled="fromUser">{{ 'RIGHTS.MD_CHECKBOX_CONTENT_READ' | translate }}</md-checkbox>
+<md-checkbox ng-model="right.write" aria-label="Write" ng-click="$ctrl.change()">{{ 'RIGHTS.MD_CHECKBOX_CONTENT_WRITE' | translate }}</md-checkbox>
+<md-checkbox ng-model="right.execute" aria-label="Execute" ng-click="$ctrl.change()">{{ 'RIGHTS.MD_CHECKBOX_CONTENT_EXECUTE' | translate }}</md-checkbox>
+<md-checkbox ng-model="right.administrate" aria-label="Administrate" ng-click="$ctrl.change()" ng-disabled="fromUser">{{ 'RIGHTS.MD_CHECKBOX_CONTENT_ADMINISTRATE' | translate }}</md-checkbox>
+<md-button class="md-icon-button" ng-click="$ctrl.remove()" aria-label="remove" ng-disabled="fromUser"><md-icon>delete</md-icon></md-button>

@@ -1,0 +1,45 @@
+<md-dialog aria-label="IoT-Device" class="iot-wizard-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'DESIGNER.IOT_INPUTS.HEADLINE_TOOLBAR_TOOLS' | translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="close()">
+                    <md-icon>close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+
+            <div class="md-block" ng-if="!$first" ng-repeat="input in inputs">
+
+                <md-input-container flex-gt-xs>
+                    <label>{{'DESIGNER.IOT_INPUTS.MD_INPUT_CONTAINER_LABEL' | translate}}</label>
+                    <md-select md-selected-text="'Existing Output-Variables'" ng-model="input.value">
+                        <md-optgroup>
+                            <md-option ng-value="'${'+output.name+'}'" ng-repeat="output in outputs">
+                                {{output.name}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                    <div class="md-errors-spacer"></div>
+                </md-input-container>
+
+                <md-input-container flex-gt-xs>
+                    <label>{{input.name | shortSeplInputVarName}}</label>
+                    <input ng-model="input.value">
+                </md-input-container>
+
+            </div>
+
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="close()">
+                {{'DESIGNER.MD_BUTTON_CLOSE' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

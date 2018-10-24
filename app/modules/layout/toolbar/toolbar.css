@@ -1,0 +1,15 @@
+.logo {
+    max-height: 48px;
+}
+
+sepl-toolbar .image-wrapper {
+    width: 275px;
+}
+
+sepl-toolbar .md-toolbar-tools {
+    padding-right: 0;
+}
+
+.account-headline {
+    padding-bottom: 8px;
+}

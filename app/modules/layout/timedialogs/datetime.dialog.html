@@ -1,0 +1,18 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Date</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <sepl-event-time-date-time on-change="datetime = result" initial="{{initial}}"></sepl-event-time-date-time>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-primary md-raised" ng-click="ok()" ng-disabled="!datetime">{{'TIME_DIALOGS.OK' | translate}}</md-button>
+        <md-button class="md-primary md-raised" ng-click="cancel()">{{'TIME_DIALOGS.CANCEL' | translate}}</md-button>
+    </md-dialog-actions>
+</md-dialog>

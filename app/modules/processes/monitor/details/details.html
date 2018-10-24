@@ -1,0 +1,13 @@
+<div ng-if="incidents && incidents.length > 0">
+    <h3>{{ 'MONITOR.DETAILS.HEADLINE_INCIDENTS' | translate}}</h3>
+    <div ng-repeat="incident in incidents" layout="row" flex>
+        {{incident.incidentMessage}}
+    </div>
+    <md-divider></md-divider>
+</div>
+<div>
+    <h3>{{ 'MONITOR.DETAILS.HEADLINE_VARIABLES' | translate}}</h3>
+    <div ng-repeat="item in $ctrl.processVars">
+        <pre>{{item.processVars | json }}</pre>
+    </div>
+</div>

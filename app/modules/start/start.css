@@ -1,0 +1,150 @@
+sepl-start .preview {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+}
+
+sepl-start .image-wrapper{
+    height: 100%;
+}
+
+sepl-start md-grid-tile, sepl-start md-content, sepl-start md-list-item {
+    background: white;
+}
+
+sepl-start md-content > .md-subheader {
+    background: lightgreen;
+}
+
+sepl-start md-grid-tile-footer {
+    background: white!important;
+    height: 68px!important;
+    color: black!important;
+}
+
+sepl-start md-grid-tile-footer figcaption {
+    width: 100%;
+}
+
+sepl-start md-grid-tile-footer .first-line {
+    font-size: 16px;
+
+}
+
+sepl-start md-grid-tile-footer .second-line {
+    font-size: 14px;
+}
+
+sepl-start md-grid-tile-footer .caption {
+    padding-left: 16px;
+}
+sepl-start .chart {
+    background: white;
+}
+sepl-start .md-48 {
+      height: 48px;
+      width: 48px;
+      font-size: 48px;
+}
+
+sepl-start .md-30 {
+     height: 30px;
+     width: 30px;
+     font-size: 30px;
+}
+
+sepl-start .md-40 {
+    height: 40px;
+    width: 40px;
+    font-size: 40px;
+}
+
+sepl-start .kpi-header {
+    font-weight: 300;
+    font-size: 20px;
+    margin: 8px 16px;
+}
+
+sepl-start .kpi {
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 16px;
+}
+
+sepl-start .kpi-text {
+    font-weight: 300;
+    font-size: 20px;
+    margin-top: 3px;
+    margin-left: 4px;
+}
+
+sepl-start .kpi-header-1-3 {
+    font-weight: 300;
+    font-size: 16px;
+    margin-top: 4px;
+    margin-left: 14px;
+}
+
+sepl-start .kpi-1-3 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 16px;
+}
+
+sepl-start .kpi-text-1-3 {
+    font-weight: 300;
+    font-size: 16px;
+    margin-top: 3px;
+    margin-left: 4px;
+}
+
+sepl-start .md-2-line {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+sepl-start .red {
+    color: #cc3300;
+}
+sepl-start .yellow {
+    color: #ff9900;
+}
+
+sepl-start .green {
+    color: #36ab00;
+}
+
+sepl-start .white {
+    color: white;
+}
+
+sepl-start .rank {
+    margin-right: 8px;
+}
+
+sepl-start .list-header {
+
+    padding: 8px 14px;
+
+    font-size: 20px;
+
+}
+sepl-start .widget-icon-blue {
+    background: #00c0ef;
+}
+
+sepl-start .widget-icon-red {
+    background: #dd4b39;
+}
+
+sepl-start .widget-icon-green {
+    background: #00a65a;
+}
+
+sepl-start .widget-icon-orange {
+    background: #f39c12;
+}
+
+sepl-start .divider-margin {
+    margin-top: 16px;
+}

@@ -1,0 +1,89 @@
+{
+  "GLOBAL": {
+    "DEVICES": "Geräte",
+    "ACCOUNT": "Account",
+    "PROCESSES": "Prozesse",
+    "ANALYTICS": "Analysen",
+    "APPLICATIONS": "Anwendungen",
+    "MARKETPLACE": "Marktplatz",
+    "HOME": "Home"
+  },
+  "TOOLBAR": {
+    "NOTIFICATION": "Benachrichtigungen",
+    "MARKETPLACE": "@:GLOBAL.MARKETPLACE",
+    "APPLICATIONS": "@:GLOBAL.APPLICATIONS",
+    "PROCESSES": "@:GLOBAL.PROCESSES",
+    "DATA": "@:GLOBAL.ANALYTICS",
+    "DEVICES": "@:GLOBAL.DEVICES",
+    "ACCOUNT": "@:GLOBAL.ACCOUNT",
+    "HOME": "@:GLOBAL.HOME"
+  },
+  "SIDENAV": {
+    "HOME": "@:GLOBAL.HOME",
+    "ACCOUNT": {
+      "ACCOUNT": "@:GLOBAL.ACCOUNT",
+      "LOGOUT": "Logout",
+      "SETTINGS": "Einstellungen"
+    },
+    "DATA": {
+      "EXPORT": "Export",
+      "EXPORT_DIALOG": "Export dialog",
+      "FLOWREPOSITORY": "Flows",
+      "FLOWREPOSITORY_DEPLOY": "Flow Ausführung",
+      "OPERATORREPOSITORY": "Operatoren",
+      "DESIGNER": "Designer",
+      "ANALYTICS": "@:GLOBAL.ANALYTICS"
+    },
+    "IOTREPOSITORY": {
+      "DEVICE_TYPES": "Gerätetypen",
+      "MAINTENANCE": "Wartung",
+      "MAINTENANCE_RENAMING": "Umbenennung",
+      "NETWORKS": "Netzwerke",
+      "PROTOCOL": "Protokolle",
+      "VALUE_TYPES": "Werttypen",
+      "WIZARD": "Wizard",
+      "DEVICE_INSTANCES": "Geräte",
+      "DEVICES": "@:GLOBAL.DEVICES"
+    },
+    "PROCESSES": {
+      "PROCESS": "@:GLOBAL.PROCESSES",
+      "DEPLOYMENTS": "Ausführung",
+      "MONITOR": "Monitor",
+      "DESIGNER": "Designer",
+      "REPOSITORY": "Repository"
+    },
+    "MARKETPLACE": {
+      "MARKETPLACE": "@:GLOBAL.MARKETPLACE",
+      "OVERVIEW": "Übersicht",
+      "PROCESSES": "@:GLOBAL.PROCESSES",
+      "DATA": "@:GLOBAL.ANALYTICS",
+      "EXPORT": "Datenexport"
+    },
+    "APPLICATION": {
+      "APPS": "@:GLOBAL.APPLICATIONS",
+      "DASHBOARD": "Dashboard",
+      "SCHEDULE": "Zeitplan"
+    },
+    "HEADLINE": "Navigation"
+  },
+  "SEARCHBAR": {
+    "PLACEHOLDER": "Suchen"
+  },
+  "DATATABLE": {
+    "NO_ENTRIES_FOUND": "Keine Einträge gefunden.",
+    "TOOLTIP_DELETE": "Löschen",
+    "DETAILS": "Details"
+  },
+  "SORT": {
+    "REVERSE_DIRECTION": "Sortierrichtung umkehren",
+    "BY_NAME": "Name",
+    "BY_DATE": "Datum",
+    "BY_STATE": "Status",
+    "BY_DESCRIPTION": "Beschreibung",
+    "BY_DEVICE_COUNT": "Geräteanzahl"
+  },
+  "TIME_DIALOGS": {
+    "OK": "Ok",
+    "CANCEL": "Abbrechen"
+  }
+}

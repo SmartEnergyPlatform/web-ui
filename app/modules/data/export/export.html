@@ -1,0 +1,63 @@
+<div ui-view>
+    <sepl-searchbar search-text="$ctrl.searchText" on-input-change="$ctrl.searchText = searchText"></sepl-searchbar>
+    <sepl-sort attributes="$ctrl.sortAttributes" on-click-event="$ctrl.sortItem = sortItem"
+               current-sort-item="$ctrl.sortItem"></sepl-sort>
+    <div layout-margin>
+        <div ng-if="!$ctrl.repoItems.length && $ctrl.requestComplete == true">
+            {{'EXPORT.NO_ELEMENT_TEXT' | translate}}
+        </div>
+    </div>
+    <md-progress-circular md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-progress-circular md-hue-2"
+                          md-diameter="50"></md-progress-circular>
+    <div infinite-scroll="$ctrl.next()" infinite-scroll-distance='1'
+         infinite-scroll-container="'#content'"
+         infinite-scroll-disabled="$ctrl.scrollDisabled">
+        <md-grid-list md-cols-xs="1" md-cols-sm="1" md-cols-md="1" md-cols-lg="2" md-cols-xl="2" md-row-height="340px"
+                      md-gutter="16px">
+            <md-grid-tile ng-repeat="item in $ctrl.repoItems"
+                          md-whiteframe="1" md-rowspan="1">
+                <div layout="column" layout-fill>
+                    <h3>{{item.name}}</h3>
+                    <md-divider></md-divider>
+                    <md-list flex>
+                        <md-list-item class="md-2-line">
+                            <md-icon>description</md-icon>
+                            <div class="md-list-item-text">
+                                <h3>{{item.description}}</h3>
+                                <p>{{ 'EXPORT.MD_GRID_LIST_ITEM_CONTENT_DESCRIPTION' | translate}}</p>
+                            </div>
+                        </md-list-item>
+                        <md-list-item class="md-2-line">
+                            <md-icon ng-if=" item.filterType =='deviceId'">router</md-icon>
+                            <md-icon ng-if=" item.filterType =='pipeId'">timeline</md-icon>
+                            <div class="md-list-item-text">
+                                <h3>{{item.entityName}}</h3>
+                                <p>{{ 'EXPORT.MD_GRID_LIST_ITEM_CONTENT_SOURCE' | translate}}</p>
+                            </div>
+                        </md-list-item>
+                        <md-list-item class="md-2-line">
+                            <md-icon>explore</md-icon>
+                            <div class="md-list-item-text">
+                                <h3>{{ $ctrl.url }}/measurement/{{item.measurement}}</h3>
+                                <p>{{ 'EXPORT.MD_GRID_LIST_ITEM_CONTENT_ENDPOINT' | translate}}</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                    <md-grid-tile-footer>
+                        <div layout="row" layout-align="end center">
+                            <md-button ng-click="$ctrl.deleteInstance(item.id)"
+                                       class="md-secondary md-icon-button">
+                                <md-tooltip>{{ 'EXPORT.MD_GRID_LIST_TILE_FOOTER_TOOLTIP_DELETE' | translate }}</md-tooltip>
+                                <md-icon class="md-warn md-hue-2">delete</md-icon>
+                            </md-button>
+                        </div>
+                    </md-grid-tile-footer>
+                </div>
+            </md-grid-tile>
+        </md-grid-list>
+        <md-button ui-sref="data.export.dialog" class="md-fab md-fab-bottom-right" style="position: fixed !important;">
+            <md-icon>add</md-icon>
+            <md-tooltip md-direction="top">{{"EXPORT.MD_BUTTON_CREATE_EXPORT" | translate}}</md-tooltip>
+        </md-button>
+    </div>
+</div>

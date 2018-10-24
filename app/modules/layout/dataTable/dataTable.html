@@ -1,0 +1,57 @@
+<div layout-margin>
+    <div class="data-table">
+        <table>
+            <thead>
+            <tr>
+                <th ng-repeat="item in $ctrl.columns track by $index"><a href=""
+                                                                         ng-click="$ctrl.setSortProperty($ctrl.keys[$index], true)">{{item
+                    | translate}}</a>
+                    <md-icon ng-if="$ctrl.isActive($index)">{{$ctrl.getSortIcon($index)}}</md-icon>
+                </th>
+                <th ng-if="$ctrl.deleteActive === 'true' || $ctrl.buttons">
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in $ctrl.displayedItems"
+                ng-class="{selected: $ctrl.isSelectedRow(item)}">
+                <td ng-repeat="key in item" ng-click="$ctrl.selectedRowCallback(item)">
+                    {{$ctrl.isDate(key)}}
+                </td>
+                <td ng-if="$ctrl.deleteActive === 'true' || $ctrl.buttons">
+                    <md-button ng-repeat="button in $ctrl.buttons" ng-if="button.displayIf(item)"
+                               ng-click="button.callback(item)" class="{{button.style}}">
+                        {{button.icon ? '' : button.name}}
+                        <md-tooltip ng-if="button.icon" md-direction="top">{{button.name | translate}}</md-tooltip>
+                        <md-icon ng-if="button.icon">{{button.icon}}</md-icon>
+                    </md-button>
+                    <md-button ng-if="$ctrl.deleteActive === 'true'" ng-click="$ctrl.deleteRow(item.id)"
+                               class="md-secondary md-icon-button">
+                        <md-tooltip md-direction="top">{{'DATATABLE.TOOLTIP_DELETE' | translate}}</md-tooltip>
+                        <md-icon>delete</md-icon>
+                    </md-button>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5">
+                    <div class="no-entries" ng-if="$ctrl.pageLimit === 0">{{ 'DATATABLE.NO_ENTRIES_FOUND' |
+                        translate}}
+                    </div>
+                    <div class="pagination" ng-if="$ctrl.pageLimit > 0">
+                        <a href="" ng-click="$ctrl.setLastPage()">
+                            <md-icon>arrow_backward</md-icon>
+                        </a>
+                        <a href="" ng-repeat="n in [] | range:$ctrl.pageLimit" ng-click="$ctrl.setPage(n)"
+                           ng-class="{bold: $ctrl.isCurrentPage(n)}">{{n}}</a>
+                        <a href="" ng-click="$ctrl.setNextPage()">
+                            <md-icon>arrow_forward</md-icon>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

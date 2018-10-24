@@ -1,0 +1,24 @@
+<md-card ng-drag="true" ng-drag-data="$ctrl.chart" layout="column" layout-fill>
+    <md-toolbar class="md-hue-2" md-scroll-shrink layout="row">
+        <md-card-title-text layout="row" layout-align="end center" layout-margin flex>
+            <span class="md-title" flex>{{$ctrl.chart.title | translate }}</span>
+            <div ng-cancel-drag>
+                <md-button class="md-icon-button" ng-click="$ctrl.reloadChart($ctrl.chart)">
+                    <md-icon>autorenew</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" ng-click="$ctrl.showPropertiesDialog($ctrl.chart, $event)">
+                    <md-icon>settings</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" ng-click="$ctrl.remove($ctrl.chart._id, $ctrl.chart.index)">
+                    <md-icon>close</md-icon>
+                </md-button>
+            </div>
+        </md-card-title-text>
+    </md-toolbar>
+    <md-card-content layout="row" layout-align="center center" flex>
+        <md-progress-circular md-mode="indeterminate" ng-show="!$ctrl.data[0].values.length"
+                              class="md-progress-circular md-hue-2"
+                              md-diameter="50"></md-progress-circular>
+        <nvd3 options='$ctrl.chart.options' data='$ctrl.data' layout-fill></nvd3>
+    </md-card-content>
+</md-card>

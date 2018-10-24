@@ -1,0 +1,150 @@
+{
+  "GLOBAL": {
+    "NAME": "Name",
+    "IOT_DEVICE": "Gerät",
+    "START": "Start",
+    "SERVICE": "Service",
+    "SEARCH_FOR": "Suche...",
+    "DELETE": "Löschen",
+    "SAVE": "Speichern",
+    "NEW_OPERATOR": "Neuen Operator hinzufügen",
+    "IMAGE": "Docker-Image",
+    "DELETE_FLOW": "Flow löschen"
+
+  },
+  "DESIGNER": {
+    "HEADER": {
+      "MD_CARD_HEADER_CONTENT": "Flow",
+      "MD_CARD_CONTENT_HEADER": "@:GLOBAL.NAME",
+      "MD_BUTTON_SAVE": "@:GLOBAL.SAVE"
+    },
+    "BODY": {
+      "MD_CARD_HEADER_CONTENT_FLOW": "Flow Design",
+      "MD_CARD_HEADER_CONTENT_OPERATOR": "Operatoren",
+      "MD_BUTTON_ADD_NODE": "Knoten hinzufügen",
+      "MD_BUTTON_ADD_NODE_DESCRIPTION": "Füge einen neuen Knoten zum Diagramm hinzu."
+    },
+    "FUNCTIONS": {
+      "SAVE_FLOW": {
+        "MD_TOAST_SUCCESSFUL": "Flow erfolgreich gespeichert."
+      },
+      "CREATE_EXPORT": {
+        "MD_TOAST_SUCCESSFUL": "Export erfolgreich erstellt."
+      },
+      "DELETE_EXPORT": {
+        "MD_TOAST_SUCCESSFUL": "Export erfolgreich gelöscht."
+      },
+      "REPORT_ERROR": {
+        "ERROR_MSG": "Eingabedaten sind fehlerhaft."
+      }
+    }
+  },
+  "EXPORT": {
+    "NO_ELEMENT_TEXT": "Kein Export gefunden.",
+    "MD_BUTTON_CREATE_EXPORT": "Export erstellen",
+    "MD_GRID_LIST_TILE_FOOTER_TOOLTIP_DELETE": "@:GLOBAL.DELETE",
+    "MD_GRID_LIST_ITEM_CONTENT_DESCRIPTION": "Beschreibung",
+    "MD_GRID_LIST_ITEM_CONTENT_SOURCE": "Datenquelle",
+    "MD_GRID_LIST_ITEM_CONTENT_ENDPOINT": "Endpunkt",
+    "CREATE_EXPORT_DIALOG": {
+      "MD_CARD_HEADER_CONTENT_CREATE_EXPORT": "Export erstellen",
+      "MD_CARD_CONTENT_INPUT_CONTAINER_RADIO_GROUP_OPTION_DEVICE": "Gerät",
+      "MD_CARD_CONTENT_INPUT_CONTAINER_RADIO_GROUP_OPTION_ANALYTICS": "Analysen",
+      "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_NAME": "Name",
+      "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_DESCRIPTION": "Beschreibung",
+      "MD_CARD_CONTENT_INPUT_CONTAINER_EXCEPTION_NAME_REQUIRED": "Bitte geben Sie einen Namen für den Export an.",
+      "IF_DEVICE": {
+        "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_IOT_DEVICE": "@:GLOBAL.IOT_DEVICE",
+        "MD_CARD_CONTENT_INPUT_CONTAINER_SELECT_LABEL_IOT_DEVICE": "@:GLOBAL.IOT_DEVICE",
+        "MD_CARD_CONTENT_INPUT_CONTAINER_SELECT_HEADER_PLACEHOLDER_LABEL_SEARCH_FOR": "@:GLOBAL.SEARCH_FOR",
+        "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_SERVICE": "@:GLOBAL.SERVICE",
+        "MD_CARD_CONTENT_INPUT_CONTAINER_SELECT_LABEL_SERVICE": "@:GLOBAL.SERVICE"
+      },
+      "IF_ANALYTICS": {
+        "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_PIPE": "Verarbeitungspipeline",
+        "MD_CARD_CONTENT_INPUT_CONTAINER_SELECT_LABEL_PIPE": "Verarbeitungspipeline",
+        "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_OPERATOR": "Operator",
+        "MD_CARD_CONTENT_INPUT_CONTAINER_SELECT_LABEL_OPERATOR": "Operator"
+      },
+      "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_PIPE": "Zeit JSON Pfad",
+      "MD_CARD_CONTENT_BUTTON_LABEL_ADD_VALUE": "Wert hinzufügen",
+      "ADD_VALUE": {
+        "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_NAME": "@:GLOBAL.NAME",
+        "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_PATH": "Pfad",
+        "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_TYPE": "Typ",
+        "MD_CARD_CONTENT_INPUT_CONATINER_SELECT_LABEL_TYPE": "Typ"
+      },
+      "MD_CARD_CONTENT_BUTTON_LABEL_START": "Start"
+    }
+  },
+  "FLOWREPOSITORY": {
+    "NO_ELEMENT_TEXT": "Kein Flow gefunden.",
+    "FLOWS": {
+      "MD_GRID_TILE_FOOTER_MENU_CONTENT_BUTTON_OPEN": "Starten",
+      "MD_GRID_TILE_FOOTER_MENU_CONTENT_BUTTON_STOP": "Beenden",
+      "MD_GRID_TILE_FOOTER_MENU_CONTENT_BUTTON_OPEN_IN_NEW": "Im Designer öffnen",
+      "MD_GRID_TILE_FOOTER_MENU_CONTENT_BUTTON_DELETE": "@:GLOBAL.DELETE"
+    },
+    "DEPLOY":  {
+      "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_IOT": "@:GLOBAL.IOT_DEVICE",
+      "MD_CARD_CONTENT_SELECT_TEXT_IOT": "@:GLOBAL.IOT_DEVICE",
+      "MD_CARD_CONTENT_INPUT_CONTAINER_PLACEHOLDER": "@:GLOBAL.SEARCH_FOR",
+      "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_SERVICE": "@:GLOBAL.SERVICE",
+      "MD_CARD_CONTENT_SELECT_TEXT_SERVICE": "@:GLOBAL.SERVICE",
+      "MD_CARD_CONTENT_BUTTON_START_FLOW": "Flow starten"
+    },
+    "FLOWDIALOG": {
+      "MD_DIALOG_CONTENT_SELECT_TEXT_IOT": "@:GLOBAL.IOT_DEVICE",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_PLACEHOLDER": "@:GLOBAL.SEARCH_FOR",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_IOT": "@:GLOBAL.IOT_DEVICE",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_SERVICE": "@:GLOBAL.SERVICE",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_INPUT_VALUE": "Eingabewert",
+      "MD_DIALOG_ACTIONS_BUTTON_START": "@:GLOBAL.START"
+    },
+    "FUNCTIONS": {
+      "DELETE_FLOW": {
+        "MD_TOAST_SUCCESSFUL": "Flow erfolgreich gelöscht."
+      }
+    }
+  },
+  "FUNCTIONS":
+  {
+    "MD_TOAST_DELETE_OPERATOR_CONTENT_DELETE": "Operator erfolgreich gelöscht.",
+    "MD_TOAST_DELETE_OPERATOR_CONTENT_SAVE": "Operator erfolgreich gespeichert.",
+    "MD_SELECT_OPTIONS_CONTENT_SORT_BY_NAME": "Name",
+    "SHOW_CONFIRM_DELETE_TITLE_DELETE_FLOW": "@:GLOBAL.DELETE_FLOW",
+    "SHOW_CONFIRM_DELETE_TEXT_CONTENT_REALLY": "Flow wirklich löschen?",
+    "SHOW_CONFIRM_DELETE_ARIA_LABEL_CONTENT": "@:GLOBAL.DELETE_FLOW",
+    "SHOW_CONFIRM_DELETE_RESPONSE_OK": "Ok",
+    "SHOW_CONFIRM_DELETE_RESPONSE_CANCEL": "Abbrechen"
+  },
+  "OPERATORREPOSITORY": {
+    "NO_ELEMENT_TEXT": "Kein Operator gefunden.",
+    "MD_BUTTON_NEW_OPERATOR": "@:GLOBAL.NEW_OPERATOR",
+    "MD_LIST_ITEM_BUTTON_TOOLTIP_DELETE": "@:GLOBAL.DELETE",
+    "MD_LIST_ITEM_BUTTON_TOOLTIP_EDIT": "Bearbeiten",
+    "OPERATOR": {
+      "MD_CARD_HEADER_CONTENT": "@:GLOBAL.NEW_OPERATOR",
+      "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_NAME": "@:GLOBAL.NAME",
+      "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_IMAGE": "@:GLOBAL.IMAGE",
+      "MD_CARD_CONTENT_BUTTON_ADD_INPUT": "Eingabewert hinzufügen",
+      "MD_CARD_CONTENT_BUTTON_ADD_OUTPUT": "Ausgabewert hinzufügen",
+      "MD_CARD_CONTENT_BUTTON_SAVE": "@:GLOBAL.SAVE",
+      "MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_TYPE": "Typ"
+    },
+    "DELETE":{
+      "TITLE": "Operator löschen",
+      "TEXT": "Operator wirklich löschen?",
+      "OK": "Ja",
+      "CANCEL": "Abbrechen"
+    },
+    "FUNCTIONS": {
+      "DELETE_OPERATOR": {
+        "MD_TOAST_SUCCESSFUL": "Operator erfolgreich gelöscht."
+      },
+      "ADD_OPERATOR": {
+        "MD_TOAST_SUCCESSFUL": "Operator erfolgreich hinzugefügt."
+      }
+    }
+  }
+}

@@ -1,0 +1,98 @@
+<md-card>
+    <md-card-header>
+        {{'OPERATORREPOSITORY.OPERATOR.MD_CARD_HEADER_CONTENT' | translate}}
+    </md-card-header>
+    <md-card-content ng-form="frm">
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{'OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_NAME' | translate}}</label>
+            <input ng-model="$ctrl.operator.name" required>
+            <div ng-messages="frm.name.$error">
+                <div ng-message="required">Ein Name ist notwendig</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{'OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_IMAGE' | translate}}</label>
+            <input ng-model="$ctrl.operator.image"/>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>Beschreibung</label>
+            <input ng-model="$ctrl.operator.description"/>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+            <div flex-gt-sm="50">
+                <md-checkbox ng-model="$ctrl.operator.pub" aria-label="Checkbox Public">
+                    Public
+                </md-checkbox>
+            </div>
+        </md-input-container>
+        <div layout="row">
+            <md-button ng-click="$ctrl.addInput()" type="submit" class="md-primary md-raised">
+                {{'OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_BUTTON_ADD_INPUT' | translate}}
+            </md-button>
+        </div>
+        <div ng-repeat="input in $ctrl.operator.inputs">
+            <div layout="row">
+                <md-input-container flex>
+                    <label>{{'OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_NAME' |
+                        translate}}</label>
+                    <input ng-model="input.name">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>{{'OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_TYPE' |
+                        translate}}</label>
+                    <md-select
+                            md-selected-text="input.type || ('OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_TYPE' | translate)"
+                            ng-model="input.type" data-md-container-class="selectdemoSelectHeader" flex-gt-s>
+                        <md-optgroup label="types">
+                            <md-option ng-value="e" ng-repeat="e in $ctrl.dropdown">
+                                {{e}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-button ng-click="$ctrl.delInput(input)" class="md-icon-button">
+                        <md-icon>delete</md-icon>
+                    </md-button>
+                </md-input-container>
+            </div>
+        </div>
+        <div layout="row">
+            <md-button ng-click="$ctrl.addOutput()" type="submit" class="md-primary md-raised">
+                {{'OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_BUTTON_ADD_OUTPUT' | translate}}
+            </md-button>
+        </div>
+        <div ng-repeat="output in $ctrl.operator.outputs">
+            <div layout="row">
+                <md-input-container flex>
+                    <label>{{'OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_NAME' |
+                        translate}}</label>
+                    <input ng-model="output.name">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>{{'OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_TYPE' |
+                        translate}}</label>
+                    <md-select
+                            md-selected-text="output.type || ('OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_INPUT_CONTAINER_LABEL_TYPE' | translate)"
+                            ng-model="output.type" data-md-container-class="selectdemoSelectHeader" flex-gt-s>
+                        <md-optgroup label="types">
+                            <md-option ng-value="e" ng-repeat="e in $ctrl.dropdown">
+                                {{e}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-button ng-click="$ctrl.delOutput(output)" class="md-icon-button">
+                        <md-icon>delete</md-icon>
+                    </md-button>
+                </md-input-container>
+            </div>
+        </div>
+        <div layout="row">
+            <md-button ng-click="$ctrl.saveOperator(frm.$valid)" type="submit" class="md-primary md-raised" ng-disabled="frm.$invalid">
+                {{'OPERATORREPOSITORY.OPERATOR.MD_CARD_CONTENT_BUTTON_SAVE' | translate}}
+            </md-button>
+        </div>
+    </md-card-content>
+</md-card>

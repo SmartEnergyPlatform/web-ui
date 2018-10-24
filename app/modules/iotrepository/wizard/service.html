@@ -1,0 +1,102 @@
+<div layout="row" layout-align="start center">
+    <md-chips ng-model="$parent.devicetype.services" name="Services" readonly="true"
+              md-removable="false">
+        <md-chip-template>
+            <span class="clickable wizard-service-chip-{{$chip == $parent.$parent.currentService ? 'bold' : 'normal'}}"
+                  ng-click="$parent.$parent.serviceEdit($chip)">Service {{$chip.name || $index + 1}}</span>
+        </md-chip-template>
+    </md-chips>
+</div>
+
+<h2>{{'WIZARD.SERVICE.HEADLINE_SERVICE' | translate}} {{$parent.currentService.name || $parent.devicetype.services.indexOf($parent.currentService) + 1}}</h2>
+
+<md-input-container class="md-block" flex-gt-xs>
+    <label>{{'WIZARD.SERVICE.MD_INPUT_CONTAINER_LABEL_NAME' | translate}}</label>
+    <input ng-model="$parent.currentService.name">
+</md-input-container>
+
+<md-input-container class="md-block" flex-gt-xs>
+    <label>{{'WIZARD.SERVICE.MD_INPUT_CONTAINER_LABEL_DESC' | translate}}</label>
+    <input ng-model="$parent.currentService.description">
+</md-input-container>
+
+
+<md-input-container>
+    <label>{{'WIZARD.SERVICE.MD_INPUT_CONTAINER_LABEL_SERVICE_TYPE' | translate}}</label>
+    <md-select ng-model="$parent.currentService.service_type" data-md-container-class="selectdemoSelectHeader">
+        <md-optgroup label="entities">
+            <md-option ng-value="element.id" ng-repeat="element in $parent.allowedValues.service_types">
+                {{element.name}} {{element.id}}
+            </md-option>
+        </md-optgroup>
+    </md-select>
+</md-input-container>
+
+<md-input-container class="md-block" flex-gt-xs>
+    <label>{{'WIZARD.SERVICE.MD_INPUT_CONTAINER_LABEL_URL' | translate}}</label>
+    <input ng-model="$parent.currentService.url">
+</md-input-container>
+
+<md-input-container class="md-block" flex-gt-xs>
+    <label>{{'WIZARD.SERVICE.MD_INPUT_CONTAINER_LABEL_ENDPOINT_FORMAT' | translate}}</label>
+    <input ng-model="$parent.currentService.endpoint_format">
+</md-input-container>
+
+<div>
+    <span class="label">{{'WIZARD.SERVICE.PROTOCOL_HEADLINE_PROTOCOL' | translate}}:</span>
+    <md-input-container>
+        <label>{{'WIZARD.SERVICE.MD_INPUT_CONTAINER_LABEL_PROTOCOL' | translate}}</label>
+        <md-select
+                md-selected-text="$parent.currentService.protocol.name || $parent.currentService.protocol.id || ('WIZARD.SERVICE.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_PROTOCOL' | translate)"
+                ng-model="$parent.currentService.protocol.id" data-md-container-class="selectdemoSelectHeader"
+                md-on-close="clearSearch()" md-on-open="search('others/protocols')">
+            <md-select-header class="demo-select-header">
+                <input ng-model="searchInfo.searchText"
+                       ng-change="search('others/protocols')"
+                       type="search"
+                       placeholder="{{'WIZARD.SERVICE.MD_DIALOG_CONTENT_SELECT_HEADER_INPUT_PLACEHOLDER_SEARCH_FOR' | translate }}"
+                       class="demo-header-searchbox md-text"
+                       ng-keydown="$event.stopPropagation()"
+                />
+            </md-select-header>
+            <md-optgroup label="entities">
+                <md-option ng-value="element.id" ng-click="assign($parent.$parent.currentService.protocol, element)"
+                           ng-repeat="element in searchInfo.searchResult">
+                    {{element.name}} {{element.id}}
+                </md-option>
+            </md-optgroup>
+        </md-select>
+    </md-input-container>
+</div>
+
+<div layout="row" layout-align="start center">
+    <md-button class="md-raised" ng-click="inputAdd()">{{'WIZARD.SERVICE.MD_BUTTON_ADD_INPUT' | translate}}</md-button>
+    <md-chips ng-model="$parent.currentService.input" name="Input" readonly="true"
+              md-removable="true">
+        <button class="md-chip-remove" md-chip-remove>
+            <md-icon>cancel</md-icon>
+        </button>
+        <md-chip-template>
+            <span class="clickable" ng-click="inputEdit($chip)">{{$chip.msg_segment.name}}::{{$chip.name}}</span>
+        </md-chip-template>
+    </md-chips>
+</div>
+
+<div layout="row" layout-align="start center">
+    <md-button class="md-raised" ng-click="resultAdd()">{{'WIZARD.SERVICE.MD_BUTTON_ADD_RESULT' | translate}}</md-button>
+    <md-chips ng-model="$parent.currentService.output" name="Result" readonly="true"
+              md-removable="true">
+        <button class="md-chip-remove" md-chip-remove>
+            <md-icon>cancel</md-icon>
+        </button>
+        <md-chip-template>
+            <span class="clickable" ng-click="resultEdit($chip)">{{$chip.msg_segment.name}}::{{$chip.name}}</span>
+        </md-chip-template>
+    </md-chips>
+</div>
+
+<div class="wizard-controlls" layout="row" layout-align="space-around center">
+    <md-button class="md-accent md-raised" ng-click="$parent.serviceRemove()">{{'WIZARD.SERVICE.MD_BUTTON_REMOVE' | translate}}</md-button>
+    <md-button class="md-primary md-raised" ng-click="$parent.serviceBack()">{{'WIZARD.SERVICE.MD_BUTTON_FINISH' | translate}}</md-button>
+    <md-button class="md-primary md-raised" ng-click="$parent.serviceAdd()">{{'WIZARD.SERVICE.MD_BUTTON_ADD_SERVICE' | translate}}</md-button>
+</div>

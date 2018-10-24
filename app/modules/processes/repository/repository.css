@@ -1,0 +1,54 @@
+sepl-process-repository .preview {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+}
+
+sepl-process-repository md-grid-list {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 100px;
+}
+
+sepl-process-repository .image-wrapper{
+    height: 100%;
+}
+
+sepl-process-repository md-grid-tile {
+    background: whitesmoke;
+}
+
+sepl-process-repository md-list {
+    background: rgb(255, 255, 255);
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    padding: 0;
+}
+
+sepl-process-repository .md-truncate {
+    white-space: normal;
+    color: black;
+}
+
+sepl-process-repository md-grid-tile-footer {
+    background: white!important;
+    height: 68px!important;
+    color: black!important;
+}
+
+sepl-process-repository md-grid-tile-footer figcaption {
+    width: 100%;
+}
+
+sepl-process-repository md-grid-tile-footer .first-line {
+    font-size: 16px;
+}
+
+sepl-process-repository md-grid-tile-footer .second-line {
+    font-size: 14px;
+}
+
+sepl-process-repository md-grid-tile-footer .caption {
+    padding-left: 16px;
+}

@@ -1,0 +1,12 @@
+.datepicker {
+    margin-top: 10px !important;
+    margin-bottom: 25px;
+}
+
+.cron-gen-main{
+    width: 800px;
+}
+
+cron-gen-time-select {
+    display: inline-block;
+}

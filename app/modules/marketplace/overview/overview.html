@@ -1,0 +1,44 @@
+<md-progress-circular md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-hue-2"
+                      md-diameter="50"></md-progress-circular>
+<div layout-margin ng-show="$ctrl.requestComplete">
+    <div layout="row">
+        <md-subheader class="md-no-sticky" layout-fill>{{ 'OVERVIEW.MD_SUBHEADER_CONTENT_LABEL_PROCESSES_MOST_RECENT' | translate }}</md-subheader>
+        <md-button class="md-primary md-raised" ui-sref="marketplace.processes">{{ 'OVERVIEW.MD_BUTTON_MARKETPLACE_PROCESSES' | translate }}</md-button>
+    </div>
+
+    <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-cols-xl="6"
+                  md-row-height="250px"
+                  md-gutter="16px">
+        <md-grid-tile ng-repeat="processes in $ctrl.publishedProcesses | limitTo:6">
+            <sepl-marketplace-processes-widget item="processes" layout-fill></sepl-marketplace-processes-widget>
+
+        </md-grid-tile>
+    </md-grid-list>
+
+    <!--<div layout="row">
+        <md-subheader class="md-no-sticky" layout-fill>{{ 'OVERVIEW.MD_SUBHEADER_CONTENT_LABEL_ANALYTICS_MOST_RECENT' | translate }}</md-subheader>
+        <md-button class="md-primary md-raised" ui-sref="marketplace.data">{{ 'OVERVIEW.MD_BUTTON_MARKETPLACE_DATA' | translate }}</md-button>
+    </div>
+
+    <md-grid-list md-cols-xs="2" md-cols-sm="3" md-cols-md="3" md-cols-lg="6" md-cols-xl="6"
+                  md-row-height="3:2"
+                  md-gutter="16px">
+        <md-grid-tile ng-repeat="item in $ctrl.data | limitTo:6">
+            <sepl-marketplace-data-widget item="item" layout-fill></sepl-marketplace-data-widget>
+        </md-grid-tile>
+    </md-grid-list>-->
+
+    <div layout="row">
+        <md-subheader class="md-no-sticky" layout-fill>{{ 'OVERVIEW.MD_SUBHEADER_CONTENT_LABEL_DATA_EXPORT' | translate }}</md-subheader>
+        <md-button class="md-primary md-raised" ui-sref="marketplace.dataexport">{{ 'OVERVIEW.MD_BUTTON_MARKETPLACE_DATA_EXPORT' | translate }}</md-button>
+    </div>
+
+    <md-grid-list md-cols-xs="2" md-cols-sm="3" md-cols-md="3" md-cols-lg="6" md-cols-xl="6"
+                  md-row-height="4:6"
+                  md-gutter="16px">
+        <md-grid-tile ng-repeat="item in $ctrl.dataexport | limitTo:6">
+            <sepl-marketplace-dataexport-widget item="item" layout-fill></sepl-marketplace-dataexport-widget>
+        </md-grid-tile>
+    </md-grid-list>
+
+</div>

@@ -1,0 +1,44 @@
+sepl-maintenance-devices md-card{
+    width: 370px;
+    height: 270px;
+}
+
+sepl-maintenance-device-types md-card{
+    width: 370px;
+    height: 270px;
+}
+
+.sublist{
+    margin-left: 40px;
+}
+
+md-tooltip.tt-multiline .md-content {
+    height: auto;
+}
+
+.device-connected-state{
+    color: green;
+}
+
+.device-disconnected-state{
+    color: red;
+}
+
+.device-unknown-state{
+    color: gray;
+}
+
+.tag{
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
+.tag:hover {
+    text-decoration:none;
+    text-shadow: 1px 1px 1px #555;
+}
+
+.tag::before {
+    content: "#";
+}

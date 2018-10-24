@@ -1,0 +1,321 @@
+{
+  "NAVBAR":{
+    "PROCESSES": {
+      "ALL": "All",
+      "OWN": "Own",
+      "PUBLISH": "Published",
+      "ADD": "Added"
+    },
+    "DEPLOYMENTS": "Deploy",
+    "DESIGNER": "Designer",
+    "MONITOR": {
+      "HISTORY": "All",
+      "RUNNING": "Running",
+      "FINISHED": "Finished"
+    }
+  },
+  "GLOBAL":{
+    "OF": "of",
+    "OK": "Ok",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete",
+    "SERVICE": "Service",
+    "IOT_DEVICE": "Device",
+    "EVERY": "Every",
+    "HOURS": "Hours",
+    "MINUTES": "Minutes",
+    "PATH": "Path",
+    "X": "X",
+    "SEARCH_FOR": "Search...",
+    "EVENT": "Event",
+    "IOT_DEV_TYPE": "Device type"
+  },
+  "DEPLOY":{
+    "NAVIGATION": {
+      "MD_TOOLTIP_BEFORE": "Back",
+      "MD_TOOLTIP_NEXT": "Next",
+      "MD_BUTTON_OK": "@:GLOBAL.OK",
+      "MD_BUTTON_CANCEL": "@:GLOBAL.CANCEL"
+    },
+    "CONTENT": {
+      "MD_BUTTON_OK": "@:GLOBAL.OK",
+      "MD_BUTTON_CANCEL": "@:GLOBAL.CANCEL",
+      "MD_STEP_COUNTER_LIMIT": "@:GLOBAL.OF",
+      "MD_STEP_COUNTER": "Step",
+      "MD_OPTION_TIME_DURATION": "Duration",
+      "MD_OPTION_DATE": "Date",
+      "MD_OPTION_TIME_CYCLE": "Cron",
+      "MD_SELECT_DEVICE": "Select device",
+      "HEADLINE_SPECIFY_PARAMETER": "Specify parameter",
+      "HEADLINE_LAST_INTERVAL": "Data from last interval",
+      "HEADLINE_FIXED_INTERVAL": "Daten from fixed time interval",
+      "MEASUREMENT": "Data export",
+      "FIELD": "Measurement field",
+      "AGGREGATION": "Aggregation",
+      "LABEL_PROCESS_NAME": "Process name..."
+    }
+  },
+  "DEPLOYMENTS":{
+    "MD_TOAST": {
+      "DELETE_SUCCESS": "Deployment deleted succesfully.",
+      "DELETE_ERROR": "Error on deployment deletion.",
+      "PROCESS_DEPLOY_SUCCESS": "Process deployed succesfully.",
+      "PROCESS_DEPLOY_ERROR": "Error on process deployment."
+    },
+    "NO_PROCESS_ELEMENT": {
+      "TEXT_NO_DEPLOYMENTS": "No process deployments found."
+    },
+    "FUNCTIONS": {
+      "CLONE_PROCESS": {
+        "DEPLOYMENTS_CONTROLLER_SORT_ATTRIBUTES_BY_DATE": "Date",
+        "DEPLOYMENTS_CONTROLLER_SORT_ATTRIBUTES_BY_NAME": "Name",
+        "SHOW_CONFIRM_COPY_TITLE_COPY_PROCESS": "Copy process",
+        "SHOW_CONFIRM_COPY_TEXT_CONTENT_REALLY": "Copy process?",
+        "SHOW_CONFIRM_COPY_ARIA_LABEL_CONTENT": "Copy process",
+        "SHOW_CONFIRM_COPY_RESPONSE_OK": "Ok",
+        "SHOW_CONFIRM_COPY_RESPONSE_CANCEL": "Cancel"
+      },
+      "DELETE_DEPLOYMENT": {
+        "SHOW_CONFIRM_DELETE_TITLE_DELETE": "Delete deployment",
+        "SHOW_CONFIRM_DELETE_TEXT_CONTENT_REALLY": "Delete deployment?",
+        "SHOW_CONFIRM_DELETE_ARIA_LABEL_CONTENT": "Delete deployment",
+        "SHOW_CONFIRM_DELETE_RESPONSE_OK": "Ok",
+        "SHOW_CONFIRM_DELETE_RESPONSE_CANCEL": "Cancel"
+      },
+      "CONFIRM_EXECUTION": {
+        "SHOW_CONFIRM_TITLE_CONFIRM_EXECUTION": "Process execution",
+        "SHOW_CONFIRM_EXECUTION_TEXT_CONTENT_REALLY": "Execute process?",
+        "SHOW_CONFIRM_EXECUTION_ARIA_LABEL_CONTENT": "Execute process",
+        "SHOW_CONFIRM_EXECUTION_RESPONSE_OK": "Ok",
+        "SHOW_CONFIRM_EXECUTION_RESPONSE_CANCEL": "Cancel"
+      }
+    },
+    "PROCESS_ELEMENT": {
+      "MD_TOOLTIP_INCIDENTS": "Issues",
+      "MD_TOOLTIP_NOT_EXECUTABLE": "Missing dependencies",
+      "MD_BUTTON_EXECUTE": "Run",
+      "MD_BUTTON_LINK": "Show URL",
+      "MD_BUTTON_HISTORY": "History",
+      "MD_BUTTON_CLONE": "Copy",
+      "MD_BUTTON_DELETE": "@:GLOBAL.DELETE",
+      "COPY_SUFFIX": "Copy"
+    },
+    "DEPENDENCIES_DIALOG": {
+      "MD_DIALOG_ARIA_LABEL_DEPENDENCIES": "Dependencies",
+      "MD_DIALOG_FORM_TOOLBAR_HEADLINE_DEPENDENCIES": "Dependencies",
+      "MD_DIALOG_CONTENT_HEADLINE_DEVICES": "Devices",
+      "MD_DIALOG_CONTENT_HEADLINE_EVENTS": "Events",
+      "MD_DIALOG_CONTENT_DEPENDENCIES_PARAMETER_EXECEPTION_IF_UNKNOWN": "Unknown",
+      "MD_DIALOG_ACTIONS_BUTTON_LABEL_OK": "Ok"
+    }
+  },
+  "DESIGNER": {
+    "MD_TOAST": {
+      "PROCESS_SAVE": "Process saved succesfully.",
+      "PROCESS_IMPORT": "Process imported succesfully."
+    },
+    "MD_TOOLTIP_SAVE": "Save",
+    "MD_TOOLTIP_IMPORT": "Import",
+    "MD_BUTTON_CLOSE": "Close",
+    "MD_BUTTON_OK": "@:GLOBAL.OK",
+    "MD_BUTTON_CANCEL": "@:GLOBAL.CANCEL",
+    "INVALID_LANES": {
+      "HEADLINE_TOOLBAR_TOOLS": "Invalid lanes",
+      "MD_DIALOG_CONTENT": "Process has invalid lanes:"
+    },
+    "IOT_INPUTS": {
+      "HEADLINE_TOOLBAR_TOOLS": "Input variable values",
+      "MD_INPUT_CONTAINER_LABEL": "Existing output variables",
+      "INTERVAL": "Interval",
+      "ACTION": "Action"
+    },
+    "IOT_OUTPUTS": {
+      "HEADLINE_TOOLBAR_TOOLS": "Output variable names"
+    },
+    "IOT_SCRIPT": {
+      "HEADLINE_TOOLBAR_TOOLS": "Script"
+    }
+  },
+  "MONITOR": {
+    "MD_BUTTON_OK": "@:GLOBAL.OK",
+    "DETAILS": {
+      "HEADLINE_DETAILS": "Details",
+      "HEADLINE_INSTANCE_ID": "Instance",
+      "HEADLINE_INCIDENTS": "Incidents",
+      "HEADLINE_VARIABLES": "Variables"
+    },
+    "TABLE_COLUMNS": {
+      "PROCESS": "Process",
+      "ID": "ID",
+      "STARTTIME": "Start time",
+      "ENDTIME": "End time",
+      "DURATION": "Duration"
+    }
+  },
+  "REPOSITORY": {
+    "MD_TOAST": {
+      "DELETE": "Process deleted succesfully.",
+      "MARKETPLACE_CHANGE": "Process changed succesfully."
+    },
+    "NO_ELEMENT_TEXT": "No process definitions found.",
+    "PROCESS_ELEMENT": {
+      "MD_BUTTON_OPEN": "Open in designer",
+      "MD_BUTTON_SHARE": "Share",
+      "MD_BUTTON_DOWNLOAD_DIAGRAM": "Download diagram",
+      "MD_BUTTON_DOWNLOAD_IMAGE": "Download image",
+      "MD_BUTTON_PUBLISH_SHARE": "Share on Marketplace",
+      "MD_BUTTON_PUBLISH_HIDE": "Hide from Marketplace",
+      "MD_BUTTON_PUBLISH_DESCRIPTION": "Change Marketplace description",
+      "MD_BUTTON_COPY": "Clone",
+      "MD_BUTTON_DEPLOY": "Deploy",
+      "MD_BUTTON_DELETE": "@:GLOBAL.DELETE"
+    },
+    "TOOLBAR": {
+      "MD_TOOLTIP_NEW_PROCESS": "New"
+    },
+    "FUNCTIONS": {
+      "CONFIRM_DEPLOY": {
+        "TITLE_DEPLOY_PROCESS": "Process deployment",
+        "TEXT_CONTENT_REALLY_DEPLOY": "Deploy process?",
+        "ARIA_LABEL_DEPLOY_PROCESS": "Deploy process",
+        "OK_RESPONSE": "@:GLOBAL.OK",
+        "CANCEL_RESPONSE": "@:GLOBAL.CANCEL"
+      },
+      "CONFIRM_DELETE": {
+        "TITLE_DELETE_PROCESS": "Delete process",
+        "TEXT_CONTENT_REALLY_DELETE": "Delete process?",
+        "ARIA_LABEL_DELETE_PROCESS": "Delete process",
+        "YES_RESPONSE": "Ok",
+        "NO_RESPONSE": "Cancel"
+      },
+      "CONFIRM_CLONE": {
+        "TITLE_CLONE_PROCESS": "Copy process",
+        "TEXT_CONTENT_REALLY_CLONE": "Copy process?",
+        "ARIA_LABEL_CLONE_PROCESS": "Copy process",
+        "YES_RESPONSE": "Ok",
+        "NO_RESPONSE": "Cancel"
+      },
+      "ADD_TO_MARKETPLACE": {
+        "TITLE_CONFIRM_ADD_TO_MARKETPLACE": "Add process to marketplace",
+        "TEXT_CONTENT_ADD_PROCESS_DESCRIPTION": "Please enter process description.",
+        "PLACEHOLDER_DESCRIPTION_FIELD": "Description",
+        "ARIA_LABEL_ADD_TO_MARKETPLACE": "Process description",
+        "OK_RESPONSE": "@:GLOBAL.OK",
+        "CANCEL_RESPONSE": "@:GLOBAL.CANCEL"
+      },
+      "CHANGE_MARKETPLACE_DESCRIPTION": {
+        "TITLE_CHANGE_MARKETPLACE_DESCRIPTION": "Change process description",
+        "TEXT_CONTENT_CHANGE_MARKETPLACE_DESCRIPTION": "Please change process description.",
+        "PLACEHOLDER_DESCRIPTION_FIELD": "Description",
+        "ARIA_LABEL_CHANGE_MARKETPLACE_DESCRIPTION": "Change process description",
+        "OK_RESPONSE": "@:GLOBAL.OK",
+        "CANCEL_RESPONSE": "@:GLOBAL.CANCEL"
+      },
+      "HIDE_FROM_MARKETPLACE": {
+        "TITLE_HIDE_FROM_MARKETPLACE_DESCRIPTION": "Hide process from marketplace",
+        "TEXT_CONTENT_HIDE_FROM_MARKETPLACE_DESCRIPTION": "Hide process?",
+        "ARIA_LABEL_HIDE_FROM_MARKETPLACE_DESCRIPTION": "Hide process",
+        "OK_RESPONSE": "@:GLOBAL.OK",
+        "CANCEL_RESPONSE": "@:GLOBAL.CANCEL"
+      }
+    }
+  },
+  "DEVICETYPE_DIALOG": {
+    "MD_DIALOG_FORM_TOOLBAR_HEADLINE_CONF_TASK": "Configure task",
+    "MD_DIALOG_FORM_CONTENT_INPUT_CONTAINER_LABEL_DEVICE_TYPE": "Value type",
+    "MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_DEVICE_TYPE": "Value type",
+    "MD_DIALOG_CONTENT_SELECT_HEADER_INPUT_PLACEHOLDER_SEARCH_FOR": "Search...",
+    "MD_DIALOG_FORM_CONTENT_INPUT_CONTAINER_LABEL_SERVICE_TYPE": "Service type",
+    "MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_SERVICE_TYPE": "Service type",
+    "MD_DIALOG_ACTIONS_BUTTON_OK": "@:GLOBAL.OK",
+    "MD_DIALOG_ACTIONS_BUTTON_CANCEL": "@:GLOBAL.CANCEL"
+  },
+  "DIALOG": {
+    "MD_DIALOG_TOOLBAR_HEADLINE": "JSON Path",
+    "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_PATH_EX": "@:GLOBAL.PATH",
+    "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_PATH_EX_RESULT": "Example result",
+    "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_EXAMPLE_VALUE": "Example value",
+    "MD_DIALOG_ACTIONS_BUTTON_OK": "@:GLOBAL.OK",
+    "MD_DIALOG_ACTIONS_BUTTON_CANCEL": "@:GLOBAL.CANCEL"
+  },
+  "SERVICES": {
+    "EVENT_DIALOG": {
+      "MD_DIALOG_TOOLBAR_HEADLINE": "@:GLOBAL.IOT_DEVICE",
+      "MD_DIALOG_TOOLBAR_BUTTON_X": "@:GLOBAL.X",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_OPTION_EVENT": "@:GLOBAL.EVENT",
+      "MD_DIALOG_ACTIONS_BUTTON_OK": "@:GLOBAL.OK",
+      "MD_DIALOG_ACTIONS_BUTTON_CANCEL": "@:GLOBAL.CANCEL"
+    },
+    "EVENT_DT_SERVICE_DIALOG": {
+      "MD_DIALOG_TOOLBAR_HEADLINE": "Select event",
+      "MD_DIALOG_TOOLBAR_BUTTON_X": "@:GLOBAL.X",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_IOT_DEVICE_TYPE": "@:GLOBAL.IOT_DEV_TYPE",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_OPTION_IOT_DEVICE_TYPE": "@:GLOBAL.IOT_DEV_TYPE",
+      "MD_DIALOG_CONTENT_SELECT_HEADER_PLACEHOLDER_TEXT": "@:GLOBAL.SEARCH_FOR",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_EVENT": "@:GLOBAL.EVENT",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_OPTION_EVENT": "@:GLOBAL.EVENT",
+      "MD_DIALOG_ACTIONS_BUTTON_OK": "@:GLOBAL.OK",
+      "MD_DIALOG_ACTIONS_BUTTON_CANCEL": "@:GLOBAL.CANCEL"
+    },
+    "EVENT_SERVICE_DIALOG": {
+      "MD_DIALOG_TOOLBAR_HEADLINE": "@:GLOBAL.IOT_DEVICE",
+      "MD_DIALOG_TOOLBAR_BUTTON_X": "@:GLOBAL.X",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_OPTION_IOT_DEVICE": "@:GLOBAL.IOT_DEVICE",
+      "MD_DIALOG_CONTENT_SELECT_HEADER_PLACEHOLDER_TEXT": "@:GLOBAL.SEARCH_FOR",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_SERVICE": "@:GLOBAL.SERVICE",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_EVENT": "@:GLOBAL.EVENT",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_OPTION_SERVICE": "@:GLOBAL.SERVICE",
+      "MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_OPTION_EVENT": "@:GLOBAL.EVENT",
+      "MD_DIALOG_ACTIONS_BUTTON_OK": "@:GLOBAL.OK",
+      "MD_DIALOG_ACTIONS_BUTTON_CANCEL": "@:GLOBAL.CANCEL"
+    }
+  },
+  "TIME": {
+    "CRON": {
+      "MD_TAB_CONTENT_TAB_CONTENT_EVERY": "Every",
+      "MD_TAB_CONTENT_TAB_CONTENT_MINUTE": "minute(s)",
+      "MD_TAB_CONTENT_TAB_CONTENT_H_ON_MIN": "hour(s) on minute",
+      "MD_TAB_CONTENT_TAB_CONTENT_AND_SEC": "and second(s)",
+      "MD_TAB_CONTENT_TAB_CONTENT_DAYS_AT": "day(s) at",
+      "MD_TAB_CONTENT_TAB_CONTENT_MON_TO_FRI": "Every week day (Monday through Friday) at",
+      "WEEK": {
+        "MONDAY": "Monday",
+        "TUESDAY": "Tuesday",
+        "WEDNESDAY": "Wednesday",
+        "THURSDAY": "Thursday",
+        "FRIDAY": "Friday",
+        "SATURDAY": "Saturday",
+        "SUNDAY": "Sunday"
+      },
+      "MD_TAB_CONTENT_TAB_CONTENT_START_TIME": "Start time",
+      "MD_TAB_CONTENT_TAB_CONTENT_ON_THE": "On the",
+      "MD_TAB_CONTENT_TAB_CONTENT_OF_EVERY": "of every",
+      "MD_TAB_CONTENT_TAB_CONTENT_MONTHS_AT": "month(s) at",
+      "MD_TAB_CONTENT_TAB_CONTENT_ON_THE_L": "on the",
+      "MD_TAB_CONTENT_TAB_CONTENT_AT": "at",
+      "MD_TAB_CONTENT_TAB_CONTENT_OF": "of",
+      "MD_TAB_CONTENT_TAB_CONTENT_CRON_EXPR": "Cron Expression",
+      "MD_TAB_CONTENT_TAB_CONTENT_MORE_DETAILS": "More details about how to create these expressions can be found ",
+      "MD_TAB_CONTENT_TAB_CONTENT_HERE": "here"
+    },
+    "DATETIME": {
+      "MD_INPUT_CONTAINER_LABEL_HOURS": "@:GLOBAL.HOURS",
+      "MD_INPUT_CONTAINER_LABEL_MINUTES": "@:GLOBAL.MINUTES"
+    },
+    "DURATION": {
+      "MD_INPUT_CONTAINER_LABEL_YEARS": "Years",
+      "MD_INPUT_CONTAINER_LABEL_MONTHS": "Months",
+      "MD_INPUT_CONTAINER_LABEL_DAYS": "Days",
+      "MD_INPUT_CONTAINER_LABEL_HOURS": "@:GLOBAL.HOURS",
+      "MD_INPUT_CONTAINER_LABEL_MINUTES": "@:GLOBAL.MINUTES",
+      "MD_INPUT_CONTAINER_LABEL_SECONDS": "Seconds"
+    }
+  },
+  "DEVICE_INSTANCES": {
+    "SEARCH": {
+      "MD_INPUT_CONTAINER_LABEL_IOT_DEVICE": "@:GLOBAL.IOT_DEVICE",
+      "MD_INPUT_CONTAINER_SELECT_SELECTED_TEXT_IOT_DEVICE": "@:GLOBAL.IOT_DEVICE",
+      "MD_SELECT_HEADER_INPUT_PLACEHOLDER_SEARCH_FOR": "@:GLOBAL.SEARCH_FOR"
+    }
+  }
+}

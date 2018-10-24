@@ -1,0 +1,25 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{ "DASHBOARD.CHANGE_VIEW.HEADLINE_VIEW" | translate }}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-input-container class="md-block">
+                <label>{{ "DASHBOARD.CHANGE_VIEW.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL" | translate }}</label>
+                <input type="text" ng-model="ctrl.viewTitle">
+            </md-input-container>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-primary md-raised" ng-click="ctrl.save()">{{ "DASHBOARD.CHANGE_VIEW.MD_DIALOG_ACTIONS_BUTTON_SAVE" | translate }}
+        </md-button>
+        <md-button class="md-primary md-raised" ng-click="ctrl.cancel()">{{ "DASHBOARD.CHANGE_VIEW.MD_DIALOG_ACTIONS_BUTTON_CANCEL" | translate }}
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

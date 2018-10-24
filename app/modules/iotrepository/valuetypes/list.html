@@ -1,0 +1,47 @@
+<sepl-searchbar search-text="$ctrl.searchText" on-input-change="$ctrl.searchText = searchText;"></sepl-searchbar>
+<sepl-sort attributes="$ctrl.sortAttributes" on-click-event="$ctrl.sortItem = sortItem"
+           current-sort-item="$ctrl.sortItem" flex="100">
+</sepl-sort>
+<div layout-margin>
+    <div ng-if="!$ctrl.valuetypes.length && $ctrl.requestComplete">
+        {{'VALUE_TYPES.NO_ELEMENT_TEXT' | translate}}
+    </div>
+</div>
+<div ng-if="$ctrl.valuetypes.length"
+     infinite-scroll="$ctrl.next()" infinite-scroll-distance='1'
+     infinite-scroll-container="'#content'"
+     infinite-scroll-disabled="$ctrl.scrollDisabled">
+    <md-list md-whiteframe="1">
+        <md-list-item
+                ng-repeat="valuetype in $ctrl.valuetypes">
+            <div class="md-list-item-text" flex>
+                <div layout="row" >
+                    <div flex="30" class="md-body-2">
+                        {{valuetype.name || "VALUE_TYPES.LIST.MD_GRID_LIST_TILE_FOOTER_TOOLTIP_EXCEPTION_IF_UNKNOWN_NAME" | translate}}
+                    </div>
+                    <div flex="70" class="md-body-1">
+                        {{valuetype.desc || 'VALUE_TYPES.LIST.MD_GRID_LIST_TILE_EXCEPTION_IF_NO_DESCRIPTION' | translate}}
+                    </div>
+                </div>
+                <div class="md-secondary">
+                    <md-button class="md-icon-button" ng-click="$mdMenu.open()">
+                        <md-icon>more_vert</md-icon>
+                    </md-button>
+                </div>
+            </div>
+            <md-divider ng-if="!$last" flex></md-divider>
+        </md-list-item>
+    </md-list>
+</div>
+<md-button ui-sref="iotrepository.valuetypes.create" class="md-fab md-fab-bottom-right"
+           style="position: fixed !important;">
+    <md-icon>add</md-icon>
+    <md-tooltip md-direction="top">{{ 'VALUE_TYPES.LIST.MD_BUTTON_TOOLTIP_LABEL_CREATE_NEW_DATA_TYPE' | translate }}
+    </md-tooltip>
+</md-button>
+<md-progress-circular ng-class="{'md-progress-circular-next' : !$ctrl.initialLoading}"
+                      md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-hue-2"
+                      md-diameter="50"></md-progress-circular>
+
+
+

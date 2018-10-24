@@ -1,0 +1,26 @@
+<div layout="column" layout-fill md-whiteframe="1">
+    <div flex="75" >
+        <div layout="column" layout-fill class="image-background-color">
+            <img ng-src="{{$ctrl.item.image}}" ng-click="$ctrl.showProcessDetails($ctrl.item, $event)" layout-fill>
+        </div>
+    </div>
+    <div flex="25">
+        <div layout="column" layout-fill class="widget-bottom-text">
+            <div layout="row" layout-align="start center" flex>
+                <div class="shortenText">{{$ctrl.item.name}}</div>
+            </div>
+            <div layout="row" layout-align="start stretch" flex>
+                <div ng-repeat="i in [1,2,3,4,5]">
+                    <md-icon ng-if="!$ctrl.item.stars" class="star"
+                             ng-bind="'star_border'"></md-icon>
+                    <md-icon ng-if="i <= $ctrl.item.stars "
+                             class="star" ng-bind="'star'"></md-icon>
+                    <md-icon ng-if="i  > $ctrl.item.stars && i - $ctrl.item.stars < 0.5"
+                             class="star" ng-bind="'star_half'"></md-icon>
+                    <md-icon ng-if="i  > $ctrl.item.stars && i - $ctrl.item.stars >= 0.5"
+                             class="star" ng-bind="'star_border'"></md-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

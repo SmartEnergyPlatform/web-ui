@@ -1,0 +1,85 @@
+sepl-data-table table {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+sepl-data-table .data-table {
+    padding: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+sepl-data-table table th {
+    text-align: left;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: inherit;
+    border-bottom: 1px solid lightgray;
+    padding: 14px;
+}
+
+sepl-data-table table th a {
+    text-decoration: none;
+    color: inherit;
+}
+
+sepl-data-table table tbody tr {
+    outline: none;
+}
+
+sepl-data-table table tbody tr:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+    transition: background-color 0.5s;
+}
+
+sepl-data-table .selected {
+    background-color: whitesmoke;
+    outline: none;
+}
+
+sepl-data-table table tbody tr td {
+    font-size: 14px;
+    padding: 14px;
+}
+
+sepl-data-table table tbody tr td:focus {
+    outline: none;
+    border: 0;
+}
+
+sepl-data-table table tbody tr:not(:last-child) td {
+    border-bottom: 1px solid lightgray;
+}
+
+sepl-data-table .pagination {
+    font-size: 14px;
+    padding: 12px;
+    margin: 0;
+}
+
+sepl-data-table .pagination a {
+    display: inline-block;
+    padding: 0px 5px;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: inherit;
+}
+
+sepl-data-table .bold {
+    font-weight: bold;
+}
+
+sepl-data-table .no-entries {
+    text-align: left;
+    font-size: 14px;
+    font-family: inherit;
+    padding: 14px;
+}

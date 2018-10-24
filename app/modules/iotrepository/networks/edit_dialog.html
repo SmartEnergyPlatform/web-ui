@@ -1,0 +1,29 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{'NETWORKS.EDIT_NETWORK_DIALOG.MD_DIALOG_TOOLBAR_HEADLINE_EDIT_NETWORK' | translate}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'NETWORKS.EDIT_NETWORK_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_ID' | translate}}</label>
+                <input ng-model="network.id" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'NETWORKS.EDIT_NETWORK_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_NAME' | translate}}</label>
+                <input ng-model="network.name">
+            </md-input-container>
+
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-primary md-raised" ng-click="ok()">{{'NETWORKS.EDIT_NETWORK_DIALOG.MD_DIALOG_ACTIONS_BUTTON_LABEL_OK' | translate}}</md-button>
+        <md-button class="md-primary md-raised" ng-click="cancel()">{{'NETWORKS.EDIT_NETWORK_DIALOG.MD_DIALOG_ACTIONS_BUTTON_LABEL_CANCEL' | translate}}</md-button>
+    </md-dialog-actions>
+</md-dialog>

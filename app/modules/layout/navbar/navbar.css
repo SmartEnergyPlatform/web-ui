@@ -1,0 +1,17 @@
+.md-nav-bar {
+    background-color: rgb(46, 125, 50) !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom: 0;
+    position: sticky !important;
+    top: 0;
+    z-index: 77;
+}
+
+.md-nav-bar md-icon, .md-nav-bar .md-button {
+    color: white !important;
+}
+
+md-nav-bar md-nav-ink-bar {
+    background: white !important;
+}

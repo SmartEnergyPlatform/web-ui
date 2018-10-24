@@ -1,0 +1,28 @@
+<md-dialog aria-label="Resource-Permissions">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{ 'DIALOG.MD_DIALOG_TOOLBAR_HEADLINE_PERMISSIONS' | translate }} {{resourcePermissions.features.name || resourcePermissions.resource_id}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon>close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+            <sepl-permissions-add-right rights="resourcePermissions.user_rights"></sepl-permissions-add-right>
+            <sepl-permissions-user-right ng-repeat='(userId, rights) in resourcePermissions.user_rights' kind="kind" resourceid="resourcePermissions.resource_id" right="rights" user="userId" ng-if="!rights.remove"></sepl-permissions-user-right>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="save()">
+                {{ 'DIALOG.MD_DIALOG_ACTIONS_BUTTON_SAVE' | translate }}
+            </md-button>
+            <md-button ng-click="cancel()">
+                {{ 'DIALOG.MD_DIALOG_ACTIONS_BUTTON_CANCEL' | translate }}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

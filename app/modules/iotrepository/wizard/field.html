@@ -1,0 +1,50 @@
+<md-dialog aria-label="{{dialogHeader}}" class="iot-wizard-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{dialogHeader}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <bold>X</bold>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'WIZARD.FIELD.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_NAME' | translate}}</label>
+                <input ng-model="dialogElement.name">
+            </md-input-container>
+
+            <md-input-container>
+                <label>{{'WIZARD.FIELD.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_VALUE_TYPE' | translate}}</label>
+                <md-select md-selected-text="dialogElement.type.name || dialogElement.type.id || ('WIZARD.FIELD.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_VALUE_TYPE' | translate)" ng-model="dialogElement.type.id" data-md-container-class="selectdemoSelectHeader" md-on-close="clearSearch()" md-on-open="search('valueTypes')">
+                    <md-select-header class="demo-select-header">
+                        <input ng-model="searchInfo.searchText"
+                               ng-change="search('valueTypes')"
+                               type="search"
+                               placeholder="{{'WIZARD.FIELD.MD_DIALOG_CONTENT_SELECT_HEADER_INPUT_PLACEHOLDER_SEARCH_FOR' | translate }}"
+                               class="demo-header-searchbox md-text"
+                               ng-keydown="$event.stopPropagation()"
+                        />
+                    </md-select-header>
+                    <md-optgroup label="entities">
+                        <md-option ng-value="e.id" ng-click="assign(dialogElement.type, e)" ng-repeat="e in searchInfo.searchResult">
+                            {{e.name}} {{e.id}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="ok()">
+                {{'WIZARD.FIELD.MD_DIALOG_ACTIONS_BUTTON_OK' | translate}}
+            </md-button>
+            <md-button ng-click="cancel()">
+                {{'WIZARD.FIELD.MD_DIALOG_ACTIONS_BUTTON_CANCEL' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

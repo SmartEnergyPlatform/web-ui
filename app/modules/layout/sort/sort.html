@@ -1,0 +1,20 @@
+<div layout="row" layout-align="end center">
+    <md-menu>
+        <md-button ng-click="$mdMenu.open()" md-no-ink>
+            {{$ctrl.currentSortItem.label | translate}}
+        </md-button>
+        <md-menu-content>
+            <md-menu-item ng-repeat="item in $ctrl.attributes">
+                <md-button ng-click="$ctrl.sort(item)">
+                    <md-icon ng-if="$ctrl.isActive(item)">done</md-icon>
+                    <md-icon ng-if="!$ctrl.isActive(item)"></md-icon>
+                    {{item.label | translate }}
+                </md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+    <md-button ng-click="$ctrl.sort($ctrl.currentSortItem)" class="md-icon-button">
+        <md-tooltip md-direction="top">{{ 'SORT.REVERSE_DIRECTION' | translate}}</md-tooltip>
+        <md-icon>{{$ctrl.getSortIcon($ctrl.currentSortItem)}}</md-icon>
+    </md-button>
+</div>

@@ -1,0 +1,24 @@
+<sepl-navbar></sepl-navbar>
+<md-progress-circular md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-progress-circular md-hue-2"
+                      md-diameter="50"></md-progress-circular>
+<sepl-searchbar search-text="$ctrl.searchText" on-input-change="$ctrl.searchText = searchText"></sepl-searchbar>
+<div layout-margin>
+    <md-chips ng-if="$ctrl.chip.length > 0" ng-model="$ctrl.chip" readonly="true" md-removable="true"
+              md-on-remove="$ctrl.removeChip()">
+        <button class="md-chip-remove" md-chip-remove>
+            <md-icon>cancel</md-icon>
+        </button>
+        <md-chip-template>{{$chip.name}}</md-chip-template>
+    </md-chips>
+</div>
+<sepl-data-table on-delete-row="$ctrl.deleteItemId = deleteRow"
+                 on-selected-row-changed="$ctrl.row = row"
+                 data="$ctrl.items"
+                 keys="$ctrl.columnKeys"
+                 columns="$ctrl.columns"
+                 search-text="$ctrl.searchText"
+                 delete-active="true"
+                 buttons="$ctrl.buttons"
+                 init-sort-by="startTime"
+>
+</sepl-data-table>

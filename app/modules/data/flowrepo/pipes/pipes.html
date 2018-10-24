@@ -1,0 +1,14 @@
+<sepl-navbar></sepl-navbar>
+<md-progress-circular md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-progress-circular md-hue-2"
+                      md-diameter="50"></md-progress-circular>
+<sepl-searchbar search-text="$ctrl.searchTextTable" on-input-change="$ctrl.searchTextTable = searchText"></sepl-searchbar>
+<sepl-data-table on-delete-row="$ctrl.deleteItemId = deleteRow"
+                 on-selected-row-changed="$ctrl.row = row"
+                 data="$ctrl.pipelineItems"
+                 keys="$ctrl.columnKeys"
+                 columns="$ctrl.columns"
+                 search-text="$ctrl.searchTextTable"
+                 delete-active="true"
+                 buttons="$ctrl.buttons"
+                 init-sort-by="id">
+</sepl-data-table>

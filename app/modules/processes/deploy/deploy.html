@@ -1,0 +1,143 @@
+
+
+<div layout="row" class="abstract-process-config" layout-align="space-between stretch">
+
+    <md-button class="md-raised abstract-process-config-nav" ng-click="prev()" ng-disabled="!hasPrev()" class="md-icon-button">
+        <md-tooltip>{{ 'DEPLOY.NAVIGATION.MD_TOOLTIP_BEFORE' | translate }}</md-tooltip>
+        <md-icon>navigate_before</md-icon>
+    </md-button>
+
+    <div class="abstract-process-config-content">
+        <div id="svg-diagram" class="abstract-process-config-svg" sepl-resize="onResize()"></div>
+        <div class="md-caption step-counter">
+            {{ 'DEPLOY.CONTENT.MD_STEP_COUNTER' | translate }} {{currentIndex+1}} {{ 'DEPLOY.CONTENT.MD_STEP_COUNTER_LIMIT' | translate}} {{displayElements.length}}
+        </div>
+        <div class="abstract-process-config-input" ng-repeat="element in displayElements" ng-if="$index == currentIndex">
+            <div ng-if="element.msg_event">
+                <sepl-event-msg-edit event="element.msg_event" change="updateDiagram()"></sepl-event-msg-edit>
+            </div>
+
+            <div ng-if="element.receive_task">
+                <sepl-event-msg-edit event="element.receive_task" change="updateDiagram()"></sepl-event-msg-edit>
+            </div>
+
+            <div ng-if="element.time_event">
+                <md-input-container ng-if="!element.time_event.kind || element.time_event.kind == ''">
+                    <!-- should never be displayed because deployment component preselects kind -->
+                    <md-select ng-model="element.time_event.kind" ng-change="element.time_event.time = ''; element.time_event.label = ''; updateDiagram()">
+                        <md-optgroup>
+                            <md-option ng-value="'timeDuration'">
+                                {{ 'DEPLOY.CONTENT.MD_OPTION_TIME_DURATION' | translate }}
+                            </md-option>
+                            <md-option ng-value="'timeDate'">
+                                {{ 'DEPLOY.CONTENT.MD_OPTION_DATE' | translate }}
+                            </md-option>
+                            <md-option ng-value="'timeCycle'">
+                                {{ 'DEPLOY.CONTENT.MD_OPTION_TIME_CYCLE' | translate }}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <sepl-event-time-duration ng-if="element.time_event.kind == 'timeDuration'" initial="{{element.time_event.time}}" on-change="element.time_event.time = result.iso.string; element.time_event.label = result.text; updateDiagram()"></sepl-event-time-duration>
+                <sepl-event-time-cycle ng-if="element.time_event.kind == 'timeCycle'" initial="{{element.time_event.time}}" on-change="element.time_event.time = result.cron; element.time_event.label = result.text; updateDiagram()"></sepl-event-time-cycle>
+                <sepl-event-time-date-time ng-if="element.time_event.kind == 'timeDate'" initial="{{element.time_event.time}}" on-change="element.time_event.time = result.iso; element.time_event.label = result.text; updateDiagram()"></sepl-event-time-date-time>
+            </div>
+
+
+            <div ng-if="element.abstract_task">
+                <md-input-container>
+                    <md-select md-selected-text="element.abstract_task.selected.name || element.abstract_task.selected.id || ('DEPLOY.CONTENT.MD_SELECT_DEVICE' | translate)"
+                        ng-model="element.abstract_task.selected" ng-change="updateDiagram()">
+                        <md-optgroup>
+                            <md-option ng-value="option" ng-repeat="option in element.abstract_task.options">
+                                {{option.name}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <div ng-if="element.abstract_data_export_task">
+                <h3>{{ 'DEPLOY.CONTENT.MEASUREMENT' | translate }}</h3>
+                <md-input-container class="md-block">
+                    <label>{{ 'DEPLOY.CONTENT.MEASUREMENT' | translate }}</label>
+                    <md-select ng-model="element.abstract_data_export_task.measurement">
+                        <md-optgroup>
+                            <md-option ng-value="option.ID" ng-repeat="option in measurementOptions">
+                                {{option.Name}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>{{ 'DEPLOY.CONTENT.FIELD' | translate }}</label>
+                    <md-select ng-model="element.abstract_data_export_task.measurementField">
+                        <md-optgroup>
+                            <md-option ng-value="option.Name" ng-repeat="option in measurementFieldOptions">
+                                {{option.Name}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <h3>{{ 'DEPLOY.CONTENT.AGGREGATION' | translate }}</h3>
+                <md-input-container class="md-block">
+                    <label>{{'DESIGNER.IOT_INPUTS.ACTION' | translate}}</label>
+                    <md-select ng-model="element.abstract_data_export_task.analysisAction">
+                        <md-optgroup>
+                            <md-option ng-value="availableAction.id" ng-repeat="availableAction in availableActions">
+                                {{availableAction.name}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+
+                <h4>{{'DEPLOY.CONTENT.HEADLINE_LAST_INTERVAL' | translate}}</h4>
+                <md-input-container class="md-block">
+                    <label>{{'DESIGNER.IOT_INPUTS.INTERVAL' | translate}}</label>
+                    <input ng-model="element.abstract_data_export_task.interval.value">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>{{'DEPLOY.CONTENT.MD_OPTION_TIME_DURATION' | translate}}</label>
+                    <md-select ng-model="element.abstract_data_export_task.interval.timeType">
+                        <md-optgroup>
+                            <md-option ng-value="time.id" ng-repeat="time in times">
+                                {{time.name}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+
+                <h4>{{'DEPLOY.CONTENT.HEADLINE_FIXED_INTERVAL' | translate}}</h4>
+                <md-input-container class="md-block">
+                    <label>Startdatum</label>
+                    <md-datepicker ng-model="element.abstract_data_export_task.dateInterval.start" md-placeholder="Enter date"></md-datepicker>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Enddatum</label>
+                    <md-datepicker ng-model="element.abstract_data_export_task.dateInterval.end" md-placeholder="Enter date"></md-datepicker>
+                </md-input-container>
+            </div>
+
+            <div ng-if="element.task">
+                <h3>{{ 'DEPLOY.CONTENT.HEADLINE_SPECIFY_PARAMETER' | translate }}</h3>
+                <md-input-container ng-repeat="taskParam in element.task.parameter">
+                    <label>{{taskParam.name}}</label>
+                    <input type="text" ng-model="taskParam.value" ng-change="updateDiagram()">
+                </md-input-container>
+            </div>
+        </div>
+    </div>
+    <md-button class="md-raised abstract-process-config-nav" ng-click="next()" ng-disabled="!hasNext()" class="md-icon-button">
+        <md-tooltip>{{ 'DEPLOY.NAVIGATION.MD_TOOLTIP_NEXT' | translate }}</md-tooltip>
+        <md-icon>navigate_next</md-icon>
+    </md-button>
+</div>
+<input class="abstract-process-name"  ng-model="abstractProcess.name" placeholder="{{ 'DEPLOY.CONTENT.LABEL_PROCESS_NAME' | translate }}">
+<div layout="row" layout-align="space-around center">
+    <md-button class="md-primary md-raised" ng-click="ok()" ng-disabled="!validate()">
+        {{ 'DEPLOY.NAVIGATION.MD_BUTTON_OK' | translate}}
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="cancel()">
+        {{ 'DEPLOY.NAVIGATION.MD_BUTTON_CANCEL' | translate}}
+    </md-button>
+</div>

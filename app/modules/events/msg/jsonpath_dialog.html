@@ -1,0 +1,41 @@
+<md-dialog aria-label="JSON-Path" class="event-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'DIALOG.MD_DIALOG_TOOLBAR_HEADLINE' | translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon>close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+            <md-input-container flex-gt-xs>
+                <label>{{'DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_PATH_EX' | translate}}</label>
+                <input ng-model="pathExample" ng-change="tryPath()">
+            </md-input-container>
+
+            <md-input-container flex-gt-xs>
+                <label>{{'DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_PATH_EX_RESULT' | translate}}</label>
+                <input ng-model="exampleResult" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_EXAMPLE_VALUE' | translate}}</label>
+                <textarea ng-model="valueExample" ng-change="tryPath()"></textarea>
+            </md-input-container>
+        </md-dialog-content>
+
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-primary md-raised" ng-click="ok()">
+                {{'DIALOG.MD_DIALOG_ACTIONS_BUTTON_OK' | translate}}
+            </md-button>
+            <md-button class="md-primary md-raised" ng-click="cancel()">
+                {{'DIALOG.MD_DIALOG_ACTIONS_BUTTON_CANCEL' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,64 @@
+<md-dialog aria-label="IoT-Device" class="iot-wizard-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'DESIGNER.IOT_INPUTS.HEADLINE_TOOLBAR_TOOLS' | translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="close()">
+                    <md-icon>close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+            <div class="md-block" ng-if="!$first">
+                <h3>{{ 'DEPLOY.CONTENT.AGGREGATION' | translate }}</h3>
+                <md-input-container class="md-block">
+                    <label>{{'DESIGNER.IOT_INPUTS.ACTION' | translate}}</label>
+                    <md-select ng-model="config.analysisAction">
+                        <md-optgroup>
+                            <md-option ng-value="availableAction.id" ng-repeat="availableAction in availableActions">
+                                {{availableAction.name}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <h3>Daten aus letztem Interval</h3>
+                <md-input-container class="md-block">
+                    <label>{{'DESIGNER.IOT_INPUTS.INTERVAL' | translate}}</label>
+                    <input ng-model="config.interval.value">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>{{'DEPLOY.CONTENT.MD_OPTION_TIME_DURATION' | translate}}</label>
+                    <md-select ng-model="config.interval.type">
+                        <md-optgroup>
+                            <md-option ng-value="time.id" ng-repeat="time in times">
+                                {{time.name}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <h3>Daten aus festem Zeitinterval</h3>
+                <md-input-container class="md-block">
+                    <label>Startdatum</label>
+                    <md-datepicker ng-model="config.dateInterval.start" md-placeholder="Enter date"></md-datepicker>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Enddatum</label>
+                    <md-datepicker ng-model="config.dateInterval.end" md-placeholder="Enter date"></md-datepicker>
+                </md-input-container>
+            </div>
+
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button ng-click="ok()">
+                {{'DESIGNER.MD_BUTTON_OK' | translate}}
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="close()">
+                {{'DESIGNER.MD_BUTTON_CLOSE' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

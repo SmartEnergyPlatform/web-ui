@@ -1,0 +1,225 @@
+<md-card>
+    <md-card-header>
+        {{ 'DESIGNER.HEADER.MD_CARD_HEADER_CONTENT' | translate }}
+    </md-card-header>
+    <md-card-content>
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{ 'DESIGNER.HEADER.MD_CARD_CONTENT_HEADER' | translate }}</label>
+            <input ng-model="$ctrl.flow.name">
+        </md-input-container>
+        <div layout="row">
+            <md-button ng-click="$ctrl.saveFlow()" type="submit" class="md-primary md-raised">{{
+                'DESIGNER.HEADER.MD_BUTTON_SAVE' | translate }}
+            </md-button>
+        </div>
+    </md-card-content>
+</md-card>
+<md-progress-circular md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-progress-circular md-hue-2"
+                      md-diameter="50"></md-progress-circular>
+<div layout="row">
+    <md-card flex="80">
+        <md-card-header>
+            {{ 'DESIGNER.BODY.MD_CARD_HEADER_CONTENT_FLOW' | translate }}
+        </md-card-header>
+        <md-card-content>
+            <md-content layout="row" flex="100">
+                <fc-canvas ng-if="$ctrl.test" model="$ctrl.flow.model" selected-objects="$ctrl.flowchartselected"
+                           edge-style="curved"></fc-canvas>
+            </md-content>
+        </md-card-content>
+    </md-card>
+    <md-card flex="20">
+        <md-card-header>
+            {{ 'DESIGNER.BODY.MD_CARD_HEADER_CONTENT_OPERATOR' | translate }}
+        </md-card-header>
+        <md-card-content>
+            <sepl-searchbar search-text="$ctrl.searchText"
+                            on-input-change="$ctrl.searchText = searchText"></sepl-searchbar>
+            <md-list>
+                <md-content flex layout-padding style="height:520px">
+                    <md-list-item ng-repeat="item in $ctrl.repoItems" ng-show="$ctrl.requestComplete"
+                                  layout-align="space-between center">
+                        <div flex="80">
+                            <h3>{{item.name}}</h3>
+                        </div>
+                        <div flex="20">
+                            <md-button ng-click="$ctrl.addNewNode(item.id)" class="md-icon-button">
+                                <md-icon>add</md-icon>
+                                <md-tooltip md-direction="top">{{"DESIGNER.BODY.MD_BUTTON_ADD_NODE_DESCRIPTION" |
+                                    translate}}
+                                </md-tooltip>
+                            </md-button>
+                        </div>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+                </md-content>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</div>
+<style>
+    .fc-canvas {
+        border: solid 1px;
+        width: 100%;
+        height: 100%;
+        min-height: 600px;
+    }
+
+    .fc-canvas svg {
+        width: 100%;
+        height: 99%;
+    }
+
+    .button-overlay {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        z-index: 10;
+    }
+
+    .fc-node {
+        z-index: 1;
+    }
+
+    .innerNode {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 100px;
+        border-radius: 5px;
+
+        background-color: rgb(46, 125, 50);
+        color: #fff;
+        font-size: 20px;
+    }
+
+    .fc-node.fc-hover {
+        -webkit-filter: brightness(70%);
+        filter: brightness(70%);
+    }
+
+    .fc-node.fc-selected {
+        -webkit-filter: brightness(70%);
+        filter: brightness(70%);
+    }
+
+    .fc-node.fc-dragging {
+        z-index: 10;
+    }
+
+    .fc-node p {
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .fc-topConnectors, .fc-bottomConnectors {
+        position: absolute;
+        left: 0;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+
+        z-index: -10;
+    }
+
+    .fc-topConnectors {
+        top: -40px;
+    }
+
+    .fc-bottomConnectors {
+        bottom: -40px;
+    }
+
+    .fc-magnet {
+        display: flex;
+        flex-grow: 1;
+        height: 60px;
+
+        justify-content: center;
+    }
+
+    .fc-topConnectors .fc-magnet {
+        align-items: flex-end;
+    }
+
+    .fc-bottomConnectors .fc-magnet {
+        align-items: flex-start;
+    }
+
+    .fc-connector {
+        width: 15px;
+        height: 15px;
+        box-sizing: content-box;
+        border: 15px solid transparent;
+        -moz-background-clip: padding; /* Firefox 3.6 */
+        -webkit-background-clip: padding; /* Safari 4? Chrome 6? */
+        background-clip: padding-box;
+        border-radius: 50% 50%;
+        background-color: lightseagreen;
+        color: #fff;
+    }
+
+    .fc-connector.fc-hover {
+        background-color: #000;
+    }
+
+    .fc-edge {
+        stroke: gray;
+        stroke-width: 4;
+        fill: transparent;
+    }
+
+    .fc-edge.fc-hover {
+        stroke: gray;
+        stroke-width: 6;
+        fill: transparent;
+    }
+
+    @keyframes dash {
+        from {
+            stroke-dashoffset: 500;
+        }
+    }
+
+    .fc-edge.fc-selected {
+        stroke: red;
+        stroke-width: 4;
+        fill: transparent;
+        font-family: sans-serif;
+    }
+
+    .fc-edge.fc-active {
+        animation: dash 3s linear infinite;
+        stroke-dasharray: 20;
+    }
+
+    .fc-edge.fc-dragging {
+        pointer-events: none;
+    }
+
+    .edge-endpoint {
+        fill: gray;
+    }
+
+    .fc-nodedelete {
+        display: none;
+    }
+
+    .fc-selected .fc-nodedelete {
+        display: block;
+        position: absolute;
+        right: -13px;
+        top: -13px;
+
+        border-radius: 50%;
+        font-weight: 600;
+
+        height: 25px;
+        width: 25px;
+
+        background: red;
+        color: #fff;
+        text-align: center;
+    }
+</style>

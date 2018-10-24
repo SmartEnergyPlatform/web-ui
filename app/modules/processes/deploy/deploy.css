@@ -1,0 +1,90 @@
+.abstract-process-config-nav{
+    width: 40px;
+    min-width: 40px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.abstract-process-config-svg {
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    margin-bottom: 10px;
+
+    height: 200px;
+    resize: vertical;
+    overflow: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.abstract-process-config-content div {
+    display: block;
+}
+
+.abstract-process-config-content {
+    flex-grow: 1;
+}
+
+.abstract-process-config-input{
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 10px;
+}
+
+.abstract-process-config {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+/*
+reset input style
+ */
+.abstract-process-name{
+    border-width: 0px;
+    border-style: outset;
+    display: block;
+}
+
+.abstract-process-name{
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 10px;
+
+    margin: 8px;
+    width: calc(100% - 16px);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*
+.abstract-process-name{
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    width: 100%;
+    max-width: 100%;
+    width: 100%;
+    margin: 10px;
+    min-height: 40px;
+
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    vertical-align: baseline;
+
+    color: #333;
+
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+
+    border-style: outset;
+}
+*/

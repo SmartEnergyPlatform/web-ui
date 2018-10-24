@@ -1,0 +1,72 @@
+<div ui-view>
+    <sepl-searchbar search-text="$ctrl.searchText" on-input-change="$ctrl.searchText = searchText"></sepl-searchbar>
+    <sepl-sort attributes="$ctrl.sortAttributes" on-click-event="$ctrl.sortItem = sortItem"
+               current-sort-item="$ctrl.sortItem"></sepl-sort>
+    <div layout-margin>
+        <div ng-if="!$ctrl.repoItems.length && $ctrl.requestComplete == true">
+            {{'OPERATORREPOSITORY.NO_ELEMENT_TEXT' | translate}}
+        </div>
+    </div>
+    <md-progress-circular md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-progress-circular md-hue-2"
+                          md-diameter="50"></md-progress-circular>
+    <div infinite-scroll="$ctrl.next()" infinite-scroll-distance='1'
+         infinite-scroll-container="'#content'"
+         infinite-scroll-disabled="$ctrl.scrollDisabled">
+        <md-grid-list md-cols-xs="1" md-cols-sm="1" md-cols-md="1" md-cols-lg="2" md-cols-xl="2" md-row-height="300px"
+                      md-gutter="16px">
+            <md-grid-tile ng-repeat="item in $ctrl.repoItems" ng-show="$ctrl.requestComplete"
+                          md-whiteframe="1" md-rowspan="1">
+                <div layout="column" layout-fill>
+                    <div class="md-icon-right" layout="row" layout-align="space-between center">
+                        <div>
+                            <h3>{{item.name}}</h3>
+                        </div>
+                        <div>
+                            <md-icon class="md-primary" ng-if=" item.pub == true && item.editable == false" style="margin-right:10px;">language
+                                <md-tooltip>Öffentlich</md-tooltip>
+                            </md-icon>
+                            <md-icon class="md-accent md-hue-4" ng-if=" item.pub == true && item.editable == true" style="margin-right:10px;">check_box
+                                <md-tooltip>Veröffentlicht</md-tooltip>
+                            </md-icon>
+                        </div>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-list flex>
+                        <md-list-item class="md-2-line">
+                            <md-icon>cloud_circle</md-icon>
+                            <div class="md-list-item-text">
+                                <h3>{{item.image}}</h3>
+                                <p>Image</p>
+                            </div>
+                        </md-list-item>
+                        <md-list-item class="md-2-line">
+                            <md-icon>description</md-icon>
+                            <div class="md-list-item-text">
+                                <h3>{{item.description}}</h3>
+                                <p>Beschreibung</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                    <md-grid-tile-footer>
+                        <div layout="row" layout-align="end center">
+                            <md-button ui-sref="data.operatorrepo.operator.edit({ id: item.id })"
+                                       class="md-secondary md-icon-button" ng-if="item.editable === true">
+                                <md-tooltip>{{'OPERATORREPOSITORY.MD_LIST_ITEM_BUTTON_TOOLTIP_EDIT' | translate}}</md-tooltip>
+                                <md-icon>edit</md-icon>
+                            </md-button>
+                            <md-button ng-click="$ctrl.showConfirmDelete($event,item.id)"
+                                       class="md-secondary md-icon-button" ng-if="item.editable === true">
+                                <md-tooltip>{{ 'EXPORT.MD_GRID_LIST_TILE_FOOTER_TOOLTIP_DELETE' | translate }}</md-tooltip>
+                                <md-icon class="md-warn md-hue-2">delete</md-icon>
+                            </md-button>
+                        </div>
+                    </md-grid-tile-footer>
+                </div>
+            </md-grid-tile>
+        </md-grid-list>
+        <md-button ui-sref="data.operatorrepo.operator" class="md-fab md-fab-bottom-right" style="position: fixed !important;">
+            <md-icon>add</md-icon>
+            <md-tooltip md-direction="top">{{"OPERATORREPOSITORY.MD_BUTTON_NEW_OPERATOR" | translate}}</md-tooltip>
+        </md-button>
+    </div>
+</div>

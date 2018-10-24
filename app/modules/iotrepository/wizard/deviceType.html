@@ -1,0 +1,121 @@
+<div layout-margin>
+    <sepl-iotrepo-wizard-service ng-if="currentService"></sepl-iotrepo-wizard-service>
+    <div ng-if="!currentService">
+        <h2>{{'WIZARD.DEVICE_TYPE.HEADLINE_DEVICE_TYPE' | translate}}</h2>
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{'WIZARD.DEVICE_TYPE.MD_INPUT_CONTAINER_LABEL_NAME' | translate}}</label>
+            <input ng-model="devicetype.name">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{'WIZARD.DEVICE_TYPE.MD_INPUT_CONTAINER_LABEL_DESCRIPTION' | translate}}</label>
+            <input ng-model="devicetype.description">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{'WIZARD.DEVICE_TYPE.MD_INPUT_CONTAINER_LABEL_IMAGE' | translate}}</label>
+            <input ng-model="devicetype.img"
+                   ng-pattern="/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/">
+        </md-input-container>
+
+        <h3 ng-if="devicetype.generated">{{'WIZARD.DEVICE_TYPE.SUBHEADER_GENERATED_DEVICE_TYPE' | translate}}</h3>
+        <div ng-if="!devicetype.generated">
+            <div><span
+                    class="label">{{'WIZARD.DEVICE_TYPE.SUBHEADER_GENERATED_DEVICE_TYPE_LABEL_CLASS' | translate}}</span>
+                <md-input-container>
+                    <label>{{'WIZARD.DEVICE_TYPE.MD_INPUT_CONTAINER_LABEL_DEVICE_CLASS' | translate}}</label>
+                    <md-select
+                            md-selected-text="devicetype.device_class.name || devicetype.device_class.id ||  ('WIZARD.DEVICE_TYPE.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_DEVICE_CLASS' | translate)"
+                            ng-model="devicetype.device_class.id" data-md-container-class="selectdemoSelectHeader"
+                            md-on-close="clearSearch()" md-on-open="search('others/deviceClasses')">
+                        <md-select-header class="demo-select-header">
+                            <input ng-model="searchInfo.searchText"
+                                   ng-change="search('others/deviceClasses')"
+                                   type="search"
+                                   placeholder="{{'WIZARD.DEVICE_TYPE.MD_DIALOG_CONTENT_SELECT_HEADER_INPUT_PLACEHOLDER_SEARCH_FOR' | translate }}"
+                                   class="demo-header-searchbox md-text"
+                                   ng-keydown="$event.stopPropagation()"
+                            />
+                        </md-select-header>
+                        <md-optgroup label="entities">
+                            <md-option ng-value="null" ng-click="newDeviceClass()" class="select-default">
+                                {{'WIZARD.DEVICE_TYPE.MD_INPUT_CONTAINER_OPTGROUP_OPTION_NEW_DEVICE_CLASS' | translate}}
+                            </md-option>
+                            <md-option ng-value="element.id" ng-click="assign(devicetype.device_class, element)"
+                                       ng-repeat="element in searchInfo.searchResult">
+                                {{element.name}} {{element.id}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div><span
+                    class="label">{{'WIZARD.DEVICE_TYPE.SUBHEADER_GENERATED_DEVICE_TYPE_LABEL_VENDOR' | translate}}</span>
+                <md-input-container>
+                    <label>{{'WIZARD.DEVICE_TYPE.MD_INPUT_CONTAINER_LABEL_VENDOR' | translate}}</label>
+                    <md-select
+                            md-selected-text="devicetype.vendor.name || devicetype.vendor.id || ('WIZARD.DEVICE_TYPE.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_VENDOR' | translate)"
+                            ng-model="devicetype.vendor.id" data-md-container-class="selectdemoSelectHeader"
+                            md-on-close="clearSearch()" md-on-open="search('others/vendors')">
+                        <md-select-header class="demo-select-header">
+                            <input ng-model="searchInfo.searchText"
+                                   ng-change="search('others/vendors')"
+                                   type="search"
+                                   placeholder="{{'WIZARD.DEVICE_TYPE.MD_DIALOG_CONTENT_SELECT_HEADER_INPUT_PLACEHOLDER_SEARCH_FOR' | translate }}""
+                            class="demo-header-searchbox md-text"
+                            ng-keydown="$event.stopPropagation()"
+                            />
+                        </md-select-header>
+                        <md-optgroup label="entities">
+                            <md-option ng-value="null" ng-click="newVendor()" class="select-default">
+                                {{'WIZARD.DEVICE_TYPE.MD_INPUT_CONTAINER_OPTGROUP_OPTION_CREATE_NEW_ELEMENT' |
+                                translate}}
+                            </md-option>
+                            <md-option ng-value="element.id" ng-click="assign(devicetype.vendor, element)"
+                                       ng-repeat="element in searchInfo.searchResult">
+                                {{element.name}} {{element.id}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <md-chips
+                    name="MsgSegment"
+                    ng-model="devicetype.config_parameter"
+                    readonly="false"
+                    md-removable="true"
+                    placeholder="{{'WIZARD.DEVICE_TYPE.MD_CHIPS_LABEL_PLACEHOLDER' | translate}}"
+                    delete-button-label="{{'WIZARD.DEVICE_TYPE.MD_CHIPS_DELETE_BUTTON_LABEL' | translate}}"
+                    delete-hint="{{'WIZARD.DEVICE_TYPE.MD_CHIPS_DELETE_HINT' | translate}}"
+                    secondary-placeholder="+ConfigurationParameter"
+                    md-transform-chip="$ctrl.createConfigurationParameter($chip)"
+            >
+                <button class="md-chip-remove" md-chip-remove>
+                    <md-icon>cancel</md-icon>
+                </button>
+                <md-chip-template>
+                    <span>{{$chip.name}}</span>
+                </md-chip-template>
+            </md-chips>
+
+            <div layout="row" layout-align="start center">
+                <md-button class="md-raised" ng-click="serviceAdd()">{{'WIZARD.DEVICE_TYPE.MD_BUTTON_ADD_SERVICE' |
+                    translate}}
+                </md-button>
+                <md-chips ng-model="devicetype.services" name="Services" readonly="true"
+                          md-removable="true">
+                    <button class="md-chip-remove" md-chip-remove>
+                        <md-icon>cancel</md-icon>
+                    </button>
+                    <md-chip-template>
+                        <span class="clickable" ng-click="serviceEdit($chip)">{{$chip.name}}</span>
+                    </md-chip-template>
+                </md-chips>
+            </div>
+        </div>
+
+        <md-button class="md-primary md-raised wizard-controlls" ng-click="$ctrl.saveDevicetype()">
+            {{'WIZARD.DEVICE_TYPE.MD_BUTTON_SAVE' | translate}}
+        </md-button>
+    </div>
+
+</div>

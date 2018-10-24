@@ -1,0 +1,45 @@
+<div layout-margin>
+
+    <div>
+        <md-input-container flex>
+            <label>{{'TIME.DURATION.MD_INPUT_CONTAINER_LABEL_YEARS' | translate}}</label>
+            <input type="number" min="0" step="1" ng-model="duration.year">
+        </md-input-container>
+
+        <md-input-container flex>
+            <label>{{'TIME.DURATION.MD_INPUT_CONTAINER_LABEL_MONTHS' | translate}}</label>
+            <input type="number" min="0" step="1" ng-model="duration.month">
+        </md-input-container>
+
+        <!--
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{'WEEK' | translate}}</label>
+            <input type="number" min="0" max="53" step="1" ng-model="duartion.week">
+        </md-input-container>
+        -->
+
+        <md-input-container flex>
+            <label>{{'TIME.DURATION.MD_INPUT_CONTAINER_LABEL_DAYS' | translate}}</label>
+            <input type="number" min="0" step="1" ng-model="duration.day">
+        </md-input-container>
+    </div>
+
+    <div>
+        <md-input-container flex>
+            <label>{{'TIME.DURATION.MD_INPUT_CONTAINER_LABEL_HOURS' | translate}}</label>
+            <input type="number" min="0" step="1" ng-model="duration.hour">
+        </md-input-container>
+
+        <md-input-container flex>
+            <label>{{'TIME.DURATION.MD_INPUT_CONTAINER_LABEL_MINUTES' | translate}}</label>
+            <input type="number" min="0" step="1" ng-model="duration.minute">
+        </md-input-container>
+
+        <md-input-container flex>
+            <label>{{'TIME.DURATION.MD_INPUT_CONTAINER_LABEL_SECONDS' | translate}}</label>
+            <input type="number" min="0" step="1" ng-model="duration.second">
+        </md-input-container>
+    </div>
+
+
+</div>

@@ -1,0 +1,89 @@
+{
+  "GLOBAL": {
+    "DEVICES": "Devices",
+    "ACCOUNT": "Account",
+    "PROCESSES": "Processes",
+    "ANALYTICS": "Analytics",
+    "APPLICATIONS": "Applications",
+    "MARKETPLACE": "Marketplace",
+    "HOME": "Home"
+  },
+  "TOOLBAR": {
+    "NOTIFICATION": "Notifications",
+    "MARKETPLACE": "@:GLOBAL.MARKETPLACE",
+    "APPLICATIONS": "@:GLOBAL.APPLICATIONS",
+    "PROCESSES": "@:GLOBAL.PROCESSES",
+    "DATA": "@:GLOBAL.ANALYTICS",
+    "DEVICES": "@:GLOBAL.DEVICES",
+    "ACCOUNT": "@:GLOBAL.ACCOUNT",
+    "HOME": "@:GLOBAL.HOME"
+  },
+  "SIDENAV": {
+    "HOME": "@:GLOBAL.HOME",
+    "ACCOUNT": {
+      "ACCOUNT": "@:GLOBAL.ACCOUNT",
+      "LOGOUT": "Logout",
+      "SETTINGS": "Settings"
+    },
+    "DATA": {
+      "EXPORT": "Export",
+      "EXPORT_DIALOG": "Export Dialog",
+      "FLOWREPOSITORY": "Flows",
+      "FLOWREPOSITORY_DEPLOY": "Flow Deployment",
+      "OPERATORREPOSITORY": "Operators",
+      "DESIGNER": "Designer",
+      "ANALYTICS": "@:GLOBAL.ANALYTICS"
+    },
+    "IOTREPOSITORY": {
+      "DEVICE_TYPES": "Device Types",
+      "MAINTENANCE": "Maintenance",
+      "MAINTENANCE_RENAMING": "Renaming",
+      "NETWORKS": "Networks",
+      "PROTOCOL": "Protocol",
+      "VALUE_TYPES": "Value Types",
+      "WIZARD": "Wizard",
+      "DEVICE_INSTANCES": "Devices",
+      "DEVICES": "@:GLOBAL.DEVICES"
+    },
+    "PROCESSES": {
+      "PROCESS": "@:GLOBAL.PROCESSES",
+      "DEPLOYMENTS": "Deployments",
+      "MONITOR": "Monitor",
+      "DESIGNER": "Designer",
+      "REPOSITORY": "Repository"
+    },
+    "MARKETPLACE": {
+      "MARKETPLACE": "@:GLOBAL.MARKETPLACE",
+      "OVERVIEW": "Overview",
+      "PROCESSES": "@:GLOBAL.PROCESSES",
+      "DATA": "@:GLOBAL.ANALYTICS",
+      "EXPORT": "Data Export"
+    },
+    "APPLICATION": {
+      "APPS": "@:GLOBAL.APPLICATIONS",
+      "DASHBOARD": "Dashboard",
+      "SCHEDULE": "Schedule"
+    },
+    "HEADLINE": "Navigation"
+  },
+  "SEARCHBAR": {
+    "PLACEHOLDER": "Search"
+  },
+  "DATATABLE": {
+    "NO_ENTRIES_FOUND": "No entries found.",
+    "TOOLTIP_DELETE": "Delete",
+    "DETAILS": "Details"
+  },
+  "SORT": {
+    "REVERSE_DIRECTION": "Reverse sort direction",
+    "BY_NAME": "Name",
+    "BY_DATE": "Date",
+    "BY_STATE": "State",
+    "BY_DESCRIPTION": "Description",
+    "BY_DEVICE_COUNT": "Device count"
+  },
+  "TIME_DIALOGS": {
+    "OK": "Ok",
+    "CANCEL": "Cancel"
+  }
+}

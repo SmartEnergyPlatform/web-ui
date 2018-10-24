@@ -1,0 +1,19 @@
+<md-input-container class="md-block">
+    <label>{{'DEVICE_INSTANCES.SEARCH.MD_INPUT_CONTAINER_LABEL_IOT_DEVICE' | translate}}</label>
+    <md-select md-selected-text="$ctrl.device.name || $ctrl.device.id || ('DEVICE_INSTANCES.SEARCH.MD_INPUT_CONTAINER_SELECT_SELECTED_TEXT_IOT_DEVICE' | translate)" ng-model="$ctrl.device" data-md-container-class="selectdemoSelectHeader" md-on-open="search()">
+        <md-select-header class="demo-select-header">
+            <input ng-model="searchInfo.searchText"
+                   ng-change="search()"
+                   type="search"
+                   placeholder="{{'DEVICE_INSTANCES.SEARCH.MD_SELECT_HEADER_INPUT_PLACEHOLDER_SEARCH_FOR' | translate}}"
+                   class="demo-header-searchbox md-text"
+                   ng-keydown="$event.stopPropagation()"
+            />
+        </md-select-header>
+        <md-optgroup label="entities">
+            <md-option ng-value="e"  ng-repeat="e in searchInfo.searchResult">
+                {{e.name}} {{e.id}}
+            </md-option>
+        </md-optgroup>
+    </md-select>
+</md-input-container>

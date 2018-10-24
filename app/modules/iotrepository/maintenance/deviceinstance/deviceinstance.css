@@ -1,0 +1,67 @@
+sepl-maintenance-devices .preview {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+}
+
+sepl-maintenance-devices md-grid-list {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 100px;
+}
+
+sepl-maintenance-devices .image-wrapper{
+    height: 100%;
+}
+
+sepl-maintenance-devices md-grid-tile {
+    background: whitesmoke;
+}
+
+sepl-maintenance-devices md-grid-tile-footer {
+    background: white!important;
+    height: 68px!important;
+    color: black!important;
+}
+
+sepl-maintenance-devices md-grid-tile-footer figcaption {
+    width: 100%;
+}
+
+sepl-maintenance-devices md-grid-tile-footer .first-line {
+    font-size: 16px;
+}
+
+sepl-maintenance-devices md-grid-tile-footer .second-line {
+    font-size: 14px;
+}
+
+sepl-maintenance-devices md-grid-tile-footer .caption {
+    padding-left: 16px;
+}
+
+sepl-maintenance-devices .preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/background_deviceTypes.png');
+    background-size: cover;
+}
+
+sepl-maintenance-devices .image-wrapper{
+    position: relative;
+    height: calc(100% - 68px);
+    top: 0;
+}
+
+sepl-maintenance-devices .device-type-icon {
+    max-height: 100px;
+    max-width: 200px;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    display: block;
+    position: absolute;
+}

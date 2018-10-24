@@ -1,0 +1,58 @@
+<md-toolbar layout="row" class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" hide-gt-sm ng-click="$ctrl.toggle()" aria-label="Menu">
+            <md-icon>menu</md-icon>
+        </md-button>
+        <div class="image-wrapper" hide show-gt-sm>
+            <a href="" ui-sref="start" ng-click="$ctrl.toggleSelectSection()"><img
+                    src="img/SEPL-Logo-and-text-white-final.svg" class="logo"/></a>
+        </div>
+        <div class="title-wrapper" flex>
+            {{$ctrl.headline | translate}}
+        </div>
+        <div layout="row">
+            <md-menu ng-if="notifications && notifications.length" md-offset="-10 40">
+                <md-button aria-label="Notification" class="md-icon-button"
+                           ng-click="$ctrl.openNotificationMenu($mdMenu, $event)">
+                    <md-tooltip>{{'TOOLBAR.NOTIFICATION' | translate}}</md-tooltip>
+                    <md-icon md-menu-origin>notifications</md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item ng-repeat="notification in notifications">
+                        <md-button ng-click="$ctrl.openNotification(notification)">
+                            {{notification.msg}}
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+            <md-icon ng-if="!notifications || !notifications.length">notifications_none</md-icon>
+            <md-menu md-offset="-10 60">
+                <md-button class="md-icon-button" aria-label="Account" ng-click="$mdMenu.open()">
+                    <md-tooltip>{{'SIDENAV.ACCOUNT.ACCOUNT' | translate}}</md-tooltip>
+                    <md-icon>account_circle</md-icon>
+                </md-button>
+                <md-menu-content>
+                    <md-menu-item  class="account-headline">
+                        <div layout="column">
+                        <span class="md-title">{{ $ctrl.username }}</span>
+                        {{ $ctrl.email }}
+                        </div>
+                    </md-menu-item>
+                    <md-divider></md-divider>
+                    <md-menu-item>
+                        <md-button ui-sref="account.settings" aria-label="">
+                            <md-icon>settings</md-icon>
+                            {{ 'SIDENAV.ACCOUNT.SETTINGS' | translate }}
+                        </md-button>
+                    </md-menu-item>
+                    <md-divider></md-divider>
+                    <md-menu-item>
+                        <md-button ng-click="$ctrl.logout()" aria-label="Logout">
+                            <md-icon>power_settings_new</md-icon>
+                            {{'SIDENAV.ACCOUNT.LOGOUT' | translate}}
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+</md-toolbar>

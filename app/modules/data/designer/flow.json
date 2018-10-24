@@ -1,0 +1,113 @@
+{
+  nodes: [
+    {
+      name: "ngFlowchart",
+      id: 2,
+      x: 100,
+      y: 100,
+      color: '#000',
+      borderColor: '#000',
+      connectors: [
+        {
+          type: flowchartConstants.bottomConnectorType,
+          id: 9
+        },
+        {
+          type: flowchartConstants.bottomConnectorType,
+          id: 10
+        }
+      ]
+    },
+    {
+      name: "Implemented with AngularJS",
+      id: 3,
+      x: 400,
+      y: 300,
+      color: '#F15B26',
+      connectors: [
+        {
+          type: flowchartConstants.topConnectorType,
+          id: 1
+        },
+        {
+          type: flowchartConstants.topConnectorType,
+          id: 2
+        },
+        {
+          type: flowchartConstants.topConnectorType,
+          id: 3
+        },
+        {
+          type: flowchartConstants.bottomConnectorType,
+          id: 4
+        },
+        {
+          type: flowchartConstants.bottomConnectorType,
+          id: 5
+        },
+        {
+          type: flowchartConstants.bottomConnectorType,
+          id: 12
+        }
+      ]
+    },
+    {
+      name: "Easy Integration",
+      id: 4,
+      x: 200,
+      y: 600,
+      color: '#000',
+      borderColor: '#000',
+      connectors: [
+        {
+          type: flowchartConstants.topConnectorType,
+          id: 13
+        },
+        {
+          type: flowchartConstants.topConnectorType,
+          id: 14
+        },
+        {
+          type: flowchartConstants.topConnectorType,
+          id: 15
+        }
+      ]
+    },
+    {
+      name: "Customizable templates",
+      id: 5,
+      x: 600,
+      y: 600,
+      color: '#000',
+      borderColor: '#000',
+      connectors: [
+        {
+          type: flowchartConstants.topConnectorType,
+          id: 16
+        },
+        {
+          type: flowchartConstants.topConnectorType,
+          id: 17
+        },
+        {
+          type: flowchartConstants.topConnectorType,
+          id: 18
+        }
+      ]
+    }
+  ],
+  edges: [
+    {
+      source: 10,
+      destination: 1
+    },
+    {
+      source: 5,
+      destination: 14
+    },
+    {
+      source: 5,
+      destination: 17
+    }
+  ]
+};

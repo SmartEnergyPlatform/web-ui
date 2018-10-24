@@ -1,0 +1,6 @@
+<div class="chart" layout="column" layout-fill>
+    <div  layout="row" layout-align="center center" flex>
+        <nvd3 ng-if="$ctrl.chart.data.length > 0" options='$ctrl.chart.options' data='$ctrl.chart.data' layout-fill></nvd3>
+        <div ng-if="$ctrl.chart.data.length == 0">Keine Daten vorhanden.</div>
+    </div>
+</div>

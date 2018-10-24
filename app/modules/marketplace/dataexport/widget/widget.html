@@ -1,0 +1,24 @@
+<div layout="column" layout-fill md-whiteframe="1">
+    <div flex="20">
+        <div layout="row" layout-fill>
+            <div flex="30" ng-class='$ctrl.item.imageColor' layout="column" layout-align="center center">
+                <md-icon class="white" ng-bind="$ctrl.item.imageHeader"></md-icon>
+            </div>
+            <div flex="70" layout="row" layout-align="start center">
+                <div class="header shortenText" > {{$ctrl.item.name}}</div>
+            </div>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div flex="80">
+        <div layout="column" layout-fill>
+            <div ng-repeat="data in $ctrl.item.data" layout="row" flex>
+                <div flex="30" layout="column" layout-align="center center">
+                    <md-icon ng-bind="data.image"></md-icon>
+                </div>
+                <div flex="70" layout="row" layout-align="start center">{{data.text}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

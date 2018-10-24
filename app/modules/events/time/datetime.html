@@ -1,0 +1,13 @@
+<div class="datepicker">
+    <md-datepicker ng-model="result" md-placeholder="Enter date"></md-datepicker>
+</div>
+<div layout-margin>
+    <md-input-container class="md-block" flex-gt-xs>
+        <label>{{'TIME.DATETIME.MD_INPUT_CONTAINER_LABEL_HOURS' | translate}}</label>
+        <input type="number" min="0" max="23" step="1" ng-model="hour">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-xs>
+        <label>{{'TIME.DATETIME.MD_INPUT_CONTAINER_LABEL_MINUTES' | translate}}</label>
+        <input type="number" min="0" max="59" step="1" ng-model="minute">
+    </md-input-container>
+</div>

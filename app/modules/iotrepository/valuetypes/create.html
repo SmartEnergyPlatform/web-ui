@@ -1,0 +1,92 @@
+<div layout-margin>
+    <md-input-container class="md-block" flex-gt-xs>
+        <label>{{'VALUE_TYPES.CREATE.MD_INPUT_CONTAINER_LABEL_NAME' | translate}}</label>
+        <input ng-model="valuetype.name">
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-xs>
+        <label>{{'VALUE_TYPES.CREATE.MD_INPUT_CONTAINER_LABEL_DESCRIPTION' | translate}}</label>
+        <input ng-model="valuetype.description">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+        <label>{{'VALUE_TYPES.CREATE.MD_INPUT_CONTAINER_LABEL_BASE_TYPE' | translate}}</label>
+        <md-select ng-model="valuetype.base_type" data-md-container-class="selectdemoSelectHeader">
+            <md-optgroup label="entities">
+                <md-option ng-value="element" ng-repeat="element in allowedValues.collections">
+                    {{element}}
+                </md-option>
+                <md-option ng-value="element" ng-repeat="element in allowedValues.structures">
+                    {{element}}
+                </md-option>
+                <md-option ng-value="element" ng-repeat="element in allowedValues.primitive">
+                    {{element}}
+                </md-option>
+            </md-optgroup>
+        </md-select>
+    </md-input-container>
+
+    <md-input-container ng-if="isPrimitive(valuetype.base_type)">
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{'VALUE_TYPES.CREATE.MD_INPUT_CONTAINER_INPUT_CONTAINER_LABEL_LITERAL' | translate}}</label>
+            <input ng-model="valuetype.literal">
+        </md-input-container>
+    </md-input-container>
+
+    <md-input-container ng-if="isStructure(valuetype.base_type)">
+        <md-chips ng-model="valuetype.fields" name="Input" readonly="true" md-removable="true">
+            <button class="md-chip-remove" md-chip-remove>
+                <md-icon>cancel</md-icon>
+            </button>
+            <md-chip-template>
+                <span class="clickable" ng-click="fieldEdit($chip)">{{$chip.name}}</span>
+            </md-chip-template>
+        </md-chips>
+        <md-button class="md-raised" ng-click="fieldAdd()">
+            {{'VALUE_TYPES.CREATE.MD_INPUT_CONTAINER_BUTTON_LABEL_ADD_FIELD' | translate}}
+        </md-button>
+    </md-input-container>
+
+    <md-input-container ng-if="isCollection(valuetype.base_type)"
+                        ng-init="valuetype.fields = [{type:{}, description: 'collection_type'}]">
+        <md-input-container>
+            <label>{{'VALUE_TYPES.CREATE.MD_INPUT_CONTAINER_INPUT_CONTAINER_LABEL_COLLECTION_TYPE' | translate}}</label>
+            <md-select
+                    md-selected-text="valuetype.fields[0] && valuetype.fields[0].type && (valuetype.fields[0].type.name || valuetype.fields[0].type.id) || ('VALUE_TYPES.CREATE.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_SELECTED_TEXT_VALUE_TYPE' | translate)"
+                    ng-model="valuetype.fields[0].type" data-md-container-class="selectdemoSelectHeader"
+                    md-on-close="clearSearch()" md-on-open="search('valueTypes')">
+                <md-select-header class="demo-select-header">
+                    <input ng-model="searchInfo.searchText"
+                           ng-change="search('valueTypes')"
+                           type="search"
+                           placeholder="{{'VALUE_TYPES.CREATE.MD_DIALOG_CONTENT_SELECT_HEADER_INPUT_PLACEHOLDER_SEARCH_FOR' | translate }}"
+                           class="demo-header-searchbox md-text"
+                           ng-keydown="$event.stopPropagation()"
+                    />
+                </md-select-header>
+                <md-optgroup label="entities">
+                    <md-option ng-value="e" ng-repeat="e in searchInfo.searchResult">
+                        {{e.name}} {{e.id}}
+                    </md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>{{'VALUE_TYPES.CREATE.MD_INPUT_CONTAINER_INPUT_CONTAINER_LABEL_ELEMENT_NAME' | translate}}</label>
+            <input ng-model="valuetype.fields[0].name">
+        </md-input-container>
+    </md-input-container>
+
+
+    <div layout="row" layout-align="space-around center">
+        <md-button class="md-accent md-raised" ui-sref="iotrepository.valuetypes">
+            {{'VALUE_TYPES.CREATE.MD_BUTTON_LABEL_CANCEL' | translate}}
+        </md-button>
+        <md-button class="md-primary md-raised" ng-click="save('iotrepository.valuetypes')">
+            {{'VALUE_TYPES.CREATE.MD_BUTTON_LABEL_SAVE' | translate}}
+        </md-button>
+        <md-button class="md-primary md-raised" ng-click="save('iotrepository.valuetypes.create')">
+            {{'VALUE_TYPES.CREATE.MD_BUTTON_LABEL_SAVE_AND_NEXT' | translate}}
+        </md-button>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{ ctrl.dayOfWeek | translate }}, {{ctrl.time}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-input-container class="md-block">
+                <label>{{'DASHBOARD.SCHEDULE.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_PROCESS' | translate}}:</label>
+                <md-select ng-model="ctrl.selectedProcess" required ng-disabled="ctrl.entry">
+                    <md-option ng-value="process" ng-repeat="process in ctrl.processes" ng-selected="process.processDefinitionId === ctrl.selectedProcess.processDefinitionId">{{process.name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DASHBOARD.SCHEDULE.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_TIME' | translate}}:</label>
+                <input type="text" ng-model="ctrl.time" required maxlength="5">
+            </md-input-container>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-primary md-raised" ng-if="ctrl.entry" ng-click="ctrl.remove()">{{'DASHBOARD.SCHEDULE.MD_DIALOG_ACTIONS_BUTTON_DELETE' | translate}}
+        </md-button>
+        <md-button class="md-primary md-raised" ng-click="ctrl.save()">{{'DASHBOARD.SCHEDULE.MD_DIALOG_ACTIONS_BUTTON_SAVE' | translate}}
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

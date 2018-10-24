@@ -1,0 +1,74 @@
+<script type="text/ng-template" id="field">
+    <div>{{'DEVICE_TYPES.DETAIL.FIELD_SCRIPT_TEMPLATE_NAME' | translate}}: {{field.name}}</div>
+    <div>{{'DEVICE_TYPES.DETAIL.FIELD_SCRIPT_TEMPLATE_TYPE' | translate}}:
+        <div class="sublist">
+            <div class="sublist_element" onload="valueType = field.type" ng-include="'valueType'"></div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="valueType">
+    <div>{{'DEVICE_TYPES.DETAIL.VALUE_TYPE_SCRIPT_TEMPLATE_NAME' | translate}}: {{valueType.name}}</div>
+    <div>{{'DEVICE_TYPES.DETAIL.VALUE_TYPE_SCRIPT_TEMPLATE_DESCRIPTION' | translate}}: {{valueType.description}}</div>
+    <div>{{'DEVICE_TYPES.DETAIL.VALUE_TYPE_SCRIPT_TEMPLATE_BASE_TYPE' | translate}}: {{valueType.base_type}}</div>
+    <div ng-if="valueType.fields.length">{{'DEVICE_TYPES.DETAIL.VALUE_TYPE_SCRIPT_TEMPLATE_FIELDS' | translate}}:
+        <div class="sublist">
+            <div class="sublist_element" ng-repeat="field in valueType.fields" ng-include="'field'"></div>
+        </div>
+    </div>
+</script>
+
+<md-dialog class="iot-detail" aria-label="Detail">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_FORM_TOOLBAR_HEADLINE_DETAIL' | translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <bold>X</bold>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+            <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_ID' | translate}}: {{devicetype.id}}</div>
+            <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_NAME' | translate}}: {{devicetype.name}}</div>
+            <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_DESCRIPTION' | translate}}: {{devicetype.description}}</div>
+            <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_CLASS' | translate}}: {{devicetype.device_class.name}}</div>
+            <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_VENDOR' | translate}}: {{devicetype.vendor.name}}</div>
+            <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_SERVICES' | translate}}:
+                <div class="sublist">
+                    <div class="sublist_element" ng-repeat="service in devicetype.services">
+                        <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_SERVICES_NAME' | translate}}: {{service.name}}</div>
+                        <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_SERVICES_DESCRIPTION' | translate}}: {{service.description}}</div>
+                        <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_SERVICES_TYPE' | translate}}: {{service.service_type}}</div>
+                        <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_SERVICES_URL' | translate}}: {{service.url}}</div>
+                        <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_SERVICES_PROTOCOL' | translate}}: {{service.protocol.name}}</div>
+                        <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_SERVICES_CONFIGURATION_PARAMETERS' | translate}}:
+                            <div class="sublist">
+                                <div class="sublist_element" ng-repeat="field in service.config_parameter" ng-include="'field'"></div>
+                            </div>
+                        </div>
+                        <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_SERVICES_INPUTS' | translate}}:
+                            <div class="sublist">
+                                <div class="sublist_element" ng-repeat="field in service.input" ng-include="'field'"></div>
+                            </div>
+                        </div>
+                        <div>{{'DEVICE_TYPES.DETAIL.MD_DIALOG_CONTENT_SHOW_DETAILS_SERVICES_RESULTS' | translate}}:
+                            <div class="sublist">
+                                <div class="sublist_element" ng-repeat="valueType in service.result" ng-include="'valueType'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="ok()">
+                {{'DEVICE_TYPES.DETAIL.MD_DIALOG_ACTIONS_BUTTON_LABEL_OK' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

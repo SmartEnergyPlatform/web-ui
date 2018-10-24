@@ -1,0 +1,91 @@
+<sepl-searchbar search-text="$ctrl.searchText" on-input-change="$ctrl.searchText = searchText;"></sepl-searchbar>
+<sepl-sort attributes="$ctrl.sortAttributes" on-click-event="$ctrl.sortItem = sortItem"
+           current-sort-item="$ctrl.sortItem"></sepl-sort>
+<div layout-margin>
+    <div ng-if="!$ctrl.networks.length && $ctrl.requestComplete">
+        {{'NETWORKS.NO_ELEMENT_TEXT' | translate}}
+    </div>
+</div>
+
+<div infinite-scroll="$ctrl.next()" infinite-scroll-distance='1' infinite-scroll-container="'#content'"
+     infinite-scroll-disabled="$ctrl.scrollDisabled">
+    <div layout="column" flex>
+        <md-grid-list
+                md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-cols-xl="6" md-row-height="250px"
+                md-gutter="16px">
+            <md-grid-tile ng-repeat="network in $ctrl.networks"
+                          ng-show="$ctrl.requestComplete" md-whiteframe="1"
+                          ng-cloak>
+                <div class="image-wrapper" layout-align="center start">
+                    <img class="preview" src="img/network-cable-ethernet-computer-159304.jpeg"/>
+                </div>
+                <md-grid-tile-footer>
+                    <div layout="row" class="caption">
+                        <div layout="row" flex="70" layout-align="left center">
+                            <div layout="column">
+                        <span class="md-truncate first-line">{{network.name || 'NETWORKS.LIST.MD_GRID_LIST_TILE_FOOTER_FIRST_LINE_UNKNOWN_NAME' | translate}}
+                            <md-tooltip>{{network.name || 'NETWORKS.LIST.MD_GRID_LIST_TILE_FOOTER_TOOLTIP_UNKNOWN_NAME' | translate }}</md-tooltip>
+                        </span>
+                                <span class="second-line">{{'NETWORKS.LIST.MD_GRID_LIST_TILE_FOOTER_SECOND_LINE_DEVICE' | translate}}: {{network.devices.length || 0}}</span>
+                            </div>
+                        </div>
+                        <div layout="row" layout-align="end center" flex="30">
+                            <div ng-if="network.log_state === true" class="device-connected-state">
+                                <md-icon class="connected-icon" md-svg-src="img/connect.svg"></md-icon>
+                            </div>
+                            <div ng-if="network.log_state === false" class="device-disconnected-state">
+                                <md-icon class="disconnected-icon" md-svg-src="img/disconnect.svg"></md-icon>
+                            </div>
+                            <md-menu md-offset="-10 40">
+                                <md-button class="md-icon-button" ng-click="$mdMenu.open()">
+                                    <md-icon>more_vert</md-icon>
+                                </md-button>
+                                <md-menu-content>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.show(network.id)">
+                                            <md-icon>info</md-icon>
+                                            {{'NETWORKS.LIST.MD_GRID_LIST_TILE_FOOTER_MENU_CONTENT_ITEM_BUTTON_SHOW_GATEWAY_DEVICES'
+                                            | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-divider></md-divider>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.edit(network)">
+                                            <md-icon>edit</md-icon>
+                                            {{'NETWORKS.LIST.MD_GRID_LIST_TILE_FOOTER_MENU_CONTENT_ITEM_BUTTON_EDIT_GATEWAY_DEVICES'
+                                            | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.clear(network)">
+                                            <md-icon>refresh</md-icon>
+                                            {{'NETWORKS.LIST.MD_GRID_LIST_TILE_FOOTER_MENU_CONTENT_ITEM_BUTTON_CLEAR' |
+                                            translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.remove(network)">
+                                            <md-icon>delete</md-icon>
+                                            {{'NETWORKS.LIST.MD_GRID_LIST_TILE_FOOTER_MENU_CONTENT_ITEM_BUTTON_DELETE' |
+                                            translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+                    </div>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+    </div>
+</div>
+<md-progress-circular ng-class="{'md-progress-circular-next' : !$ctrl.initialLoading}"
+                      md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-hue-2"
+                      md-diameter="50"></md-progress-circular>
+<!--
+<div layout="row" layout-align="center" flex>
+    <md-button class="md-raised" ng-hide="!$ctrl.nextButton" ng-click="$ctrl.next()">
+        <md-icon>expand_more</md-icon>
+    </md-button>
+</div>
+-->

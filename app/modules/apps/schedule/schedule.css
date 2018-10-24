@@ -1,0 +1,74 @@
+sepl-apps-schedule table {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    box-sizing: border-box;
+}
+
+sepl-apps-schedule .time-table {
+    padding: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+    margin-bottom: 100px;
+}
+
+sepl-apps-schedule table th {
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: inherit;
+    border-bottom: 1px solid lightgray;
+    padding: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width:1px;
+}
+
+sepl-apps-schedule .cell {
+    text-align: center;
+    font-size: 14px;
+    height: 50px;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+sepl-apps-schedule .caption {
+    width: 20px;
+    text-align: right;
+    vertical-align: top;
+    font-size: 14px;
+    height: 50px;
+    border-bottom: 0;
+}
+
+sepl-apps-schedule .cell:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+    transition: background-color 0.5s;
+}
+
+sepl-apps-schedule .entry {
+    position: relative;
+    background-color: #259b24;
+    border: 1px solid white;
+    color: white;
+    z-index: 2;
+}
+
+sepl-apps-schedule .wrapper {
+    position: relative;
+}
+
+sepl-apps-schedule .background {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}

@@ -1,0 +1,67 @@
+<md-dialog aria-label="IoT-Device" class="iot-wizard-dialog">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'SERVICES.EVENT_SERVICE_DIALOG.MD_DIALOG_TOOLBAR_HEADLINE' | translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <bold>{{'SERVICES.EVENT_SERVICE_DIALOG.MD_DIALOG_TOOLBAR_BUTTON_X' | translate}}</bold>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="md-dialog-content">
+            <md-input-container class="md-block">
+                <label>IoT-Device</label>
+                <md-select md-selected-text="device.name || device.id || ('SERVICES.EVENT_SERVICE_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_OPTION_IOT_DEVICE' | translate)" ng-model="device" data-md-container-class="selectdemoSelectHeader" md-on-close="clearSearch()" md-on-open="search()">
+                    <md-select-header class="demo-select-header">
+                        <input ng-model="searchInfo.searchText"
+                               ng-change="search()"
+                               type="search"
+                               placeholder="('SERVICES.EVENT_SERVICE_DIALOG.MD_DIALOG_CONTENT_SELECT_HEADER_PLACEHOLDER_TEXT' | translate)"
+                               class="demo-header-searchbox md-text"
+                               ng-keydown="$event.stopPropagation()"
+                        />
+                    </md-select-header>
+                    <md-optgroup label="entities">
+                        <md-option ng-value="e"  ng-repeat="e in searchInfo.searchResult">
+                            {{e.name}} {{e.id}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>{{'SERVICES.EVENT_SERVICE_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_SERVICE' | translate}}</label>
+                <md-select md-selected-text="service.name || service.id || ('SERVICES.EVENT_SERVICE_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_OPTION_SERVICE' | translate)" ng-model="service">
+                    <md-optgroup label="entities">
+                        <md-option ng-value="e"  ng-repeat="e in deviceType.services">
+                            {{e.name}} {{e.id}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>{{'SERVICES.EVENT_SERVICE_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_LABEL_EVENT' | translate}}</label>
+                <md-select md-selected-text="event.name || event.id || ('SERVICES.EVENT_SERVICE_DIALOG.MD_DIALOG_CONTENT_INPUT_CONTAINER_SELECT_OPTION_EVENT' | translate)" ng-model="event">
+                    <md-optgroup label="entities">
+                        <md-option ng-value="e"  ng-repeat="e in events">
+                            {{e.name}} {{e.id}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="ok()">
+                {{'SERVICES.EVENT_SERVICE_DIALOG.MD_DIALOG_ACTIONS_BUTTON_OK' | translate}}
+            </md-button>
+            <md-button ng-click="cancel()">
+                {{'SERVICES.EVENT_SERVICE_DIALOG.MD_DIALOG_ACTIONS_BUTTON_CANCEL' | translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

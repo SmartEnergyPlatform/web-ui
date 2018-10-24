@@ -1,0 +1,17 @@
+<div class="md-nav-bar" layout="row">
+    <md-button ng-click="$ctrl.save()" class="md-icon-button">
+        <md-icon>save</md-icon>
+        <md-tooltip>{{'DESIGNER.MD_TOOLTIP_SAVE' | translate}}
+        </md-tooltip>
+    </md-button>
+    <md-button ngf-select="$ctrl.importProcess($file)" ngf-allow-dir="false" ngf-pattern="'.bpmn'"
+               ngf-accept="'.bpmn'" ngf-max-size="2MB" class="md-icon-button">
+        <md-icon>import_export</md-icon>
+        <md-tooltip>{{'DESIGNER.MD_TOOLTIP_IMPORT' | translate}}
+        </md-tooltip>
+    </md-button>
+</div>
+<div layout="row" flex layout-margin>
+    <div class="canvas" id="js-canvas" flex></div>
+    <div id="js-properties-panel"></div>
+</div>

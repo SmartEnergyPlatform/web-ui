@@ -1,0 +1,74 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{'DASHBOARD.CHART.HEADLINE_NAVIGATION' | translate}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-input-container class="md-block">
+                <label>{{ 'DASHBOARD.CHART.MD_INPUT_CONTAINER_LABEL_TITLE' | translate }}</label>
+                <input type="text" ng-model="ctrl.title">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Export</label>
+                <md-select md-selected-text="ctrl.source.Name || ctrl.source.ID || ('DASHBOARD.EXPORT_NAME' | translate)"
+                           ng-model="ctrl.source"
+                           md-on-open="ctrl.loadExports()">
+                    <md-optgroup label="Exports">
+                        <md-option ng-value="e" ng-repeat="e in ctrl.exports">
+                            {{e.Name}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DASHBOARD.CHART.MD_INPUT_CONTAINER_LABEL_TYPE' | translate}}</label>
+                <md-select md-selected-text="ctrl.type || Type"
+                           ng-model="ctrl.type">
+                    <md-option ng-value="'lineChart'">
+                        lineChart
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DASHBOARD.CHART.MD_INPUT_CONTAINER_LABEL_FRAME' | translate}}</label>
+                <input type="text" ng-model="ctrl.frame">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DASHBOARD.CHART.MD_INPUT_CONTAINER_LABEL_XAXIS' | translate}}</label>
+                <input type="text" ng-model="ctrl.x_field" disabled>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DASHBOARD.CHART.MD_INPUT_CONTAINER_LABEL_XAXIS_LABEL' | translate}}</label>
+                <input type="text" ng-model="ctrl.x_name">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>{{'DASHBOARD.CHART.MD_INPUT_CONTAINER_LABEL_YAXIS' | translate}}</label>
+                <md-select md-selected-text="ctrl.y_field || ('DASHBOARD.CHART.MD_INPUT_CONTAINER_LABEL_YAXIS' | translate)"
+                           ng-model="ctrl.y_field"
+                           ng-disabled="ctrl.source.Values == null">
+                    <md-option ng-value="e" ng-repeat="e in ctrl.values">
+                        {{e}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{'DASHBOARD.CHART.MD_INPUT_CONTAINER_LABEL_YAXIS_LABEL' | translate}}</label>
+                <input type="text" ng-model="ctrl.y_name">
+            </md-input-container>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-primary md-raised" ng-if="ctrl.entry" ng-click="ctrl.remove()">
+            {{'DASHBOARD.CHART.MD_DIALOG_ACTIONS_BUTTON_DELETE' | translate}}
+        </md-button>
+        <md-button class="md-primary md-raised" ng-click="ctrl.save()">{{'DASHBOARD.CHART.MD_DIALOG_ACTIONS_BUTTON_SAVE'
+            | translate}}
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

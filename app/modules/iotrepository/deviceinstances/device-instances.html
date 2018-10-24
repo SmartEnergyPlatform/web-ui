@@ -1,0 +1,108 @@
+<sepl-searchbar search-text="$ctrl.searchText" on-input-change="$ctrl.searchText = searchText;"></sepl-searchbar>
+<div layout="row">
+    <md-chips ng-if="$ctrl.chip.length > 0" ng-model="$ctrl.chip" readonly="true" md-removable="true"
+              md-on-remove="$ctrl.chipReset()" flex>
+        <button class="md-chip-remove" md-chip-remove>
+            <md-icon>cancel</md-icon>
+        </button>
+        {{$chip}}
+    </md-chips>
+    <span ng-if="$ctrl.chip.length === undefined || $ctrl.chip.length === 0" flex></span>
+    <sepl-sort attributes="$ctrl.sortAttributes" on-click-event="$ctrl.sortItem = sortItem"
+               current-sort-item="$ctrl.sortItem"></sepl-sort>
+</div>
+<div layout-margin>
+    <div ng-if="!$ctrl.deviceInstances.length && $ctrl.requestComplete">
+        {{'DEVICE_INSTANCES.NO_ELEMENT_TEXT' | translate}}
+    </div>
+</div>
+<div infinite-scroll="$ctrl.next()" infinite-scroll-distance='1' infinite-scroll-container="'#content'"
+     infinite-scroll-disabled="$ctrl.scrollDisabled">
+    <div layout="column" flex>
+        <md-grid-list
+                md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-cols-xl="6" md-row-height="250px" md-gutter="16px">
+            <md-grid-tile
+                    ng-repeat="deviceinstance in $ctrl.deviceInstances"
+                    md-whiteframe="1"
+                    ng-cloak>
+                <div class="preview" layout-align="center start">
+                    <div class="image-wrapper">
+                        <img class="device-type-icon" ng-if="deviceinstance.img" ng-src="{{deviceinstance.img}}"/>
+                    </div>
+                </div>
+                <md-grid-tile-footer>
+                    <div layout="row" class="caption">
+                        <div layout="row" flex="80" layout-align="left center">
+                            <div layout="column">
+                                <span class="md-truncate first-line">
+                                    {{deviceinstance.name}}
+                                    <md-tooltip md-direction="top">{{deviceinstance.name}}</md-tooltip>
+                                </span>
+                                <div class="second-line" ng-if="(deviceinstance.tag && deviceinstance.tag.length) || (deviceinstance.usertag && deviceinstance.usertag.length)">
+                                    <span ng-repeat="tag in deviceinstance.tag track by $index" ng-click="$ctrl.searchTag(tag)" class="tag">
+                                        {{tag|tagvalue}}
+                                        <md-tooltip md-direction="bottom">
+                                            {{tag|tagvalue}}
+                                        </md-tooltip>
+                                    </span>
+                                    <span ng-repeat="tag in deviceinstance.usertag track by $index" ng-click="$ctrl.searchUserTag(tag)" class="tag">
+                                        {{tag}}
+                                        <md-tooltip md-direction="bottom">
+                                            {{tag}}
+                                        </md-tooltip>
+                                    </span>
+                                </div>
+                                <!--    <span class="second-line">{{deviceinstance.intern.device_type.name}}</span> -->
+                            </div>
+                        </div>
+                        <div layout="row" layout-align="end center" flex="20">
+                            <span ng-if="deviceinstance.log_state === true" class="device-connected-state">
+                                <md-icon class="connected-icon" md-svg-src="img/connect.svg"></md-icon>
+                            </span>
+                            <span ng-if="deviceinstance.log_state === false" class="device-disconnected-state">
+                                <md-icon class="disconnected-icon" md-svg-src="img/disconnect.svg"></md-icon>
+                            </span>
+                            <md-menu md-offset="-10 40">
+                                <md-button class="md-icon-button" ng-click="$mdMenu.open()">
+                                    <md-icon>more_vert</md-icon>
+                                </md-button>
+                                <md-menu-content>
+                                    <md-menu-item>
+                                        <md-button ng-click="$ctrl.showServiceInfo(deviceinstance)">
+                                            <md-icon>info</md-icon>
+                                            {{'DEVICE_INSTANCES.MD_GRID_LIST_TILE_FOOTER_MENU_CONTENT_ITEM_BUTTON_LABEL_SERVICES' | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-divider></md-divider>
+                                    <md-menu-item ng-if="deviceinstance.permissions.a">
+                                        <md-button ng-click="$ctrl.permission(deviceinstance.id)" md-menu-align-target>
+                                            <md-icon>folder_shared</md-icon>
+                                            {{'DEVICE_INSTANCES.MD_GRID_LIST_TILE_FOOTER_MENU_CONTENT_ITEM_BUTTON_LABEL_SHARE' | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button
+                                                ng-click="$ctrl.showEditDialog({ id: deviceinstance.id, deviceTypeId: null }, $event)">
+                                            <md-icon>edit</md-icon>
+                                            {{'DEVICE_INSTANCES.MD_GRID_LIST_TILE_FOOTER_MENU_CONTENT_ITEM_BUTTON_LABEL_EDIT' | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item>
+                                        <md-button
+                                                ng-click="$ctrl.deleteDeviceInstance(deviceinstance.id)">
+                                            <md-icon>delete</md-icon>
+                                            {{'DEVICE_INSTANCES.MD_GRID_LIST_TILE_FOOTER_MENU_CONTENT_ITEM_BUTTON_LABEL_DELETE' | translate}}
+                                        </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                        </div>
+                    </div>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+    </div>
+</div>
+<md-progress-circular ng-class="{'md-progress-circular-next' : !$ctrl.initialLoading}"
+                      md-mode="indeterminate" ng-show="!$ctrl.requestComplete" class="md-hue-2"
+                      md-diameter="50"></md-progress-circular>

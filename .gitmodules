@@ -1,0 +1,3 @@
+[submodule "sepl-modeler"]
+	path = sepl-modeler
+	url = https://github.com/SmartEnergyPlatform/process-designer.git

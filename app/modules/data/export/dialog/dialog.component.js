@@ -96,15 +96,15 @@
                 if (vm.selector === "device") {
                     analyticsExportService.start(
                         {
-                            name: vm.name,
-                            description: vm.description,
-                            entity_name: vm.device.name,
-                            service_name: vm.service.name,
-                            filter_type: "deviceId",
-                            filter_id: vm.device.id,
-                            topic: vm.service.id.replace(/#/g, '_'),
-                            timePath: vm.timePath,
-                            values: vm.values
+                            Name: vm.name,
+                            Description: vm.description,
+                            EntityName: vm.device.name,
+                            ServiceName: vm.service.name,
+                            FilterType: "deviceId",
+                            FilterId: vm.device.id,
+                            Topic: vm.service.id.replace(/#/g, '_'),
+                            TimePath: vm.timePath,
+                            Values: vm.values
                         }).then(function () {
                         $mdToast.show($mdToast.startExport());
                         $state.go('data.export', {}, {reload: true});
@@ -112,15 +112,15 @@
                 } else if (vm.selector === "pipe") {
                     analyticsExportService.start(
                         {
-                            name: vm.name,
-                            description: vm.description,
-                            entity_name: vm.pipe.id,
-                            service_name: vm.operator.Name,
-                            filter_type: "pipeId",
-                            filter_id: vm.pipe.id,
-                            topic: "analytics-" + vm.operator.Name,
-                            timePath: vm.timePath,
-                            values: vm.values
+                            Name: vm.name,
+                            Description: vm.description,
+                            EntityName: vm.pipe.id,
+                            ServiceName: vm.operator.Name,
+                            FilterType: "pipeId",
+                            FilterId: vm.pipe.id,
+                            Topic: "analytics-" + vm.operator.Name,
+                            TimePath: vm.timePath,
+                            Values: vm.values
                         }).then(function () {
                         $mdToast.show($mdToast.startExport());
                         $state.go('data.export', {}, {reload: true});

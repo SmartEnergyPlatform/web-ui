@@ -50,7 +50,7 @@ app.get('/js/keycloak_url.js', function(req, res, next) {
 
 app.use("/", express.static(__dirname + '/dist'));
 
-app.get('*', (req, res) => {
+app.get('*', function(req, res){
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
@@ -58,7 +58,7 @@ var port = normalizePort(process.env.PORT || '8000');
 app.listen(port);
 
 function normalizePort(val) {
-    var port = parseInt(val, 10);33
+    var port = parseInt(val, 10);
 
     if (isNaN(port)) {
         // named pipe

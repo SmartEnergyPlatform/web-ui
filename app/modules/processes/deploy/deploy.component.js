@@ -18,7 +18,7 @@
     'use strict';
 
     /* @ngInject */
-    function DeployController($scope, $sce, jsonPath, repositoryService, deploymentsService, $stateParams, deployService, x2js, $state, analyticsExportService, $translatePartialLoader) {
+    function DeployController(SeplModeler, $scope, $sce, jsonPath, repositoryService, deploymentsService, $stateParams, deployService, x2js, $state, analyticsExportService, $translatePartialLoader) {
         $translatePartialLoader.addPart('processes');
         function initNew(){
             repositoryService.getProcessModel($stateParams.processid).then(function(processmodell){
@@ -308,7 +308,7 @@
 
         $scope.updateDiagram = function () {
             if(!$scope.viewer){
-                $scope.viewer = new BpmnJS({ container: '#svg-diagram' });
+                $scope.viewer = SeplModeler.viewer({ container: '#svg-diagram' });
             }
             var bpmn = getNewBpmnModel();
             $scope.viewer.importXML(bpmn, function(err) {
@@ -381,8 +381,6 @@
                         }
                     }
                 }
-
-                console.log(result)
             }
             function onlyUnique(value, index, self) {
                 return self.indexOf(value) === index;

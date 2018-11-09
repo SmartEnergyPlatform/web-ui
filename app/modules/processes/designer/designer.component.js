@@ -30,7 +30,7 @@
         loadDiagram();
 
         function bootstrapModeler() {
-            return new SeplModeler({
+            return SeplModeler.modeler({
                 container: '#js-canvas',
                 propertiesPanel: {
                     parent: '#js-properties-panel'
